@@ -32,6 +32,9 @@ model User {
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
 
+  projects Project[]
+  comments Comment[]
+
   @@map("users")
 }
 
@@ -88,4 +91,38 @@ model TwoFactorConfirmation {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  title       String    @db.Text
+  description String?   @db.Text
+  body        String    @db.Text
+  image       String?   @default("https://images.unsplash.com/photo-1533780898421-b118c81ac26b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+  upVotes     String[]  @default([])
+  views       String[]  @default([])
+  tags        String[]
+  link        String?
+  repo        String?
+  published   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  user        User?     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId      String?
+  comments    Comment[]
+}
+
+model Comment {
+  id         String   @id @default(cuid())
+  text       String   @db.Text
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User?    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId     String
+  parentId   String
+  parentType String
+  Project    Project? @relation(fields: [projectId], references: [id])
+  projectId  String?
+
+  @@index([parentId, parentType])
 }
