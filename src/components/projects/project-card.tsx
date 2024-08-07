@@ -27,7 +27,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </Link>
         </span>
       </section>
-      <Link href="/">
+      <Link href={`/projects/${project.id}`}>
         <div className="relative h-48 overflow-hidden rounded-t-sm">
           <Image src={project.image || "/img/tda.png"} alt="card image" fill />
           <span className="absolute h-48 w-full top-0 left-0" />
