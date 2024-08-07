@@ -10,16 +10,18 @@ import { FaCaretDown } from "react-icons/fa";
 import Link from "next/link";
 import { auth, signOut } from "@/lib/auth";
 import { LuSettings, LuLogIn, LuLogOut, LuUser } from "react-icons/lu";
-import { GiWolfHead, GiWolfHowl } from "react-icons/gi";
+import { GiWolfHead } from "react-icons/gi";
 import { Button } from "../ui/button";
-import { format } from "path";
 
 const Menu = async () => {
   const session = await auth();
 
   if (!session?.user) {
     return (
-      <Link className="text-sm dark:text-zinc-400" href="/auth/login">
+      <Link
+        className="text-sm p-2 dark:text-cyan-600 text-blue-600"
+        href="/auth/login"
+      >
         Login/SignUp
       </Link>
     );
@@ -34,7 +36,7 @@ const Menu = async () => {
         >
           {session.user.image ? (
             <Image
-              src={session.user.image || "/me.jpg"}
+              src={session.user.image || "/img/me.jpg"}
               alt="user image"
               height={28}
               width={28}
