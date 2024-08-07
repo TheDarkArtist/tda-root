@@ -4,7 +4,7 @@ import ProjectCard from "./project-card";
 
 interface ProjectsListProps {
   query?: string;
-  currentPage?: string;
+  currentPage?: number;
   published?: boolean;
   limit?: number;
 }
