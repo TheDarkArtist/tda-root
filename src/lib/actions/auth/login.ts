@@ -14,7 +14,7 @@ import { getTwoFactorTokenByEmail } from "./two-factor-token";
 import { db } from "@/lib/db";
 import { getTwoFactorConfirmationByUserId } from "./two-factor-confirmation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/lib/routes";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 
 export const login = async (
   values: z.infer<typeof LoginSchema>,
