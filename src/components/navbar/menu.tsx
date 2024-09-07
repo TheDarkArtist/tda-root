@@ -19,7 +19,7 @@ const Menu = async () => {
   if (!session?.user) {
     return (
       <Link
-        className="text-sm p-2 dark:text-cyan-600 text-blue-600"
+        className="hidden sm:block text-sm p-2 dark:text-cyan-600 text-blue-600"
         href="/auth/login"
       >
         Login/SignUp

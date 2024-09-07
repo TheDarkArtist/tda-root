@@ -4,6 +4,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { SheetTrigger } from "../ui/sheet";
 
 const Links = () => {
   const pathname = usePathname();
@@ -37,19 +38,20 @@ const Links = () => {
   ];
 
   return (
-    <section className="hidden sm:flex">
+    <section className="flex flex-col space-y-4 mt-20">
       {links.map(({ name, href, isActive }) => (
-        <Link
-          className={cn(
-            "dark:hover:bg-stone-900 hover:bg-zinc-100 px-2 py-1",
-            "text-[1rem] text-zinc-800 dark:text-zinc-300",
-            isActive && "dark:text-red-600 text-red-600 font-bold"
-          )}
-          key={name}
-          href={href}
-        >
-          {name}
-        </Link>
+        <SheetTrigger asChild key={name}>
+          <Link
+            className={cn(
+              "dark:hover:bg-stone-900 hover:bg-zinc-100 px-2 py-1",
+              "text-[1rem] text-zinc-800 dark:text-zinc-300",
+              isActive && "dark:text-red-600 text-red-600 font-bold"
+            )}
+            href={href}
+          >
+            {name}
+          </Link>
+        </SheetTrigger>
       ))}
     </section>
   );
