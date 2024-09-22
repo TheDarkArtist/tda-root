@@ -5,36 +5,42 @@ import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { cn } from "@/lib/utils";
 import { os } from "@/utils/fonts";
 
-interface CardWrapperProps {
+interface D2CBoxProps {
   children: React.ReactNode;
   headerLabel?: string;
+  bodyClassName?: string;
+  headerClassName?: string;
   className?: string;
 }
 
-const CardWrapper: React.FC<CardWrapperProps> = ({
+const D2CBox: React.FC<D2CBoxProps> = ({
   children,
   headerLabel,
+  headerClassName,
+  bodyClassName,
   className,
 }) => {
   return (
     <Card
       className={cn(
-        "rounded-sm w-full dark:bg-gradient-to-bl dark:via-cyan-950/50 hover:z-10",
-        "bg-gradient-to-bl via-white transition-all duration-300 delay-200 md:hover:scale-110 cursor-default",
+        "border-none rounded-sm w-full shadow-none bg-zinc-50",
+        "rounded-xl",
         className
       )}
     >
       <CardHeader
         className={cn(
-          "text-2xl font-black py-2 my-2 dark:bg-grid-sm-cyan-900 bg-grid-sm-gray-300 dark:text-gray-300 text-gray-700",
-          os.className
+          "text-4xl py-2 my-2 text-center font-bold",
+          os.className,
+          headerClassName
         )}
       >
         {headerLabel}
+        <div className="border-t border-zinc-800 mt-4" />
       </CardHeader>
-      <CardContent>{children}</CardContent>
+      <CardContent className={bodyClassName}>{children}</CardContent>
     </Card>
   );
 };
 
-export default CardWrapper;
+export default D2CBox;
