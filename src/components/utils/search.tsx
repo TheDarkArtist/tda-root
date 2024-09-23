@@ -27,7 +27,9 @@ const Search: React.FC<SearchProps> = ({ placeholder, className }) => {
   return (
     <input
       className={cn(
-        "py-2 px-4 rounded-sm dark:bg-zinc-950 bg-white shadow border dark:border-stone-600/60 border-stone-300 w-full mx-auto",
+        "py-2 px-4 rounded-sm shadow w-full mx-auto",
+        "dark:bg-zinc-950 bg-white",
+        "border dark:border-stone-600/60 border-stone-300",
         className
       )}
       placeholder={placeholder || "Search"}
