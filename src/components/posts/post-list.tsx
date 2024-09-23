@@ -1,0 +1,27 @@
+import React from "react";
+import PostCard from "./post-card";
+import { getPosts } from "@/lib/actions/posts/get-posts";
+
+interface PostListProps {
+  query?: string;
+  currentPage?: number;
+  published?: boolean;
+  limit?: number;
+}
+
+const PostList: React.FC<PostListProps> = async ({
+  query,
+  published,
+  currentPage,
+  limit,
+}) => {
+  const posts = await getPosts(published, query, limit);
+
+  return (
+    <section className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
+      {posts?.map((post) => <PostCard key={post.id} post={post} />)}
+    </section>
+  );
+};
+
+export default PostList;
