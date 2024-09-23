@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 const HomeCarousel = () => {
   return (
     <Carousel
-    className="max-h-[36rem]"
+      className="max-h-[24rem] overflow-hidden"
       plugins={[
         Autoplay({
           delay: 3000,

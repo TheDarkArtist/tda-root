@@ -7,7 +7,7 @@ import Note from "@/components/utils/note";
 
 const TdaTechs = () => {
   return (
-    <div className="border border-dotted border-stone-600 rounded-xl p-2 m-2 sm:m-0 sm:p-4">
+    <div className="border border-dotted border-stone-600 bg-white dark:bg-black rounded-xl p-2 m-2 sm:m-0 sm:p-4">
       <h1
         className={`${montserrat.className} font-thin mb-6 text-center text-2xl`}
       >

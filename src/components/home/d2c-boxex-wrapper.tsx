@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const D2CBoxexWrapper = () => {
   return (
-    <div className="my-10">
+    <div className="my-10 border border-white/10 rounded-xl bg-white dark:bg-black">
       <Seperator
         text="We live by a philosoply, Die by a philosoply"
         className="text-sky-400 border-sky-600/80 font-bold"
