@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LuMoon, LuSun } from "react-icons/lu";
+import { LuSun } from "react-icons/lu";
 import { BsMoonStars } from "react-icons/bs";
 
 export default function ModeToggle() {
