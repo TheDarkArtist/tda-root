@@ -18,8 +18,8 @@ const Logo = () => {
       )}
       href="/"
     >
-      <span className="hidden sm:block">TheDarkArtist</span>
-      <span className="sm:hidden">TDA</span>
+      <span className="hidden md:block">TheDarkArtist</span>
+      <span className="md:hidden">TDA</span>
     </Link>
   );
 };

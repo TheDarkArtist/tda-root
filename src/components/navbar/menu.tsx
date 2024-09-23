@@ -29,7 +29,7 @@ const Menu = async () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger className="hidden sm:flex" asChild>
         <Button
           variant="ghost"
           className="flex px-2 dark:hover:bg-stone-900 items-center rounded-none gap-2"
@@ -51,13 +51,13 @@ const Menu = async () => {
       <DropdownMenuContent className="mt-2 w-40" align="end">
         <DropdownMenuItem>
           <LuUser className="mr-2" />
-          <Link href="">Profile</Link>
+          <Link href={`/u/${session.user.username}`}>Profile</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <LuSettings className="mr-2" />
-          <Link href="">Settings</Link>
+          <Link href={`/u/${session.user.username}/settings`}>Settings</Link>
         </DropdownMenuItem>
-        <div className="border-b dark:border-zinc-090 mt-1" />
+        <div className="border-b dark:border-zinc-900 mt-1" />
         {!session?.user ? (
           <DropdownMenuItem>
             <LuLogIn className="mr-2" />
