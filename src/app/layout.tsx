@@ -6,7 +6,7 @@ import Providers from "@/utils/providers";
 import Navbar from "@/components/navbar/navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
-import { inter } from "@/utils/fonts";
+import { os } from "@/utils/fonts";
 
 export const metadata: Metadata = {
   title: "Kushagra Sharma",
@@ -26,12 +26,13 @@ export default async function RootLayout({
           className={cn(
             "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]",
             "dark:from-black dark:to-zinc-950 from-white to-gray-100",
-            inter.className
+            "dark:text-gray-100 text-gray-800",
+            os.className
           )}
         >
           <Providers>
             <Navbar />
-            <main className="pt-12 h-full">{children}</main>
+            <main className="pt-6 h-full">{children}</main>
             <Toaster />
           </Providers>
         </body>
