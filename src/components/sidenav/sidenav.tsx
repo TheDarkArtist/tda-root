@@ -8,7 +8,7 @@ const Sidenav = () => {
     <div className="sm:hidden">
       <Sheet>
         <SheetTrigger>
-          <LuMenu className="h-6 w-6 text-red-600" />
+          <LuMenu className="h-8 w-8 text-red-600" />
         </SheetTrigger>
         <SheetContent>
           <Links />
