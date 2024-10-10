@@ -13,7 +13,7 @@ import {
 const SocialLinks = () => {
   return (
     <section className="space-y-4 h-full">
-      <h1 className={`font-black text-2xl text-zinc-600 ${rslab.className}`}>
+      <h1 className={`font-black text-2xl text-zinc-800 dark:text-zinc-400 ${rslab.className}`}>
         Connect with me
       </h1>
       <div className="flex justify-center gap-6 text-blue-600/50 font-bold">

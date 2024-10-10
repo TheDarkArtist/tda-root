@@ -20,14 +20,15 @@ const Languages = () => {
             A Reliable Set
           </h1>
           <p className="text">
-            In the world of web development, I am a lord of my craft, commanding
-            the mightiest frameworks like warriors sworn to my cause. With
-            Next.js at my side, I forge powerful, fast-loading realms, while
-            Svelte whispers the secrets of real-time, reactive magic. Django
-            stands as my towering fortress, unbreakable and steadfast,
-            protecting the heart of every project. Each framework serves as a
-            loyal banner in my quest to build scalable, legendary applications
-            that dominate the digital landscape.
+            powerful trio in modern software development. Python excels in
+            versatility, making it ideal for web development, data analysis, and
+            machine learning. Rust stands out for its performance and memory
+            safety, allowing for the creation of efficient and reliable
+            system-level applications. TypeScript enhances JavaScript with
+            static typing, which leads to more maintainable and error-free code.
+            Together, these languages provide a robust foundation for building
+            scalable and efficient applications, ensuring that every project is
+            both innovative and reliable.
           </p>
         </section>
         <div className="w-full flex flex-col flex-shrink flex-grow flex-wrap sm:flex-row justify-evenly items-center gap-4 mt-6">

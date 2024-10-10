@@ -13,15 +13,15 @@ const Note = ({
   return (
     <section
       className={cn(
-        "border border-l-4 shadow my-2 rounded-md text-sm",
+        "border-2 border-l-[10px] shadow my-4 rounded-r-md text-sm",
         "text-gray-700 dark:text-gray-400",
         "bg-white border-zinc-200",
-        "dark:bg-zinc-950 dark:border-zinc-900",
+        "dark:bg-zinc-950 dark:border-zinc-800",
         className
       )}
     >
-      <h1 className="text-xs m-1">{title}</h1>
-      <p className="my-2 mx-1">{description}</p>
+      <h1 className="text-xs m-1 text-red-400">{title}</h1>
+      <p className="my-1 mx-1 p-1.5">{description}</p>
     </section>
   );
 };

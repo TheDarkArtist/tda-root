@@ -1,0 +1,16 @@
+const Hobbies = () => {
+  return (
+    <section className="border border-sky-300 dark:border-red-900 bg-white dark:bg-zinc-950 shadow-md rounded-lg p-8 mb-6 animate-fade-in">
+      <h2 className="text-2xl font-semibold text-red-800 dark:text-red-300 mb-4">
+        Hobbies
+      </h2>
+      <ul className="list-none">
+        <li>Programming</li>
+        <li>Writing about stuff</li>
+        <li>Learning new things</li>
+      </ul>
+    </section>
+  );
+};
+
+export default Hobbies;

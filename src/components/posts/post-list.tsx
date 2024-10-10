@@ -18,7 +18,7 @@ const PostList: React.FC<PostListProps> = async ({
   const posts = await getPosts(published, query, limit);
 
   return (
-    <section className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
+    <section className="grid grid-cols-1 gap-4">
       {posts?.map((post) => <PostCard key={post.id} post={post} />)}
     </section>
   );

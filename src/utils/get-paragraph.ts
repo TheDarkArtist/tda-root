@@ -1,4 +1,5 @@
 export const extractFirstParagraph = (content: string): string | null => {
+  if (!content) return null;
   const lines = content.split("\n");
   let paragraph = "";
   let foundFirstNonHeadingLine = false;

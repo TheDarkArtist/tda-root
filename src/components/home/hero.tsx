@@ -5,7 +5,7 @@ import Seperator from "../utils/seperator";
 
 const Hero = () => {
   return (
-    <div className="my-10 mx-4 sm:mx-0 border border-white/10 rounded-xl p-2">
+    <div className="my-10 mx-4 sm:mx-0 border border-black/10 shadow dark:border-white/10 rounded-xl p-4 bg-white dark:bg-black">
       <Seperator
         className="border-sky-600/80 text-sky-400 font-bold"
         text="A bit about me"

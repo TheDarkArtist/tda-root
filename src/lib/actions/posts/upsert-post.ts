@@ -1,28 +1,22 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { Project } from "@prisma/client";
-import { revalidateTag } from "next/cache";
+import { Post } from "@prisma/client";
 
-export const upsertPost = async (data: Project) => {
+export const upsertPost = async (
+  postId: string,
+  postData: Post,
+): Promise<Post | null> => {
   try {
-    const response = await db.post.upsert({
-      where: {
-        id: data.id,
-      },
-      update: {
-        ...data,
-      },
-      create: {
-        ...data,
-      },
+    const post = await db.post.upsert({
+      where: { id: postId },
+      update: { ...postData },
+      create: { ...postData },
     });
 
-    revalidateTag(data.id);
-
-    return response;
+    return post;
   } catch (error) {
-    console.log("Error finding post, ", error);
+    console.error("Error upserting post:", error);
     return null;
   }
 };

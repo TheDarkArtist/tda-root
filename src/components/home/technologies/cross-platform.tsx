@@ -20,14 +20,14 @@ const CrossPlatform = () => {
             What Else Do You Need
           </h1>
           <p>
-            In the world of web development, I am a lord of my craft, commanding
-            the mightiest frameworks like warriors sworn to my cause. With
-            Next.js at my side, I forge powerful, fast-loading realms, while
-            Svelte whispers the secrets of real-time, reactive magic. Django
-            stands as my towering fortress, unbreakable and steadfast,
-            protecting the heart of every project. Each framework serves as a
-            loyal banner in my quest to build scalable, legendary applications
-            that dominate the digital landscape.
+            vital tools for versatile application development. Flutter allows
+            for the creation of beautiful, natively compiled apps across mobile,
+            web, and desktop from a single codebase. Tauri enables lightweight
+            desktop applications using web technologies, integrating seamlessly
+            with existing web apps. Qt provides a robust framework for
+            developing cross-platform applications with a rich feature set.
+            Together, these tools offer a comprehensive solution for building
+            high-quality applications across multiple platforms.
           </p>
         </section>
         <div className="w-full flex flex-wrap justify-evenly items-center gap-4 mt-6">

@@ -1,6 +1,6 @@
 import { getProjects } from "@/lib/actions/projects/get-projects";
 import React from "react";
-import ProjectCard from "./project-card";
+import ProjectCard from "./card/project-card";
 
 interface ProjectsListProps {
   query?: string;

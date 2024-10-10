@@ -22,7 +22,7 @@ const Footer = () => {
           <ContactInfo />
           <TDAContact />
         </div>
-        <p className="text-zinc-600">
+        <p className="text-zinc-600 p-4 pt-0">
           © 2024 Kushagra Sharma. All rights reserved.
         </p>
       </div>

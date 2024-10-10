@@ -1,11 +1,48 @@
 import React from "react";
+import Header from "@/components/info/header";
+import ContactInfo from "@/components/info/contact-info";
+import PublicKeys from "@/components/info/public-keys";
+import TechnicalSkills from "@/components/info/technical-skills";
+import Projects from "@/components/info/projects";
+import Education from "@/components/info/education";
+import Portfolio from "@/components/info/portfolio";
+import Languages from "@/components/info/languages";
+import Interests from "@/components/info/interests";
+import GitHubContributions from "@/components/info/github-contributions";
+import BlogPosts from "@/components/info/blog-posts";
+import Workshops from "@/components/info/workshops";
+import VolunteerExperience from "@/components/info/volunteer-experience";
+import Hobbies from "@/components/info/hobbies";
+import Certifications from "@/components/info/certificates";
+import Testimonials from "@/components/info/testimonial";
+import SocialLinks from "@/components/info/links";
+import Note from "@/components/utils/note";
+import Footer from "@/components/footer/footer";
 
 const InfoPage = () => {
   return (
-    <main className="my-10">
-      <div className="max-w-screen-lg w-full mx-auto">
-        <section>Working on it</section>
+    <main className="pt-20">
+      <div className="max-w-screen-lg mx-4 md:mx-auto">
+        <Header />
+        <Note description="This page is not ready" />
+        <ContactInfo />
+        <PublicKeys />
+        <TechnicalSkills />
+        <Projects />
+        <Education />
+        <SocialLinks />
+        <Portfolio />
+        <Certifications />
+        <Languages />
+        <Interests />
+        <GitHubContributions />
+        <BlogPosts />
+        <Testimonials />
+        <Workshops />
+        <VolunteerExperience />
+        <Hobbies />
       </div>
+      <Footer />
     </main>
   );
 };

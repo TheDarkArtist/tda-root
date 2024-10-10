@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
 import Search from "@/components/utils/search";
 import PostList from "@/components/posts/post-list";
-import PostCreateButton from "@/components/posts/post-create-button";
-import PostWidget from "@/components/posts/post-widget";
+import Footer from "@/components/footer/footer";
+import CreateButton from "@/components/utils/buttons/create-button";
 
 const ArticlesPage = ({
   searchParams,
@@ -16,9 +16,9 @@ const ArticlesPage = ({
   const currentPage = Number(searchParams?.page) || 1;
 
   return (
-    <main className="p-4 my-6 lg:p-0">
-      <div className="max-w-screen-lg mx-auto w-full">
-        <div className="grid grid-cols-6">
+    <main className="h-full flex flex-col justify-between">
+      <div className="p-4 mt-12 lg:p-0">
+        <div className="max-w-screen-lg mx-auto w-full">
           <section className="space-y-6 col-span-4">
             <h1 className="text-4xl text-green-600 font-black mt-6 hover:animate-pulse">
               Read Blogs & Informative Articles
@@ -41,19 +41,16 @@ const ArticlesPage = ({
 
             <section className="flex gap-4 items-center">
               <Search placeholder="Search blogs..." className="my-10" />
-              <PostCreateButton />
+              <CreateButton type="post" />
             </section>
           </section>
 
-          <section className="col-span-2">
-            <PostWidget />
-          </section>
+          <Suspense fallback={<div>Searching....</div>}>
+            <PostList published query={query} currentPage={currentPage} />
+          </Suspense>
         </div>
-
-        <Suspense fallback={<div>Searching....</div>}>
-          <PostList published query={query} currentPage={currentPage} />
-        </Suspense>
       </div>
+      <Footer />
     </main>
   );
 };

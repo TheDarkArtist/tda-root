@@ -29,7 +29,7 @@ const MarkdownRenderer = ({ content }: { content: string }) => {
           return <h1 {...props} className="text-3xl font-bold" />;
         },
         h3: ({ node, ...props }) => {
-          return <h1 {...props} className="text-2xl font-bold" />;
+          return <h1 {...props} className="text-2xl pt-4 font-bold" />;
         },
         h4: ({ node, ...props }) => {
           return <h1 {...props} className="text-xl font-bold" />;

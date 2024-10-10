@@ -21,14 +21,14 @@ const Web = () => {
               Tool For The Web
             </h1>
             <p>
-              In the world of web development, I am a lord of my craft,
-              commanding the mightiest frameworks like warriors sworn to my
-              cause. With Next.js at my side, I forge powerful, fast-loading
-              realms, while Svelte whispers the secrets of real-time, reactive
-              magic. Django stands as my towering fortress, unbreakable and
-              steadfast, protecting the heart of every project. Each framework
-              serves as a loyal banner in my quest to build scalable, legendary
-              applications that dominate the digital landscape.
+              Powerful frameworks that simplify modern web development. Next.js
+              excels at creating fast, server-rendered React applications, while
+              Django provides a high-level Python framework for robust web apps
+              with built-in security. Svelte streamlines user interface
+              development by compiling components at build time, resulting in
+              lightweight applications. htmx enhances HTML with interactivity,
+              enabling rich, responsive experiences. Together, these tools
+              create an efficient stack for scalable web applications.
             </p>
           </section>
           <div className="w-full flex flex-wrap justify-evenly items-center mt-4 gap-4">

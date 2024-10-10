@@ -18,7 +18,7 @@ const TdaTechs = () => {
       <CrossPlatform />
       <Note
         title="Everybody has their own opinion."
-        description="Before you begin to think what the shit is this"
+        description="Before you let that fleeting thought cross your mind—judging this tech stack and conjuring up your own delusions of what you think should be used—remember this: it’s tailored to my preferences, forged by what I like. It may not align with your mediocre standards, and that’s just fine. Peace."
       />
     </div>
   );

@@ -10,6 +10,8 @@ const ContentIndex: React.FC<ContentIndexProps> = ({
   navbarHeight,
 }) => {
   const extractHeadings = (content: string) => {
+    if (!content) return;
+
     const headings: { text: string; id: string }[] = [];
     const lines = content.split("\n");
     lines.forEach((line, index) => {
@@ -23,6 +25,8 @@ const ContentIndex: React.FC<ContentIndexProps> = ({
   };
 
   const headings = extractHeadings(content);
+
+  if (!headings) return;
 
   const scrollToHeading = (id: string) => {
     const element = document.getElementById(id);

@@ -143,7 +143,7 @@ const TDAPage: React.FC = () => {
   }
 
   return (
-    <main className="mt-10">
+    <main className="pt-10">
       <div className="max-w-screen-lg mx-auto p-4">
         <h1 className="text-xl font-bold mb-4">Files</h1>
         <FolderList structure={files} />

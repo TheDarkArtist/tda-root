@@ -35,7 +35,7 @@ export const GET = async (request: NextRequest) => {
     return NextResponse.json(files);
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to retrieve files", error: error.message },
+      { message: "Failed to retrieve files" },
       { status: 500 },
     );
   }

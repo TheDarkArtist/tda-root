@@ -32,7 +32,7 @@ const Menu = async () => {
       <DropdownMenuTrigger className="hidden sm:flex" asChild>
         <Button
           variant="ghost"
-          className="flex px-2 dark:hover:bg-stone-900 items-center rounded-none gap-2"
+          className="flex px-2 dark:hover:bg-stone-900 items-center rounded-sm gap-2"
         >
           {session.user.image ? (
             <Image
@@ -49,13 +49,17 @@ const Menu = async () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mt-2 w-40" align="end">
-        <DropdownMenuItem>
-          <LuUser className="mr-2" />
-          <Link href={`/u/${session.user.username}`}>Profile</Link>
+        <DropdownMenuItem className="cursor-pointer" asChild>
+          <Link href={`/u/${session.user.username}`}>
+            <LuSettings className="mr-2" />
+            Profile
+          </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <LuSettings className="mr-2" />
-          <Link href={`/u/${session.user.username}/settings`}>Settings</Link>
+        <DropdownMenuItem className="cursor-pointer" asChild>
+          <Link href={`/u/${session.user.username}/settings`}>
+            <LuSettings className="mr-2" />
+            Settings
+          </Link>
         </DropdownMenuItem>
         <div className="border-b dark:border-zinc-900 mt-1" />
         {!session?.user ? (

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "@/lib/auth";
 import Providers from "@/utils/providers";
 import Navbar from "@/components/navbar/navbar";
 import { Toaster } from "@/components/ui/sonner";
@@ -13,15 +12,14 @@ export const metadata: Metadata = {
   description: "My portfolio project",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
   return (
     <html lang="en">
-      <SessionProvider session={session}>
+      <SessionProvider>
         <body
           className={cn(
             "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]",
@@ -32,7 +30,7 @@ export default async function RootLayout({
         >
           <Providers>
             <Navbar />
-            <main className="pt-6 h-full">{children}</main>
+            {children}
             <Toaster />
           </Providers>
         </body>

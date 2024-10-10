@@ -4,7 +4,7 @@ import React from "react";
 const ContactInfo = () => {
   return (
     <section className="space-y-4 h-full text-left">
-      <h3 className={`font-black text-2xl text-zinc-600 ${rslab.className}`}>
+      <h3 className={`font-black text-2xl text-zinc-800 dark:text-zinc-400 ${rslab.className}`}>
         Contact Information
       </h3>
       <div>

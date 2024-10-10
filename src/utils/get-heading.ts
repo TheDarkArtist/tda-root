@@ -1,6 +1,8 @@
 export const extractFirstHeading = (
   content: string,
 ): { text: string; id: string } | null => {
+  if (!content) return null;
+
   const lines = content.split("\n");
   for (let line of lines) {
     if (line.startsWith("#")) {

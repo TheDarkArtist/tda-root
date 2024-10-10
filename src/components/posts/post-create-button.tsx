@@ -2,53 +2,43 @@
 
 import React, { useCallback, useTransition } from "react";
 import { Button } from "../ui/button";
-import { useSession } from "next-auth/react";
-import { createPost } from "@/lib/actions/posts/create-post";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner"; // Assuming you're using a toast library
-import clsx from "clsx"; // For class name management
+import { toast } from "sonner";
+import clsx from "clsx";
+import { createEmptyPost } from "@/lib/actions/posts/create-empty-post";
 
 const PostCreateButton: React.FC = () => {
-  const { data } = useSession();
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
-  const handleClick = useCallback(() => {
-    if (!data?.user) {
-      return;
-    }
+  const handleClick = useCallback(async () => {
+    try {
+      const post = await createEmptyPost();
 
-    const createAndNavigate = async () => {
-      try {
-        const post = await createPost({
-          title: "",
-          description: "",
-          body: "",
-          published: false,
-          userId: data.user.id as string,
-        });
+      // FIX: Need to fix this thing
+      // for some reason post doesn't seem to have slug in it why i don't kwno
+      // the whole component, even the approach of handling autosave needs to be changed
+      // @ts-ignore
+      const slug = post.slug;
 
-        if (!post) {
-          return null;
-        }
-
+      if (post && !(post as { error: string }).error) {
         startTransition(() => {
-          router.push(`/posts/new/${post.slug}?tab=Edit`);
+          router.push(`/posts/new/${slug}?tab=Edit`);
         });
-      } catch (error) {
-        console.error("Error creating post:", error);
-        toast.error("Failed to create a post. Please try again.");
+      } else {
+        toast.error(
+          (post as { error: string }).error || "Failed to create post"
+        );
       }
-    };
-
-    createAndNavigate();
-  }, [data?.user, router]);
-
-  if (!data?.user) return null;
+    } catch (error) {
+      console.error("Error creating post:", error);
+      toast.error("Failed to create a post. Please try again.");
+    }
+  }, [router]);
 
   return (
     <Button
-      className={clsx("h-10", "px-4", {
+      className={clsx("h-10 px-4", {
         "opacity-50 cursor-not-allowed": isPending,
       })}
       variant="secondary"

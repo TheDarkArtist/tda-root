@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import clsx from "clsx";
-import { createProject } from "@/lib/actions/projects/create-project";
+import { createEmptyProject } from "@/lib/actions/projects/create-empty-project";
 import { UserAccess } from "@prisma/client";
 
 const ProjectCreateButton: React.FC = () => {
@@ -18,18 +18,19 @@ const ProjectCreateButton: React.FC = () => {
     if (!data?.user) return;
 
     try {
-      const project = await createProject({
-        title: "",
-        description: "",
-        body: "",
-        published: false,
-        userId: data.user.id as string,
-      });
+      const project = await createEmptyProject();
 
-      if (project) {
+      // @ts-ignore
+      const slug = project.slug;
+
+      if (project && !(project as { error: string }).error) {
         startTransition(() => {
-          router.push(`/projects/new/${project.slug}?tab=Edit`);
+          router.push(`/projects/new/${slug}?tab=Edit`);
         });
+      } else {
+        toast.error(
+          (project as { error: string }).error || "Failed to create project"
+        );
       }
     } catch (error) {
       console.error("Error creating project:", error);
@@ -39,6 +40,7 @@ const ProjectCreateButton: React.FC = () => {
 
   if (
     !data?.user ||
+    //@ts-ignore
     ![UserAccess.ROOT, UserAccess.ADMIN].includes(data.user.access)
   ) {
     return null;

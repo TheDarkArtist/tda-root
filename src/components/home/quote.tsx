@@ -10,9 +10,9 @@ const Quote = ({
   quote?: string;
 }) => {
   return (
-    <div className="my-10 border border-white/10 rounded-xl bg-white dark:bg-black">
+    <div className="my-10 border border-white/10 rounded-xl bg-white dark:bg-black shadow">
       <Seperator
-        text="A quote for everything :)"
+        text="🔄 💡💫 ➡️ 🚀🌱"
         className="text-stone-400 border-stone-600/80 font-bold"
         classWrapper={cn(
           "hover:bg-zinc-600/10 py-4 px-2 rounded-xl",

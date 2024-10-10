@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 
 const D2CBoxexWrapper = () => {
   return (
-    <div className="my-10 border border-white/10 rounded-xl bg-white dark:bg-black">
+    <div className="my-10 border border-white/10 p-4 rounded-xl bg-white dark:bg-black shadow">
       <Seperator
-        text="We live by a philosoply, Die by a philosoply"
+        text="We live by a philosophy, Die by a philosophy"
         className="text-sky-400 border-sky-600/80 font-bold"
         classWrapper={cn(
           "hover:bg-sky-600/10 py-4 px-2 rounded-xl",
@@ -18,27 +18,28 @@ const D2CBoxexWrapper = () => {
         <section className="grid md:grid-cols-3 gap-2 my-4">
           <D2CBox headerClassName="text-sky-600" headerLabel="Architect">
             <p className="text-center">
-              something else Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Amet molestiae expedita, obcaecati natus dolores earum
-              doloribus nobis temporibus. Numquam totam tenetur molestiae
-              exercitationem aliquid saepe illo vel veritatis obcaecati
-              voluptatum, neque itaque.
+              Architecting a project is like painting a masterpiece, crafting a
+              vision where creativity meets structure. It&apos;s about sketching
+              the blueprint, choosing the right tools, and crafting the user
+              experience that resonates. This is where innovation truly begins!
             </p>
           </D2CBox>
           <D2CBox headerClassName="text-green-600" headerLabel="Implement">
             <p className="text-center">
-              something else Lorem ipsum, dolor sit amet consectetur adipisicing
-              elit. A quas perspiciatis odit nesciunt inventore exercitationem
-              sint similique minus consectetur fugit delectus facilis repellat
-              earum distinctio, neque iusto amet in assumenda animi. Ullam!
+              Now comes the fun part—bringing that vision to life!
+              Implementation is the exhilarating process of writing code,
+              creating features, and piecing everything together. Each line of
+              code adds color and texture, transforming ideas into a vibrant
+              reality.
             </p>
           </D2CBox>
           <D2CBox headerClassName="text-orange-600" headerLabel="Optimize">
             <p className="text-center">
-              something else Lorem ipsum dolor sit, amet consectetur adipisicing
-              elit. Veniam similique atque omnis eos rerum aut, id totam aliquam
-              magni reprehenderit sequi libero error voluptatibus maxime. Rerum
-              nobis facilis maiores atque ducimus vel!
+              This is where the magic happens—taking something good and making
+              it extraordinary! Optimization is the art of refinement, digging
+              into performance metrics, and enhancing the user experience. It’s
+              a relentless pursuit of perfection, ensuring the project evolves
+              into its best version.
             </p>
           </D2CBox>
         </section>

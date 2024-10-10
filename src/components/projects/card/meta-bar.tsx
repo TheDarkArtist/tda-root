@@ -1,0 +1,43 @@
+import { cn } from "@/lib/utils";
+import { Project } from "@prisma/client";
+import { ExternalLinkIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
+import React from "react";
+
+const MetaBar = ({ project }: { project: Project }) => {
+  return (
+    <section
+      className={cn(
+        "absolute flex items-center justify-between",
+        "dark:bg-black bg-white dark:text-white text-white",
+        "dark:backdrop-blur-sm backdrop-blur-sm transition-all",
+        "w-full py-1 px-2 top-[10rem] right-0 z-10",
+        "dark:backdrop-filter backdrop-filter dark:bg-opacity-50 bg-opacity-20",
+        "group-hover:bg-opacity-100 dark:group-hover:bg-opacity-100"
+      )}
+    >
+      <div className="flex items-center gap-4">
+        <span className="text-sm">
+          {formatDistanceToNow(project.createdAt, { addSuffix: true })}
+        </span>
+      </div>
+      <span className="flex gap-2">
+        <Link
+          className="transition-all duration-200 hover:scale-110"
+          href={project.repo || ""}
+        >
+          <GitHubLogoIcon className="h-6 w-6 dark:text-white text-white" />
+        </Link>
+        <Link
+          className="transition-all duration-200 hover:scale-110"
+          href={project.link || ""}
+        >
+          <ExternalLinkIcon className="h-6 w-6 dark:text-white text-white" />
+        </Link>
+      </span>
+    </section>
+  );
+};
+
+export default MetaBar;

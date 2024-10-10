@@ -6,6 +6,7 @@ export const getPosts = async (
   published?: boolean,
   query?: string,
   limit?: number,
+  userId?: string,
 ) => {
   try {
     const posts = await db.post.findMany({
@@ -27,6 +28,7 @@ export const getPosts = async (
             },
           ],
         }),
+        ...(userId && { userId }),
       },
       orderBy: {
         createdAt: "desc",
