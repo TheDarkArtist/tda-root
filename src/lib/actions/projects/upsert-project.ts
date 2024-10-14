@@ -4,14 +4,24 @@ import { db } from "@/lib/db";
 import { Project } from "@prisma/client";
 
 export const upsertProject = async (
-  projectId: string,
-  projectData: Project,
+  projectSlug: string,
+  projectData: Partial<Project>,
 ): Promise<Project | null> => {
+  if (!projectSlug) {
+    console.error("Project slug is required");
+    return null;
+  }
+
   try {
+    const validatedSlug = projectData.slug
+      ?.trim()
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+
     const project = await db.project.upsert({
-      where: { id: projectId },
-      update: { ...projectData },
-      create: { ...projectData },
+      where: { slug: projectSlug },
+      update: { ...(projectData as Project), slug: validatedSlug },
+      create: { ...(projectData as Project), slug: validatedSlug },
     });
 
     return project;

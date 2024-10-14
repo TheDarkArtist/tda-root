@@ -6,7 +6,7 @@ const Contents = async ({ id }: { id: string }) => {
   const content = await getPostBySlug(id);
   return (
     <section className="sticky top-12">
-      <ContentIndex content={content?.body as string} navbarHeight={16} />
+      <ContentIndex content={content?.body as string} />
     </section>
   );
 };

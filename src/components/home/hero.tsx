@@ -5,14 +5,14 @@ import Seperator from "../utils/seperator";
 
 const Hero = () => {
   return (
-    <div className="my-10 mx-4 sm:mx-0 border border-black/10 shadow dark:border-white/10 rounded-xl p-4 bg-white dark:bg-black">
+    <div className="sm:my-10 mx-4 sm:mx-0 border border-black/10 shadow dark:border-white/10 rounded-lg p-4 bg-white dark:bg-black">
       <Seperator
         className="border-sky-600/80 text-sky-400 font-bold"
         text="A bit about me"
         classWrapper="my-4"
       >
-        <section className="group-hover:border-sky-600 px-4 my-2 sm:px-0 space-y-2">
-          <h1 className="flex text-base sm:text-4xl">
+        <section className="group-hover:border-sky-600 p-4 sm:px-0 space-y-4 text-xs sm:text-sm">
+          <h1 className="flex text-sm sm:text-4xl">
             <span>Hey there, This is </span>
             <HoverImage
               text=" Kushagra Sharma"

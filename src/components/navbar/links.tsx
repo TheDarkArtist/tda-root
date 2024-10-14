@@ -41,7 +41,7 @@ const Links = () => {
       {links.map(({ name, href, isActive }) => (
         <Link
           className={cn(
-            "dark:hover:bg-stone-900 hover:bg-zinc-100 px-2 py-1",
+            "dark:hover:bg-red-900/50 hover:bg-red-600/20 px-2 py-1",
             "text-[1rem] text-zinc-800 dark:text-zinc-300",
             isActive && "dark:text-red-600 text-red-600 font-bold"
           )}

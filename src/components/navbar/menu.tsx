@@ -9,7 +9,13 @@ import Image from "next/image";
 import { FaCaretDown } from "react-icons/fa";
 import Link from "next/link";
 import { auth, signOut } from "@/lib/auth";
-import { LuSettings, LuLogIn, LuLogOut, LuUser } from "react-icons/lu";
+import {
+  LuSettings,
+  LuLogIn,
+  LuLogOut,
+  LuUser,
+  LuCommand,
+} from "react-icons/lu";
 import { GiWolfHead } from "react-icons/gi";
 import { Button } from "../ui/button";
 
@@ -61,6 +67,14 @@ const Menu = async () => {
             Settings
           </Link>
         </DropdownMenuItem>
+        {session.user.access === "ROOT" && (
+          <DropdownMenuItem className="cursor-pointer" asChild>
+            <Link href={`/tda/c2c`}>
+              <LuCommand className="mr-2" />
+              C2C
+            </Link>
+          </DropdownMenuItem>
+        )}
         <div className="border-b dark:border-zinc-900 mt-1" />
         {!session?.user ? (
           <DropdownMenuItem>

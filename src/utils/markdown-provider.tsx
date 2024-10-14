@@ -6,88 +6,135 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import rehypeRaw from "rehype-raw";
 import "highlight.js/styles/atom-one-dark.min.css";
 import "katex/dist/katex.min.css";
-import "highlight.js/styles/atom-one-dark.min.css";
 
 const MarkdownRenderer = ({ content }: { content: string }) => {
   return (
     <Markdown
-      className={"space-y-5"}
       rehypePlugins={[
         rehypeHighlight,
         rehypeSlug,
         rehypeAutolinkHeadings,
         rehypeKatex,
+        rehypeRaw,
       ]}
       remarkPlugins={[remarkGfm, remarkMath]}
       components={{
-        h1: ({ node, ...props }) => {
-          return <h1 {...props} className="text-4xl font-bold" />;
-        },
-        h2: ({ node, ...props }) => {
-          return <h1 {...props} className="text-3xl font-bold" />;
-        },
-        h3: ({ node, ...props }) => {
-          return <h1 {...props} className="text-2xl pt-4 font-bold" />;
-        },
-        h4: ({ node, ...props }) => {
-          return <h1 {...props} className="text-xl font-bold" />;
-        },
-        h5: ({ node, ...props }) => {
-          return <h1 {...props} className="text-lg font-bold" />;
-        },
-        h6: ({ node, ...props }) => {
-          return <h1 {...props} className="text-md font-bold" />;
-        },
-        p: ({ node, ...props }) => {
-          return <p {...props} className=""></p>;
-        },
-        ol: ({ node, ...props }) => {
-          return <ol {...props} className="list-decimal ml-6" />;
-        },
-        ul: ({ node, ...props }) => {
-          return <ul {...props} className="list-disc ml-6" />;
-        },
-        a: ({ node, ...props }) => {
-          return <a {...props} className="text-sky-600 hover:text-blue-600" />;
-        },
-        pre: ({ node, ...props }) => {
-          return <pre {...props} className="" />;
-        },
-        code: ({ node, ...props }) => {
-          return (
-            <pre className="overflow-x-scroll scroll-smooth no-scrollbar">
-              <code {...props} className="" />
-            </pre>
-          );
-        },
-        table: ({ node, ...props }) => {
-          return (
-            <section className="overflow-x-scroll">
-              <table {...props} className="border-collapse" />
-            </section>
-          );
-        },
-        thead: ({ node, ...props }) => {
-          return <thead {...props} className="text-sm" />;
-        },
-        tbody: ({ node, ...props }) => {
-          return <tbody {...props} className="text-xs sm:text-sm md:text-lg" />;
-        },
-        th: ({ node, ...props }) => {
-          return (
-            <th
+        h1: ({ node, ...props }) => (
+          <h1 {...props} className="text-2xl font-bold">
+            {props.children}
+          </h1>
+        ),
+        h2: ({ node, ...props }) => (
+          <h2 {...props} className="text-xl font-semibold">
+            {props.children}
+          </h2>
+        ),
+        h3: ({ node, ...props }) => (
+          <h3 {...props} className="text-lg pt-4 font-semibold">
+            {props.children}
+          </h3>
+        ),
+        h4: ({ node, ...props }) => (
+          <h4 {...props} className="text-md font-semibold">
+            {props.children}
+          </h4>
+        ),
+        h5: ({ node, ...props }) => (
+          <h5 {...props} className="text-sm font-semibold">
+            {props.children}
+          </h5>
+        ),
+        h6: ({ node, ...props }) => (
+          <h6 {...props} className="text-xs font-semibold">
+            {props.children}
+          </h6>
+        ),
+        p: ({ node, ...props }) => (
+          <p {...props} className="text-sm mb-1 md:text-base leading-relaxed">
+            {props.children}
+          </p>
+        ),
+        ol: ({ node, ...props }) => (
+          <ol
+            {...props}
+            className="list-decimal text-sm md:text-base ml-4 space-y-1"
+          />
+        ),
+        ul: ({ node, ...props }) => (
+          <ul
+            {...props}
+            className="list-disc text-sm md:text-base ml-4 space-y-1"
+          />
+        ),
+        a: ({ node, ...props }) => (
+          <a
+            {...props}
+            className="text-sky-500 hover:text-blue-500 underline"
+          />
+        ),
+        pre: ({ node, ...props }) => (
+          <code>
+            <pre
               {...props}
-              className="border border-dotted border-sky-600 font-bold text-green-600 px-2 py-1"
+              className="dark:bg-zinc-900 bg-gray-100 text-xs md:text-sm p-4 my-4 rounded overflow-x-auto"
             />
-          );
-        },
-        td: ({ node, ...props }) => {
-          return (
-            <td {...props} className="border border-dotted border-sky-600 px-2 py-1 text-sky-600" />
-          );
-        },
+          </code>
+        ),
+        code: ({ node, ...props }) => (
+          <code
+            {...props}
+            className="dark:bg-zinc-900 bg-gray-100 text-xs md:text-sm rounded px-2"
+          />
+        ),
+        table: ({ node, ...props }) => (
+          <div className="overflow-x-auto my-4">
+            <table
+              {...props}
+              className="border-collapse border border-zinc-300 dark:border-zinc-700"
+            />
+          </div>
+        ),
+        thead: ({ node, ...props }) => (
+          <thead {...props} className="bg-zinc-200 dark:bg-zinc-800">
+            {props.children}
+          </thead>
+        ),
+        tbody: ({ node, ...props }) => (
+          <tbody
+            {...props}
+            className="divide-y divide-zinc-300 dark:divide-zinc-700"
+          >
+            {props.children}
+          </tbody>
+        ),
+        th: ({ node, ...props }) => (
+          <th
+            {...props}
+            className="border border-dotted border-sky-600 font-bold text-sky-600 dark:text-green-600 px-3 py-2"
+          />
+        ),
+        td: ({ node, ...props }) => (
+          <td
+            {...props}
+            className="border border-dotted border-sky-600 px-3 py-2 text-zinc-700 dark:text-zinc-300"
+          />
+        ),
+        hr: ({ node, ...props }) => (
+          <hr
+            {...props}
+            className="border-zinc-400 dark:border-zinc-600 my-2 text-sky-300"
+          />
+        ),
+
+        blockquote: ({ node, ...props }) => (
+          <blockquote
+            {...props}
+            className="dark:bg-cyan-950/50 bg-cyan-100 rounded-r-sm pt-2 pb-1 px-4 border-l-[10px] dark:border-cyan-950 my-2 dark:text-sky-200"
+          />
+        ),
       }}
     >
       {content}

@@ -9,7 +9,7 @@ const Body = ({ project }: { project: Project }) => {
       <CardHeader className="text-green-600 text-2xl font-black py-0 px-2">
         <h2>{project.title}</h2>
       </CardHeader>
-      <CardContent className="px-2 py-0 text-sm">
+      <CardContent className="px-2 py-0 text-sm overflow-hidden">
         <MarkdownRenderer
           content={
             project.description

@@ -3,7 +3,7 @@ import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import React from "react";
 
 const EditPage = ({ params }: { params: Params }) => {
-  return <EditorWrapper id={params.postId} type="Post" />;
+  return <EditorWrapper params={params} type="post" />;
 };
 
 export default EditPage;

@@ -6,7 +6,7 @@ import ContactInfo from "./contact-info";
 import BgImg from "./bg-img";
 import { cn } from "@/lib/utils";
 
-const Footer = () => {
+const MainFooter = () => {
   return (
     <div className="relative flex justify-between dark:bg-black bg-white border-y dark:border-zinc-900 border-gray-200 min-h-60 backdrop-filter backdrop-opacity-5 mt-6">
       <BgImg />
@@ -30,4 +30,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default MainFooter;

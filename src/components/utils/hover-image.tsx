@@ -15,7 +15,7 @@ const HoverImage: FC<WordPictureProps> = ({ src, alt, text, className }) => {
   return (
     <div
       className={cn(
-        "relative group flex flex-col h-10 items-center",
+        "relative group flex flex-col items-center",
         className
       )}
     >

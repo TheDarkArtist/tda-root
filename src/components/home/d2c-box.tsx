@@ -24,13 +24,13 @@ const D2CBox: React.FC<D2CBoxProps> = ({
     <Card
       className={cn(
         "border-none rounded-sm w-full shadow-none bg-zinc-50",
-        "rounded-xl",
+        "rounded-lg",
         className
       )}
     >
       <CardHeader
         className={cn(
-          "text-4xl py-2 my-2 text-center font-bold",
+          "text-xl sm:text-4xl py-2 my-2 text-center font-bold",
           os.className,
           headerClassName
         )}
@@ -38,7 +38,9 @@ const D2CBox: React.FC<D2CBoxProps> = ({
         {headerLabel}
         <div className="border-t border-zinc-800 mt-4" />
       </CardHeader>
-      <CardContent className={bodyClassName}>{children}</CardContent>
+      <CardContent className={cn("text-sm sm:text-base", bodyClassName)}>
+        {children}
+      </CardContent>
     </Card>
   );
 };

@@ -29,8 +29,8 @@ const ProjectsPage = ({
             </p>
           </section>
 
-          <section className="flex gap-4 items-center">
-            <Search placeholder="Search Projects..." className="my-10" />
+          <section className="sticky bg-white dark:bg-zinc-950 h-min z-20 my-10 py-4 top-12 flex gap-4 items-center">
+            <Search placeholder="Search Projects..." />
             <CreateButton type="project" />
           </section>
 

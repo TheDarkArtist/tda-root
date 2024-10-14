@@ -7,17 +7,21 @@ import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { RotatingLines } from "react-loader-spinner";
+import { useRouter } from "next/navigation";
 
 const DeleteButton = ({
   id,
   type,
+  route,
   className,
 }: {
   id: string;
   type: "project" | "post";
+  route?: string;
   className?: string;
 }) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -39,6 +43,8 @@ const DeleteButton = ({
         toast.success(
           `${type.charAt(0).toUpperCase() + type.slice(1)} deleted!`
         );
+        route && router.push(route);
+        router.refresh();
       } else {
         toast.error(`Failed to delete ${type}.`);
       }
@@ -53,10 +59,10 @@ const DeleteButton = ({
   return (
     <form onSubmit={handleDelete}>
       <Button
-        variant="outline"
+        variant="destructive"
         type="submit"
         size="sm"
-        className={cn("dark:bg-red-800", className)}
+        className={cn("bg-red-500 text-white dark:bg-red-800", className)}
         disabled={loading}
       >
         {loading ? <RotatingLines width="12" strokeColor="white" /> : "Delete"}

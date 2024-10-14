@@ -3,7 +3,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="mt-2 mb-10 sm:px-0 text-sm sm:text-base">
+    <section className="mt-2 mb-10 sm:px-0 text-sm sm:text-base space-y-1">
       <Line text="Bachelor at Technology with majors in Computer Science & Technology" />
       <Line text="Love Linux and working with linux based enviroments, I use Arch BTW" />
       <Line text="I Love what i do, i only do what i Love." />
