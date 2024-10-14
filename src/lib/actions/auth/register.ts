@@ -1,7 +1,7 @@
 "use server";
 
 import * as z from "zod";
-import bcrypt from "bcrypt";
+import argon2 from "argon2";
 
 import { RegisterSchema } from "@/lib/zod";
 import { db } from "@/lib/db";
@@ -36,7 +36,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     };
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await argon2.hash(password);
 
   await db.user.create({
     data: {

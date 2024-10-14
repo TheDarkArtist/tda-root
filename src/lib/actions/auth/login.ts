@@ -14,7 +14,7 @@ import { getTwoFactorTokenByEmail } from "./two-factor-token";
 import { db } from "@/lib/db";
 import { getTwoFactorConfirmationByUserId } from "./two-factor-confirmation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/lib/routes";
-import bcrypt from "bcrypt";
+import argon2 from "argon2";
 
 export const login = async (
   values: z.infer<typeof LoginSchema>,
@@ -45,7 +45,7 @@ export const login = async (
     return { error: "Invalid credentials!" };
   }
 
-  const passwordMatch = await bcrypt.compare(password, existingUser.password);
+  const passwordMatch = await argon2.verify(existingUser.password, password);
 
   if (!passwordMatch) {
     return { error: "Invalid password!" };

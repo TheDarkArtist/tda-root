@@ -21,6 +21,22 @@ const nextConfig = {
       },
     ];
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        crypto: false,
+      };
+    }
+
+    // Ignore loader for 'argon2.cjs' to avoid 'node:crypto' issues in client-side builds
+    config.module.rules.push({
+      test: /argon2\.cjs$/,
+      loader: "ignore-loader",
+    });
+
+    return config;
+  },
 };
 
 export default nextConfig;
