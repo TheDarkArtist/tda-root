@@ -2,7 +2,7 @@ import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-import argon2 from "argon2";
+import bcryptjs from "bcryptjs";
 
 import { LoginSchema } from "@/lib/zod";
 import { getUserByEmail, getUserByUsername } from "@/lib/actions/utils/user";
@@ -48,7 +48,7 @@ export default {
 
           if (!user || !user.password) return null;
 
-          const passwordMatch = await argon2.verify(user.password, password);
+          const passwordMatch = await bcryptjs.compare(password, user.password);
 
           if (passwordMatch) return user;
         }

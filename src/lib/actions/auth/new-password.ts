@@ -4,7 +4,7 @@ import { NewPasswordSchema } from "@/lib/zod";
 import * as z from "zod";
 import { getPasswordResetTokenByToken } from "./password-reset-token";
 import { getUserByEmail } from "../utils/user";
-import argon2 from "argon2";
+import bcryptjs from "bcryptjs";
 import { db } from "@/lib/db";
 
 export const newPassword = async (
@@ -31,7 +31,7 @@ export const newPassword = async (
 
   if (!existingUser) return { error: "Email does not exist!" };
 
-  const hashedPassword = await argon2.hash(password);
+  const hashedPassword = await bcryptjs.hash(password, 10);
 
   await db.user.update({
     where: {
