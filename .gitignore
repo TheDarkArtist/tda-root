@@ -33,7 +33,6 @@ yarn-error.log*
 .npmrc
 
 # bun
-bun.lockb
 
 # vercel
 .vercel
