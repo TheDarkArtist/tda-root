@@ -1,36 +1,25 @@
-"use client";
-
-import { useTransition } from "react";
-import { Button } from "@/components/ui/button";
 import { generateCuid } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { auth } from "@/lib/auth";
 
 interface CreateButtonProps {
   type: "project" | "post";
 }
 
-const CreateButton: React.FC<CreateButtonProps> = ({ type }) => {
-  const [isPending, startTransition] = useTransition();
-  const router = useRouter();
+const CreateButton: React.FC<CreateButtonProps> = async ({ type }) => {
+  const session = await auth();
+
+  if (!session) return null;
+
   const slug = generateCuid();
 
-  const handleClick = () => {
-    startTransition(() => {
-      router.push(`/${type}s/${slug}/edit`);
-    });
-  };
-
   return (
-    <Button
-      className="py-5"
-      variant="outline"
-      onClick={handleClick}
-      disabled={isPending}
-    >
-      {isPending
-        ? `Creating ${type.charAt(0).toUpperCase() + type.slice(1)}...`
-        : `New ${type.charAt(0).toUpperCase() + type.slice(1)}`}
-    </Button>
+    <Link href={`/${type}s/${slug}/edit`} passHref>
+      <Button className="py-5" variant="outline">
+        {`New ${type.charAt(0).toUpperCase() + type.slice(1)}`}
+      </Button>
+    </Link>
   );
 };
 
