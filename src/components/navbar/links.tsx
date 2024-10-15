@@ -11,7 +11,7 @@ const Links = () => {
   const links = [
     {
       name: "Portfolio",
-      href: "https://thedarkartist.in",
+      href: "https://portfolio.thedarkartist.in",
       isActive: false,
     },
     {
