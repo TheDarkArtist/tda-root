@@ -1,6 +1,7 @@
 "use client";
 import { addComment } from "@/lib/actions/projects/add-comment";
 import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useRef, useState, useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
@@ -49,7 +50,11 @@ const AddComment = ({ projectId }: { projectId: string }) => {
         onClick={toggleCommentInput}
         className={`px-4 py-2 my-4 w-[90%] text-stone-400 mx-auto text-left rounded-full border dark:border-stone-800 border-stone-400 ${viewComment ? "hidden" : ""} cursor-pointer`}
       >
-        Add a comment
+        {session ? (
+          <span>Add a comment</span>
+        ) : (
+          <Link href="/auth/login">Login to Comment</Link>
+        )}
       </div>
       {viewComment && (
         <form

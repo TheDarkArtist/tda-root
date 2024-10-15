@@ -31,9 +31,11 @@ const ProjectsPage = ({
 
           <section className="sticky bg-white dark:bg-zinc-950 h-min z-20 my-10 py-4 top-12 flex gap-4 items-center">
             <Search placeholder="Search Projects..." />
-            <CreateButton type="project" />
-          </section>
 
+            <Suspense fallback={<div></div>}>
+              <CreateButton type="project" />
+            </Suspense>
+          </section>
           <Suspense fallback={<div>Searching....</div>}>
             <ProjectsList query={query} currentPage={currentPage} />
           </Suspense>

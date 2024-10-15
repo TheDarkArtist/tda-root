@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import React from "react";
+import React, { Suspense } from "react";
 import MetaBar from "./meta-bar";
 import Link from "next/link";
 import CardImage from "./card-image";

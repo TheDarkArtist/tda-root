@@ -3,7 +3,9 @@ import { Project } from "@prisma/client";
 import { ExternalLinkIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+import Views from "./views";
+import { LuEye } from "react-icons/lu";
 
 const MetaBar = ({ project }: { project: Project }) => {
   return (
@@ -17,7 +19,9 @@ const MetaBar = ({ project }: { project: Project }) => {
         "group-hover:bg-opacity-100 dark:group-hover:bg-opacity-100"
       )}
     >
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
+        <Suspense fallback={<LuEye />}>
+        </Suspense>
         <span className="text-sm">
           {formatDistanceToNow(project.createdAt, { addSuffix: true })}
         </span>

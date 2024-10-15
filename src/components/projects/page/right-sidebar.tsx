@@ -14,9 +14,7 @@ const RightSidebar = async ({ id }: { id: string }) => {
       <div className="overflow-y-auto">
         <section className="border dark:border-zinc-800 border-zinc-200 dark:bg-black bg-white rounded-sm p-2 m-2 text-xs">
           <h2>Avg. Reading Time</h2>
-          <p>
-            <AvgReadingTime content={content?.body as string} />
-          </p>
+          <AvgReadingTime content={content?.body as string} />
         </section>
         <section className="border dark:border-zinc-800 border-zinc-200 dark:bg-black bg-white rounded-sm p-2 m-2 text-xs">
           <h4>Last updated At</h4>

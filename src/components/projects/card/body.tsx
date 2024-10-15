@@ -1,7 +1,7 @@
 import { CardContent, CardHeader } from "@/components/ui/card";
 import MarkdownRenderer from "@/utils/markdown-provider";
 import { Project } from "@prisma/client";
-import React from "react";
+import React, { Suspense } from "react";
 
 const Body = ({ project }: { project: Project }) => {
   return (
