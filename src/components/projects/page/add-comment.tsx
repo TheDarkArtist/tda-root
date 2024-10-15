@@ -48,7 +48,7 @@ const AddComment = ({ projectId }: { projectId: string }) => {
     <div className="my-4">
       <div
         onClick={toggleCommentInput}
-        className={`px-4 py-2 my-4 w-[90%] text-stone-400 mx-auto text-left rounded-full border dark:border-stone-800 border-stone-400 ${viewComment ? "hidden" : ""} cursor-pointer`}
+        className={`px-4 py-2 my-4 w-[90%] text-stone-400 mx-auto text-left rounded-full border dark:border-stone-800 border-stone-400 bg-white dark:bg-zinc-950 ${viewComment ? "hidden" : ""} cursor-pointer`}
       >
         {session ? (
           <span>Add a comment</span>
@@ -59,7 +59,7 @@ const AddComment = ({ projectId }: { projectId: string }) => {
       {viewComment && (
         <form
           onSubmit={handleSubmit}
-          className="my-4 space-y-4 w-[90%] mx-auto border dark:border-stone-800 border-stone-400 rounded-2xl p-4"
+          className="my-4 space-y-4 w-[90%] mx-auto border bg-white dark:bg-zinc-950 dark:border-stone-800 border-stone-400 rounded-2xl p-4"
         >
           <TextareaAutosize
             className="dark:bg-stone-800/80 bg-stone-800/20 px-4 py-2 resize-none rounded-md w-full focus:outline-none"
