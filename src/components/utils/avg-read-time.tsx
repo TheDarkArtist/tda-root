@@ -22,7 +22,7 @@ const AvgReadingTime: React.FC<ReadingTimeProps> = ({ content }) => {
 
   return (
     <div className="text-sm font-medium">
-      <strong>{readingTime}</strong>
+      <div className="font-bold">{readingTime}</div>
     </div>
   );
 };
