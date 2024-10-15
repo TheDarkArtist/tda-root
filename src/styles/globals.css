@@ -106,6 +106,40 @@ body,
   background-color: var(--scrollbar-track-color);
 }
 
+/* styles/globals.css */
+
+/* For screens smaller than the 'sm' breakpoint */
+@media (max-width: 639px) {
+  *::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Edge */
+  }
+
+  * {
+    scrollbar-width: none;
+    /* For Firefox */
+  }
+}
+
+/* For screens bigger than or equal to the 'sm' breakpoint */
+@media (min-width: 640px) {
+  html,
+  body {
+    overflow: auto;
+    /* Show scrollbars */
+  }
+
+  *::-webkit-scrollbar {
+    display: block;
+    /* Restore scrollbars visibility */
+  }
+
+  * {
+    scrollbar-width: auto;
+    /* Restore scrollbars for Firefox */
+  }
+}
+
 h1,
 h2,
 h3,
