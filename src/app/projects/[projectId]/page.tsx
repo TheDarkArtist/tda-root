@@ -19,8 +19,10 @@ const ProjectPage: React.FC<PostPageParams> = ({ params }) => {
   return (
     <main className="relative overflow-hidden h-full md:border-4 border-t-transparent border-zinc-900">
       <div className="sm:grid grid-cols-12 max-w-screen-2xl w-full mx-auto">
-        <div className="border-r dark:border-zinc-900 col-span-3 hidden lg:block sticky top-14 h-screen">
-          <LeftSidebar id={params.projectId} />
+        <div className="h-screen w-full pb-40 col-span-3" >
+          <div className="border-r w-full dark:border-zinc-900 col-span-3 hidden lg:block sticky top-14 h-[80%]">
+            <LeftSidebar id={params.projectId} />
+          </div>
         </div>
 
         <article className="scroll-smooth col-span-8 lg:col-span-7 dark:bg-grid-sm-zinc-600 bg-grid-sm-gray-200 overflow-y-auto max-h-screen">

@@ -45,7 +45,7 @@ const ContentIndex: React.FC<ContentIndexProps> = ({ content }) => {
       <h1 className="pb-4 text-xl font-semibold dark:text-sky-600 text-blue-600">
         Page Index
       </h1>
-      <ul className="overflow-y-auto max-h-screen space-y-1">
+      <ul className="overflow-y-auto max-h-screen space-y-1 pb-40">
         {headings.map((heading, index) => (
           <li
             key={index}
