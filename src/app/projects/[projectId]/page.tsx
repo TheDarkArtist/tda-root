@@ -18,24 +18,26 @@ interface PostPageParams {
 const ProjectPage: React.FC<PostPageParams> = ({ params }) => {
   return (
     <main className="relative overflow-hidden h-full">
-      <div className="sm:grid grid-cols-12 max-w-screen-2xl w-full mx-auto">
+      <div className="sm:grid grid-cols-12 max-w-screen-2xl w-full">
         <div className="h-screen pb-40 hidden lg:block col-span-3">
           <div className="border-r w-full dark:border-zinc-900 col-span-3 hidden lg:block sticky top-14 h-[80%]">
             <LeftSidebar id={params.projectId} />
           </div>
         </div>
 
-        <article className="scroll-smooth col-span-8 lg:col-span-7 dark:bg-grid-sm-zinc-600 bg-grid-sm-gray-200 overflow-y-auto max-h-screen">
+        <article className="scroll-smooth col-span-8 lg:col-span-7 dark:bg-grid-sm-zinc-600 bg-grid-sm-gray-200 overflow-y-auto max-h-screen pb-20">
           <Suspense fallback={<HeaderSkeleton />}>
             <Header projectId={params.projectId} />
           </Suspense>
-          <Suspense fallback={<BodySkeleton />}>
-            <Body projectId={params.projectId} />
-          </Suspense>
+          <div className="p-4 mt-10 bg-white dark:bg-zinc-950">
+            <Suspense fallback={<BodySkeleton />}>
+              <Body projectId={params.projectId} />
+            </Suspense>
+          </div>
           <Footer projectId={params.projectId} />
         </article>
 
-        <aside className="border-l dark:border-zinc-900 col-span-4 lg:col-span-2 hidden sm:block sticky top-0 h-screen">
+        <aside className="border-l p-2 dark:border-zinc-900 col-span-4 lg:col-span-2 hidden sm:block sticky top-0 h-screen">
           <Suspense fallback={<RightSidebarSkeleton />}>
             <RightSidebar id={params.projectId} />
           </Suspense>

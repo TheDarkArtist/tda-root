@@ -10,6 +10,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { UserAccess } from "@prisma/client";
 
 const Header = async ({ projectId }: { projectId: string }) => {
   const project = await getProjectBySlug(projectId);
@@ -38,16 +39,18 @@ const Header = async ({ projectId }: { projectId: string }) => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      {session && (
-        <Link
-          className={["text-sm dark:text-cyan-600", "hover:underline"].join(
-            " "
-          )}
-          href={`/projects/${projectId}/edit/editor`}
-        >
-          Edit
-        </Link>
-      )}
+      {session &&
+        (session.user.access === UserAccess.ROOT ||
+          session.user.access === UserAccess.ADMIN) && (
+          <Link
+            className={["text-sm dark:text-cyan-600", "hover:underline"].join(
+              " "
+            )}
+            href={`/projects/${projectId}/edit/editor`}
+          >
+            Edit
+          </Link>
+        )}
     </section>
   );
 };

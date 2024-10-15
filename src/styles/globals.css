@@ -93,7 +93,7 @@ body,
 }
 
 .dark {
-  --scrollbar-thumb-color: darkgreen;
+  --scrollbar-thumb-color: #555;
   --scrollbar-track-color: #333;
 }
 

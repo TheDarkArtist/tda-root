@@ -46,10 +46,10 @@ const AddComment = ({ projectId }: { projectId: string }) => {
   };
 
   return (
-    <div className="my-4">
+    <div className="mt-6">
       <div
         onClick={toggleCommentInput}
-        className={`px-4 py-2 my-4 w-[90%] text-stone-400 mx-auto text-left rounded-full border dark:border-stone-800 border-stone-400 bg-white dark:bg-zinc-950 ${viewComment ? "hidden" : ""} cursor-pointer`}
+        className={`px-4 py-2 my-2 w-[90%] text-stone-400 mx-auto text-left rounded-full border dark:border-stone-800 border-stone-400 bg-white dark:bg-zinc-950 ${viewComment ? "hidden" : ""} cursor-pointer`}
       >
         {session ? (
           <span>Add a comment</span>
