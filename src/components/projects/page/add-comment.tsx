@@ -1,9 +1,10 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { addComment } from "@/lib/actions/projects/add-comment";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 const AddComment = ({ projectId }: { projectId: string }) => {
@@ -59,10 +60,10 @@ const AddComment = ({ projectId }: { projectId: string }) => {
       {viewComment && (
         <form
           onSubmit={handleSubmit}
-          className="my-4 space-y-4 w-[90%] mx-auto border bg-white dark:bg-zinc-950 dark:border-stone-800 border-stone-400 rounded-2xl p-4"
+          className="my-4 space-y-4 w-[95%] mx-auto border bg-white dark:bg-zinc-950 dark:border-stone-800 border-stone-400 rounded-lg p-4"
         >
           <TextareaAutosize
-            className="dark:bg-stone-800/80 bg-stone-800/20 px-4 py-2 resize-none rounded-md w-full focus:outline-none"
+            className="border dark:bg-black dark:border-zinc-800 bg-stone-800/20 px-4 py-2 resize-none rounded-md w-full focus:outline-none"
             ref={commentInputRef}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
@@ -76,19 +77,12 @@ const AddComment = ({ projectId }: { projectId: string }) => {
               <span>{comment.split(/\s+/).filter(Boolean).length} words</span>
             </div>
             <span className="space-x-4">
-              <button
-                type="button"
-                onClick={() => setViewComment(false)}
-                className="border border-stone-600 py-1 px-2 rounded-md"
-              >
+              <Button type="button" onClick={() => setViewComment(false)}>
                 Cancel
-              </button>
-              <button
-                type="submit"
-                className="bg-blue-900 py-1 px-2 rounded-md text-white"
-              >
+              </Button>
+              <Button variant="secondary" type="submit">
                 Comment
-              </button>
+              </Button>
             </span>
           </div>
         </form>
