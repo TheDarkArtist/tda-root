@@ -23,32 +23,32 @@ const MarkdownRenderer = ({ content }: { content: string }) => {
       remarkPlugins={[remarkGfm, remarkMath]}
       components={{
         h1: ({ node, ...props }) => (
-          <h1 {...props} className="text-2xl font-bold">
+          <h1 {...props} className="text-3xl pt-4 pb-2 font-extrabold">
             {props.children}
           </h1>
         ),
         h2: ({ node, ...props }) => (
-          <h2 {...props} className="text-xl font-semibold">
+          <h2 {...props} className="text-2xl pt-4 pb-2 font-semibold">
             {props.children}
           </h2>
         ),
         h3: ({ node, ...props }) => (
-          <h3 {...props} className="text-lg pt-4 font-semibold">
+          <h3 {...props} className="text-xl pt-4 pb-2 font-semibold">
             {props.children}
           </h3>
         ),
         h4: ({ node, ...props }) => (
-          <h4 {...props} className="text-md font-semibold">
+          <h4 {...props} className="text-lg pt-4 pb-2 font-semibold">
             {props.children}
           </h4>
         ),
         h5: ({ node, ...props }) => (
-          <h5 {...props} className="text-sm font-semibold">
+          <h5 {...props} className="text-md pt-4 pb-2 font-semibold">
             {props.children}
           </h5>
         ),
         h6: ({ node, ...props }) => (
-          <h6 {...props} className="text-xs font-semibold">
+          <h6 {...props} className="text-sm pt-4 pb-2 font-semibold">
             {props.children}
           </h6>
         ),
