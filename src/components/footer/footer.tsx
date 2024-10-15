@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const MainFooter = () => {
   return (
-    <>
+    <div>
       <div className="relative flex flex-col justify-between dark:bg-black bg-white border-y dark:border-zinc-900 border-gray-200  backdrop-filter backdrop-opacity-5 mt-6">
         <BgImg />
         <div className="flex flex-col max-w-screen-2xl mx-auto mt-4">
@@ -25,10 +25,10 @@ const MainFooter = () => {
           </div>
         </div>
       </div>
-      <p className="text-zinc-600 bg-black p-2 text-center text-xs sm:text-sm">
+      <p className="text-zinc-600 bg-neutral-950 p-2 text-center text-xs sm:text-sm">
         © 2024 Kushagra Sharma. All rights reserved.
       </p>
-    </>
+    </div>
   );
 };
 
