@@ -3,6 +3,7 @@ import Search from "@/components/utils/search";
 import PostList from "@/components/posts/post-list";
 import Footer from "@/components/footer/footer";
 import CreateButton from "@/components/utils/buttons/create-button";
+import Note from "@/components/utils/note";
 
 const ArticlesPage = ({
   searchParams,
@@ -38,6 +39,11 @@ const ArticlesPage = ({
               projects you should check out the projects page, which includes
               detailed information about the i&apos;ve done.
             </p>
+
+            <Note
+              title="Note: Under Active Development"
+              description="This section (post page) is not yet ready, Once it is this note will be removed."
+            />
 
             <section className="flex gap-4 items-center">
               <Search placeholder="Search blogs..." className="my-10" />
