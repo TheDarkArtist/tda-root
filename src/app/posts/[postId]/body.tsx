@@ -1,4 +1,4 @@
-import { getPost, getPostBySlug } from "@/lib/actions/posts/get-post";
+import { getPostBySlug } from "@/lib/actions/posts/get-post";
 import MarkdownRenderer from "@/utils/markdown-provider";
 import React from "react";
 
