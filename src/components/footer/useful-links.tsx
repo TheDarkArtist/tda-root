@@ -58,17 +58,20 @@ const UsefulLinks = () => {
   ];
 
   return (
-    <section className="space-y-4 text-left h-full">
-      <h1 className={`font-black text-2xl text-zinc-800 dark:text-zinc-400 indent-2 ${rslab.className}`}>
+    <section className="md:space-y-4 text-left py-4 border-y border-zinc-900">
+      <h1
+        className={`font-black text-2xl text-zinc-800 text-center md:text-left dark:text-zinc-400 indent-2 ${rslab.className}`}
+      >
         Useful Links
       </h1>
-      <div className="grid text-sm grid-cols-3">
+      <div className="grid grid-cols-3 text-xs md:text-sm">
         {links.map(({ name, href }) => (
           <Link
             className={cn(
               "px-2 py-1",
               "text-zinc-800 dark:text-zinc-200",
-              "hover:text-blue-600 dark:hover:text-blue-600"
+              "hover:text-blue-600 dark:hover:text-blue-600",
+              "text-center md:text-left"
             )}
             key={name}
             href={href}

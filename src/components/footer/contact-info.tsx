@@ -3,11 +3,11 @@ import React from "react";
 
 const ContactInfo = () => {
   return (
-    <section className="space-y-4 h-full text-left">
-      <h3 className={`font-black text-2xl text-zinc-800 dark:text-zinc-400 ${rslab.className}`}>
+    <section className="md:space-y-4 border-y border-zinc-900 py-4 text-left">
+      <h3 className={`font-black text-2xl text-center md:text-left text-zinc-800 dark:text-zinc-400 ${rslab.className}`}>
         Contact Information
       </h3>
-      <div>
+      <div className="text-center md:text-left text-sm">
         <p className="text-gray-700 dark:text-gray-300">
           Email:{" "}
           <a
