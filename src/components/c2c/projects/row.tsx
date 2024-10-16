@@ -1,29 +1,38 @@
-import Views from "@/components/projects/card/views";
-import DeleteButton from "@/components/utils/buttons/delete-button";
-import UpdateButton from "@/components/utils/buttons/update-button";
-import ViewButton from "@/components/utils/buttons/view-button";
-import { Project } from "@prisma/client";
+import { Button } from "@/components/ui/button";
+import { ProjectWithUserViews } from "@/lib/types";
 import React from "react";
 
-const Row = ({ project, index }: { project: Project; index: number }) => {
+const Row = ({
+  project,
+  index,
+}: {
+  project: ProjectWithUserViews;
+  index: number;
+}) => {
   return (
-    <tr className="border-2 border-zinc-800">
-      <td className="border-2 border-zinc-800 align-top text-center px-4 py-2">
+    <tr className="border-2 text-sm border-zinc-800">
+      <td className="border-2 border-zinc-800 align-top text-center px-2 py-1">
         {index + 1}.
       </td>
-      <td className="border-2 border-zinc-800 align-top px-4 py-2">
+      <td className="border-2 border-zinc-800 min-w-60 align-top px-2 py-1">
         {project.title}
       </td>
-      <td className="border-2 max-w-screen-md border-zinc-800 px-4 py-2">
-        {project.description?.substring(0, 1000)}
+      <td className="border-2 min-w-60 border-zinc-800 px-2 py-1">
+        {project.description?.substring(0, 200)}
       </td>
-      <td className="border-2 border-zinc-800 align-top px-4 py-2">
-        <Views projectId={project.id} />
+      <td className="border-2 border-zinc-800 px-2 py-1 align-top">
+        {project.views.length}
       </td>
-      <td className="flex items-center min-w-48 space-x-1 space-y-1 p-2">
-        <ViewButton type="project" slug={project.slug} />
-        <UpdateButton type="project" slug={project.slug} />
-        <DeleteButton type="project" id={project.id} />
+      <td className="min-w-48 space-x-1 p-2 align-top">
+        <Button variant="outline" size="sm">
+          View
+        </Button>
+        <Button variant="outline" size="sm">
+          Edit
+        </Button>
+        <Button variant="destructive" size="sm">
+          Delete
+        </Button>
       </td>
     </tr>
   );

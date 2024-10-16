@@ -1,18 +1,15 @@
-"use client";
-
-import { useSession } from "next-auth/react";
-import { notFound } from "next/navigation";
+import { auth } from "@/lib/auth";
 import React from "react";
 import { LuAlertTriangle } from "react-icons/lu";
 
-const AuthCheckWrapper = ({ children }: { children: React.ReactNode }) => {
-  const { data, status } = useSession();
+const AuthCheckWrapper = async ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const session = await auth();
 
-  if (status === "unauthenticated") {
-    notFound();
-  }
-
-  if (data?.user.access !== "ROOT")
+  if (!session || session.user.access !== "ROOT")
     return (
       <div className="flex flex-col items-center pt-20 text-red-400">
         <LuAlertTriangle className="h-10 w-10" />

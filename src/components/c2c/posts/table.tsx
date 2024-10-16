@@ -1,17 +1,23 @@
 import React from "react";
 import Row from "./row";
 import { getPosts } from "@/lib/actions/posts/get-posts";
-import { Post } from "@prisma/client";
 
 const Table = async () => {
   const posts = await getPosts();
 
-  const headings = ["Index", "Title", "Description", "Views", "Actions"];
+  const headings = [
+    "Index",
+    "Username",
+    "Ttitle",
+    "Description",
+    "Views",
+    "Actions",
+  ];
   return (
-    <div className="overflow-x-scroll">
-      <table className="border-collapse mx-4">
+    <div className="max-w-full w-full mx-auto overflow-x-auto">
+      <table className="border-collapse mx-auto">
         <thead>
-          <tr className="bg-zinc-800 border-2 border-zinc-800">
+          <tr className="bg-gray-200 dark:bg-zinc-800 border-2 border-gray-300 dark:border-zinc-800">
             {headings.map((heading, index) => (
               <th
                 key={index}
@@ -22,7 +28,7 @@ const Table = async () => {
             ))}
           </tr>
         </thead>
-        <tbody className="bg-zinc-900">
+        <tbody className="bg-gray-100 dark:bg-zinc-900 overflow-x-auto">
           {posts?.map((post, index) => (
             <Row key={index} post={post} index={index} />
           ))}

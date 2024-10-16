@@ -1,23 +1,16 @@
 import React from "react";
 import CurrentTime from "../utils/current-time";
-import { rslab } from "@/utils/fonts";
+import NvbarButtons from "./nvbar-buttons";
+import { currentUser } from "@/lib/actions/utils/auth";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const user = await currentUser();
   return (
-    <nav className="flex border-b bg-white dark:bg-zinc-900 dark:border-zinc-800">
-      <div className="w-full max-w-48 border-r dark:border-r-zinc-800">
-        <p className="text-center p-1 font-bold text-xl">Tabs</p>
-      </div>
-      <div className="grid grid-cols-3 w-full items-center px-4">
-        <div>Logged in as: thedarkartist</div>
-        <p className={`text-stone-400 text-xl font-bold ${rslab.className}`}>
-          TDA Command & Control Center
-        </p>
-        <div>
-          <CurrentTime />
-        </div>
-      </div>
-    </nav>
+    <div className="flex justify-between w-full px-2 items-center">
+      <div className="text-sm">{user?.username}</div>
+      <CurrentTime />
+      <NvbarButtons />
+    </div>
   );
 };
 

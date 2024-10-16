@@ -22,6 +22,12 @@ const Sidebar = () => {
       isActive: pathname.includes("/settings") ? true : false,
     },
     {
+      name: "Users",
+      icon: "",
+      href: "/tda/c2c/users",
+      isActive: pathname.includes("/users") ? true : false,
+    },
+    {
       name: "Projects",
       icon: "",
       href: "/tda/c2c/projects",
@@ -35,7 +41,7 @@ const Sidebar = () => {
     },
   ];
   return (
-    <aside className="border-r bg-white dark:bg-zinc-900 dark:border-zinc-800 h-full w-full max-w-48">
+    <aside className="sticky top-0 border-r bg-white dark:bg-zinc-900 dark:border-zinc-800 h-full w-48">
       <ul className="flex flex-col">
         {items.map((item) => (
           <Link
@@ -44,7 +50,7 @@ const Sidebar = () => {
               "border-b border-l-[6px] dark:border-l-zinc-900 dark:border-b-zinc-800",
               "w-full p-2",
               item.isActive &&
-                "border-l-[6px] dark:border-l-red-900 border-l-red-300"
+                "border-l-[6px] dark:border-l-red-900 border-l-red-300 bg-gray-100 dark:bg-zinc-800"
             )}
             key={item.name}
           >

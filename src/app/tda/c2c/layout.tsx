@@ -1,19 +1,32 @@
 import AuthCheckWrapper from "@/components/c2c/auth-check-wrapper";
 import Navbar from "@/components/c2c/navbar";
 import Sidebar from "@/components/c2c/sidebar";
+import Search from "@/components/utils/search";
 import React from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthCheckWrapper>
-      <main className="pt-12 h-[calc(100vh-40px)]">
-        <div className="h-full">
-          <Navbar />
-          <div className="flex min-h-full">
-            <div className="w-full max-w-48">
-              <Sidebar />
+      <main className="flex w-screen flex-col h-screen">
+        <div className="w-full sticky top-12 z-10"></div>
+
+        <div className="flex w-screen mt-12 h-screen">
+          <div className="w-48 fixed top-22 h-full">
+            <Sidebar />
+          </div>
+
+          <div className="flex pl-48 flex-col w-full">
+            <div className="bg-white dark:bg-zinc-900 p-2 space-y-2">
+              <h2 className="text-center text-sm font-semibold text-zinc-300">
+                <span className="hidden md:block">
+                  TDA Comamnd & Control Center
+                </span>
+                <span className="md:hidden">TDA C2C</span>
+              </h2>
+              <Search />
+              <Navbar />
             </div>
-            {children}
+            <div className="m-4">{children}</div>
           </div>
         </div>
       </main>
@@ -21,4 +34,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default layout;
+export default Layout;
