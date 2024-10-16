@@ -32,6 +32,10 @@ export const getProjects = async (
         createdAt: "desc",
       },
       take: limit || 200,
+      include: {
+        views: true,
+        comments: true,
+      },
     });
 
     return projects;

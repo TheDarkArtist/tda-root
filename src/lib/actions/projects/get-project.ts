@@ -25,6 +25,10 @@ export const getProjectBySlug = async (projectSlug: string) => {
       where: {
         slug: projectSlug,
       },
+      include: {
+        views: true,
+        comments: true,
+      },
     });
 
     return response;
