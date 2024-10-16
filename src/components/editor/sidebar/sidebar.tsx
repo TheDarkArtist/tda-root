@@ -6,38 +6,38 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const Sidebar = ({ slug }: { slug: string }) => {
+const Sidebar = ({ type, slug }: { type: string; slug: string }) => {
   const pathname = usePathname();
 
   const sidebarLinks = [
     {
       name: "Editor",
-      href: `/projects/${slug}/edit/editor`,
-      isActive: pathname === `/projects/${slug}/edit/editor`,
+      href: `/${type}s/${slug}/edit/editor`,
+      isActive: pathname === `/${type}s/${slug}/edit/editor`,
       icon: "✏️",
     },
     {
       name: "Preview",
-      href: `/projects/${slug}/edit/preview`,
+      href: `/${type}s/${slug}/edit/preview`,
       isActive: pathname.includes("/edit/preview") ? true : false,
       icon: "📜",
     },
     {
       name: "Links & Tags",
-      href: `/projects/${slug}/edit/meta`,
+      href: `/${type}s/${slug}/edit/meta`,
       isActive: pathname.includes("/edit/meta") ? true : false,
       icon: "🖇️",
     },
     {
       name: "Settings",
-      href: `/projects/${slug}/edit/settings`,
+      href: `/${type}s/${slug}/edit/settings`,
       isActive: pathname.includes("/edit/settings") ? true : false,
       icon: "⚙️",
     },
     {
       name: "Help",
-      href: `/projects/${slug}/edit`,
-      isActive: pathname === `/projects/${slug}/edit`,
+      href: `/${type}s/${slug}/edit`,
+      isActive: pathname === `/${type}s/${slug}/edit`,
       icon: "💁",
     },
   ];

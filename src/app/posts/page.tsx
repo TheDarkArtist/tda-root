@@ -1,11 +1,10 @@
-import React, { Suspense } from "react";
-import Search from "@/components/utils/search";
-import PostList from "@/components/posts/post-list";
 import Footer from "@/components/footer/footer";
+import PostList from "@/components/posts/post-list";
 import CreateButton from "@/components/utils/buttons/create-button";
-import Note from "@/components/utils/note";
+import Search from "@/components/utils/search";
+import React, { Suspense } from "react";
 
-const ArticlesPage = ({
+const PostPage = ({
   searchParams,
 }: {
   searchParams?: {
@@ -15,16 +14,15 @@ const ArticlesPage = ({
 }) => {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
-
   return (
     <main className="h-full flex flex-col justify-between">
-      <div className="p-4 mt-12 lg:p-0">
+      <div className="px-4 lg:px-0 mt-12 pb-4">
         <div className="max-w-screen-lg mx-auto w-full">
-          <section className="space-y-6 col-span-4">
-            <h1 className="text-4xl text-green-600 font-black mt-6 hover:animate-pulse">
+          <section className="space-y-2 sm:space-y-6">
+            <h1 className="text-2xl sm:text-4xl text-green-600 font-black mt-6 hover:animate-pulse">
               Read Blogs & Informative Articles
             </h1>
-            <p>
+            <p className="text-sm">
               This page is all about sharing my perspectives, insights, and
               experiences on a wide range of topics, with a focus on technology
               and beyond. Through my blog posts, I aim to offer
@@ -39,20 +37,17 @@ const ArticlesPage = ({
               projects you should check out the projects page, which includes
               detailed information about the i&apos;ve done.
             </p>
-
-            <Note
-              title="Note: Under Active Development"
-              description="This section (post page) is not yet ready, Once it is this note will be removed."
-            />
-
-            <section className="flex gap-4 items-center">
-              <Search placeholder="Search blogs..." className="my-10" />
-              <CreateButton type="post" />
-            </section>
           </section>
 
+          <section className="sticky bg-white dark:bg-zinc-950 h-min z-20 my-10 py-4 top-12 flex gap-4 items-center">
+            <Search placeholder="Search posts..." />
+
+            <Suspense fallback={<div></div>}>
+              <CreateButton type="post" />
+            </Suspense>
+          </section>
           <Suspense fallback={<div>Searching....</div>}>
-            <PostList published query={query} currentPage={currentPage} />
+            <PostList query={query} currentPage={currentPage} />
           </Suspense>
         </div>
       </div>
@@ -61,4 +56,4 @@ const ArticlesPage = ({
   );
 };
 
-export default ArticlesPage;
+export default PostPage;

@@ -10,7 +10,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-const Header = ({ slug }: { slug: string }) => {
+const Header = ({ type, slug }: { type: "project" | "post"; slug: string }) => {
   return (
     <div className=" sticky top-0 gap-2 border-b dark:border-zinc-800 border-zinc-200 flex flex-wrap sm:flex-nowrap justify-between items-center w-full dark:bg-zinc-900 bg-zinc-100 p-2 min-h-10">
       <div>
@@ -18,11 +18,13 @@ const Header = ({ slug }: { slug: string }) => {
           <BreadcrumbList>
             <div className="text-xl">🛠️</div>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/projects">All projects</BreadcrumbLink>
+              <BreadcrumbLink
+                href={`/${type}s`}
+              >{`All ${type}s`}</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href={`/projects/${slug}`}>{slug}</BreadcrumbLink>
+              <BreadcrumbLink href={`/${type}s/${slug}`}>{slug}</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
@@ -32,8 +34,8 @@ const Header = ({ slug }: { slug: string }) => {
         </Breadcrumb>
       </div>
       <div className="flex gap-2 justify-end w-full sm:w-min">
-        <PublishButton slug={slug} />
-        <SaveButton slug={slug} />
+        <PublishButton />
+        <SaveButton type={type} slug={slug} />
       </div>
     </div>
   );

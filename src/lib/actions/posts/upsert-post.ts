@@ -4,14 +4,24 @@ import { db } from "@/lib/db";
 import { Post } from "@prisma/client";
 
 export const upsertPost = async (
-  postId: string,
-  postData: Post,
+  postSlug: string,
+  postData: Partial<Post>,
 ): Promise<Post | null> => {
+  if (!postSlug) {
+    console.error("Post slug is required");
+    return null;
+  }
+
   try {
+    const validatedSlug = postData.slug
+      ?.trim()
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+
     const post = await db.post.upsert({
-      where: { id: postId },
-      update: { ...postData },
-      create: { ...postData },
+      where: { slug: postSlug },
+      update: { ...(postData as Post), slug: validatedSlug },
+      create: { ...(postData as Post), slug: validatedSlug },
     });
 
     return post;

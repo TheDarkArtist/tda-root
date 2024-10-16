@@ -5,7 +5,7 @@ import { useEditorDataContext } from "@/providers/editor-data-provider";
 import React, { useTransition } from "react";
 import { toast } from "sonner";
 
-const PublishButton = ({ slug }: { slug: string }) => {
+const PublishButton = () => {
   const { data, setData } = useEditorDataContext();
   const [isPending, startTransition] = useTransition();
 

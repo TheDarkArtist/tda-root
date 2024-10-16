@@ -34,6 +34,10 @@ export const getPosts = async (
         createdAt: "desc",
       },
       take: limit || 200,
+      include: {
+        user: true,
+        views: true,
+      },
     });
 
     return posts;

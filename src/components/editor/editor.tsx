@@ -16,8 +16,10 @@ interface EditorProps {
 
 const Editor: React.FC<EditorProps> = ({ type, response, children }) => {
   const [data, setData] = useState<Project | Post | null>(response);
+
   const params = useParams();
 
+  //NOTE: Whole thing depends on this one variable, what the shit,
   const slug =
     type === "project" ? params.projectId ?? "" : params.postId ?? "";
 
@@ -25,11 +27,11 @@ const Editor: React.FC<EditorProps> = ({ type, response, children }) => {
     <EditorDataContextProvider value={{ data, setData }}>
       <div className="flex max-h-screen h-full pt-12 overflow-hidden">
         <aside className="">
-          <Sidebar slug={slug as string} />
+          <Sidebar type={type} slug={slug as string} />
         </aside>
         <div className="flex flex-col w-full h-full">
           <header className="sticky top-0 z-10">
-            <Header slug={slug as string} />
+            <Header type={type} slug={slug as string} />
           </header>
           <main className="flex-grow overflow-hidden dark:bg-zinc-950 bg-white">
             {children}

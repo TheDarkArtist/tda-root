@@ -2,10 +2,14 @@ import { CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import React from "react";
 
-const Tags = ({ tags }: { tags: string[] }) => {
+const Tags = ({ tags, limit = 6 }: { tags: string[]; limit?: number }) => {
+  if (!tags) {
+    return null;
+  }
+
   return (
-    <CardFooter className="p-2 pt-3 space-x-2">
-      {tags.map((tag, index) => (
+    <CardFooter className="py-1 px-0 flex flex-wrap gap-2">
+      {tags.slice(0, limit).map((tag, index) => (
         <span
           className={cn(
             "border dark:border-zinc-600 border-gray-400",

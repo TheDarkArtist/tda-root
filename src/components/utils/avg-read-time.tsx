@@ -5,6 +5,8 @@ interface ReadingTimeProps {
 }
 
 const AvgReadingTime: React.FC<ReadingTimeProps> = ({ content }) => {
+  if (!content) return;
+
   const estimateReadingTime = (content: string) => {
     const lines = content.split("\n").filter((line) => !line.startsWith("#"));
 

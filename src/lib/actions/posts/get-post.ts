@@ -25,6 +25,11 @@ export const getPostBySlug = async (postSlug: string) => {
       where: {
         slug: postSlug,
       },
+      include: {
+        user: true,
+        views: true,
+        commnets: true,
+      },
     });
 
     return response;

@@ -1,9 +1,8 @@
-import EditorWrapper from "@/components/editor/editor-wrapper";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import Initial from "@/components/editor/pages/initial";
 import React from "react";
 
-const EditPage = ({ params }: { params: Params }) => {
-  return <EditorWrapper params={params} type="post" />;
+const EditPage = () => {
+  return <Initial />;
 };
 
 export default EditPage;

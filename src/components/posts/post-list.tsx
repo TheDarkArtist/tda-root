@@ -1,5 +1,5 @@
 import React from "react";
-import PostCard from "./post-card";
+import PostCard from "./card/post-card";
 import { getPosts } from "@/lib/actions/posts/get-posts";
 
 interface PostListProps {
