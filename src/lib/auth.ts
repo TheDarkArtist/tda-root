@@ -32,7 +32,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         user.username = profile.login;
       } else if (account.provider === "google") {
         // @ts-expect-error
-        user.username = profile.email.split("@")[0];
+        user.username = profile.email
+          .split("@")[0]
+          .replace(/[^a-zA-Z0-9]/g, ""); // username will only contain letter & numbers
       }
 
       // Allow OAuth signin without verification
