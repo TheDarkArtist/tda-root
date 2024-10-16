@@ -70,7 +70,7 @@ export const HeaderSkeleton = () => {
     <div
       className={[
         "sticky top-12",
-        "flex justify-between p-2.5",
+        "flex justify-between items-center p-2.5",
         "bg-gray-50 dark:bg-zinc-950",
         "backdrop-filter backdrop-blur-md bg-opacity-50",
         "dark:backdrop-filter dark:backdrop-blur-md dark:bg-opacity-50",
@@ -89,11 +89,7 @@ export const HeaderSkeleton = () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <div
-        className={["text-sm dark:text-cyan-600", "hover:underline"].join(" ")}
-      >
-        Edit
-      </div>
+      <div className="h-3 w-8 rounded-full dark:bg-zinc-900 bg-gray-200" />
     </div>
   );
 };
