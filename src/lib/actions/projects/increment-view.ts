@@ -6,11 +6,11 @@ import { auth } from "@/lib/auth";
 export async function incrementView(projectId: string, userId?: string) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/tda/userinfo`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/tda/publicip`,
     );
+    const data = await response.json();
 
     const session = await auth();
-    let data = await response.json();
 
     await db.view.create({
       data: {

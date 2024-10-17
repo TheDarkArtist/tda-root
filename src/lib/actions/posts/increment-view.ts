@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 export async function incrementView(postId: string, userId?: string) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/tda/userinfo`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/tda/publicip`,
     );
 
     const session = await auth();
