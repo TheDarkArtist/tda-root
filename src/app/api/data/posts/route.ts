@@ -1,6 +1,8 @@
 import { getPosts } from "@/lib/actions/posts/get-posts";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async (req: NextRequest) => {
   try {
     const { searchParams } = new URL(req.url);
