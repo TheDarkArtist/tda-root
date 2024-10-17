@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +13,34 @@ import { PostWithUserViews } from "@/lib/types";
 
 const PostCard = ({ post }: { post: PostWithUserViews }) => {
   const session = useSession();
+
+  const [ip, setIp] = useState<string | null>();
+
+  const fetchIP = async () => {
+    try {
+      const res = await fetch("/api/tda/publicip");
+      const data = await res.json();
+
+      setIp(data.ip);
+    } catch (error) {
+      console.error("Error fetching IP:", error);
+      setIp("unknown");
+    }
+  };
+
+  useEffect(() => {
+    fetchIP();
+  }, [ip]);
+
+  const handleClick = async () => {
+    await incrementView(
+      post.id,
+      session.data?.user.username as string,
+      ip as string,
+      session.data?.user.id
+    );
+  };
+
   return (
     <Card
       className={[
@@ -25,9 +53,7 @@ const PostCard = ({ post }: { post: PostWithUserViews }) => {
       <Link
         className="relative sm:flex items-center"
         href={`/posts/${post.slug}`}
-        onClick={() => {
-          incrementView(post.id, session.data?.user.id as string);
-        }}
+        onClick={handleClick}
       >
         <div className="relative h-0 md:h-40 min-w-64 overflow-hidden rounded-l-sm">
           <Image
