@@ -1,22 +1,19 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { auth } from "@/lib/auth";
 
-export async function incrementView(projectId: string, userId?: string) {
+export async function incrementView(
+  projectId: string,
+  username: string,
+  ip: string,
+  userId?: string,
+) {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/tda/userinfo`,
-    );
-
-    const session = await auth();
-    let data = await response.json();
-
     await db.view.create({
       data: {
         identifier: userId || "unknown",
-        ip: data.ip || "unknown",
-        username: (session?.user.username as string) || "unknown",
+        ip: ip || "unknown",
+        username: username || "unknown",
         project: {
           connect: { id: projectId },
         },
