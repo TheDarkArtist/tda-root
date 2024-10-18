@@ -37,7 +37,7 @@ const CarouselSlide = ({
           width={600}
         />
       </div>
-      <div className="absolute h-full w-full bg-black/50" />
+      <div className="absolute h-full w-full bg-black/30" />
       <div className="absolute h-full w-full top-0 flex items-center pl-4 justify-center">
         <span
           className={cn(
@@ -47,10 +47,10 @@ const CarouselSlide = ({
             "flex flex-col items-center justify-center text-center px-4"
           )}
         >
-          <h2 className="font-black text-xl md:text-5xl text-white/50 text-center w-full mb-4 animate-fadeIn">
+          <h2 className="font-black text-xl md:text-5xl text-white/60 text-center w-full mb-4 animate-fadeIn">
             {heading}
           </h2>
-          <p className="font-medium hidden sm:block text-xs md:text-xl px-6 text-white/50 animate-fadeIn">
+          <p className="hidden sm:block text-xs md:text-xl px-6 font-semibold text-white/60 animate-fadeIn">
             {paragraph}
           </p>
         </span>
@@ -64,7 +64,7 @@ const HomeCarousel = () => {
     {
       src: "https://cdn.pixabay.com/photo/2023/11/05/02/07/ai-generated-8366100_960_720.jpg",
       alt: "AI Art Image",
-      heading: "The Full Stack Web Developer",
+      heading: "Innovative Full Stack Developer",
       paragraph:
         "I'm a tech enthusiast who is always exploring the intersection of AI and software development. Whether it's working on AI-driven solutions or building tools that help people solve problems efficiently, I like to stay ahead of the curve and push the limits of what technology can do. My passion lies in crafting solutions that not only solve problems but also bring value to the world of tech.",
       gradientColor: "bg-green-600",
@@ -72,7 +72,7 @@ const HomeCarousel = () => {
     {
       src: "https://cdn.pixabay.com/photo/2018/06/17/08/40/hacker-3480124_960_720.jpg",
       alt: "Hacker Image",
-      heading: "Always In Search For knowledge",
+      heading: "Hacking The Box",
       paragraph:
         "I approach everything with a hacker's mindset—breaking things down to understand how they work, and then building something better. Innovation and creativity go hand in hand for me, and I believe that thinking outside the box is what helps me come up with unique solutions to everyday challenges in tech. My focus is on creating software that not only performs well but also challenges the status quo.",
       gradientColor: "bg-sky-600",
@@ -80,7 +80,7 @@ const HomeCarousel = () => {
     {
       src: "https://cdn.pixabay.com/photo/2016/03/26/13/09/workspace-1280538_960_720.jpg",
       alt: "Workspace Image",
-      heading: "Always Been An Artist",
+      heading: "Blending Creativity with Code",
       paragraph:
         "As an Artist, I blend creativity with code. I take ideas and bring them to life through clean, efficient, and powerful development. Whether working on front-end or back-end, I aim to build experiences that resonate with users and make a real impact. My goal is to continue pushing my skills, learning new technologies, and always staying ahead of the trends in software development.",
       gradientColor: "bg-red-600",

@@ -4,6 +4,57 @@ import { cn } from "@/lib/utils";
 import React from "react";
 
 const Web = () => {
+  const webData = [
+    {
+      name: "Next.js",
+      src: "/logo/nextjs-icon.svg",
+      children: (
+        <p>
+          Next.js gives me the power of server-side rendering and static site
+          generation with a modern React framework. It’s perfect for fast,
+          SEO-friendly websites. But for smaller projects, its complexity can
+          sometimes feel like overkill.
+        </p>
+      ),
+    },
+    {
+      name: "Django",
+      src: "/logo/django.png",
+      children: (
+        <p>
+          Django is a solid choice for building complex web applications
+          quickly, thanks to its batteries-included philosophy. Its admin
+          interface is a huge time-saver. However, for smaller or more flexible
+          projects, it can feel rigid.
+        </p>
+      ),
+    },
+    {
+      name: "Svelte",
+      src: "/logo/svelte.svg",
+      children: (
+        <p>
+          Svelte offers a refreshing approach to web development with its
+          compile-time optimizations, making web apps faster and more
+          lightweight. However, it&apos;s still not as widely adopted, which can
+          limit community support and ecosystem tools.
+        </p>
+      ),
+    },
+    {
+      name: "htmx",
+      src: "/logo/htmx.svg",
+      children: (
+        <p>
+          htmx makes adding dynamic behavior to web pages simple without needing
+          a full frontend framework. It&apos;s lightweight and integrates well
+          with server-side applications. But, for more complex interactions, its
+          simplicity can become a limitation.
+        </p>
+      ),
+    },
+  ];
+
   return (
     <div className="my-10">
       <Seperator
@@ -17,10 +68,10 @@ const Web = () => {
       >
         <div className="flex flex-col sm:flex-row justify-evenly items-center gap-4 mb-10">
           <section className="space-y-2 max-w-sm">
-            <h1 className="text-center  my-6 font-black text-4xl text-red-600">
+            <h1 className="font-black text-3xl md:text-4xl my-4 text-center text-red-600">
               Tool For The Web
             </h1>
-            <p>
+            <p className="text-center md:text-left text-sm md:text-base">
               Powerful frameworks that simplify modern web development. Next.js
               excels at creating fast, server-rendered React applications, while
               Django provides a high-level Python framework for robust web apps
@@ -32,59 +83,11 @@ const Web = () => {
             </p>
           </section>
           <div className="w-full flex flex-wrap justify-evenly items-center mt-4 gap-4">
-            <TechCard name="Next.js" src="/logo/nextjs-icon.svg">
-              <p>next</p>
-              <p>
-                In the world of web development, I am a lord of my craft,
-                commanding the mightiest frameworks like warriors sworn to my
-                cause. With Next.js at my side, I forge powerful, fast-loading
-                realms, while Svelte whispers the secrets of real-time, reactive
-                magic. Django stands as my towering fortress, unbreakable and
-                steadfast, protecting the heart of every project. Each framework
-                serves as a loyal banner in my quest to build scalable,
-                legendary applications that dominate the digital landscape.
-              </p>
-            </TechCard>
-            <TechCard name="Django" src="/logo/django.png">
-              <p>django</p>
-              <p>
-                In the world of web development, I am a lord of my craft,
-                commanding the mightiest frameworks like warriors sworn to my
-                cause. With Next.js at my side, I forge powerful, fast-loading
-                realms, while Svelte whispers the secrets of real-time, reactive
-                magic. Django stands as my towering fortress, unbreakable and
-                steadfast, protecting the heart of every project. Each framework
-                serves as a loyal banner in my quest to build scalable,
-                legendary applications that dominate the digital landscape.
-              </p>
-            </TechCard>
-            <TechCard name="Svelte" src="/logo/svelte.svg">
-              <p>svelte</p>
-              <p>
-                In the world of web development, I am a lord of my craft,
-                commanding the mightiest frameworks like warriors sworn to my
-                cause. With Next.js at my side, I forge powerful, fast-loading
-                realms, while Svelte whispers the secrets of real-time, reactive
-                magic. Django stands as my towering fortress, unbreakable and
-                steadfast, protecting the heart of every project. Each framework
-                serves as a loyal banner in my quest to build scalable,
-                legendary applications that dominate the digital landscape.
-              </p>
-            </TechCard>
-            <TechCard name="htmx" src="/logo/htmx.svg">
-              <p>
-                It&apos;s something i found recelntly &lt;sept 2, 2024&gt;, i
-                thought it was just some shitty html ripoff, it&apos;s only
-                untill after i came to know how good this this was, really
-                great! cause. With Next.js at my side, I forge powerful,
-                fast-loading realms, while Svelte whispers the secrets of
-                real-time, reactive magic. Django stands as my towering
-                fortress, unbreakable and steadfast, protecting the heart of
-                every project. Each framework serves as a loyal banner in my
-                quest to build scalable, legendary applications that dominate
-                the digital landscape.
-              </p>
-            </TechCard>
+            {webData.map((data, index) => (
+              <TechCard key={index} name={data.name} src={data.src}>
+                {data.children}
+              </TechCard>
+            ))}
           </div>
         </div>
       </Seperator>

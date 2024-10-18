@@ -8,22 +8,22 @@ const D2CBoxexWrapper = () => {
     {
       label: "Architect",
       paragraph:
-        "Architecting a project is like painting a masterpiece, crafting vision where creativity meets structure. It&apos;s about the blueprint, choosing the right tools, and crafting the experience that resonates. This is where innovation truly begins!",
+        "Architecting a project feels like laying the foundation of a story, where imagination meets structure. It’s about drawing the blueprints, picking the right tools, and shaping an experience that truly connects with people. This is where the journey of innovation begins!",
     },
     {
       label: "Implement",
       paragraph:
-        "Architecting a project is like painting a masterpiece, crafting vision where creativity meets structure. It&apos;s about the blueprint, choosing the right tools, and crafting the experience that resonates. This is where innovation truly begins!",
+        "Implementation is where dreams take shape. It’s the careful act of turning plans into real software, ensuring every line of code has a purpose. This is the moment when ideas become tangible, transforming concepts into solutions that make a difference.",
     },
     {
       label: "Optimize",
       paragraph:
-        "This is where the magic happens—taking something good and it extraordinary! Optimization is the art of refinement, into performance metrics, and enhancing the user experience. It’a relentless pursuit of perfection, ensuring the project into its best version.",
+        "Optimization is where good becomes great. It’s the quest to refine and enhance, focusing on performance and user experience. This journey is about relentless improvement, making sure the project reaches its fullest potential.",
     },
   ];
 
   return (
-    <div className="my-4 md:my-10 border border-zinc-900 p-2 m-2 md:m-0 rounded-lg bg-white dark:bg-black shadow">
+    <div className="my-4 md:my-10 border border-gray-300 dark:border-zinc-800 p-2 m-2 md:m-0 rounded-lg bg-white dark:bg-black shadow">
       <Seperator
         text="We live by a philosophy, Die by a philosophy ?"
         className="text-sky-400 border-sky-600/80 font-bold"
@@ -33,7 +33,7 @@ const D2CBoxexWrapper = () => {
           "dark:hover:bg-grid-lg-sky-600/5"
         )}
       >
-        <section className="grid md:grid-cols-3 gap-4 my-4">
+        <section className="grid items-center min-h-80 md:grid-cols-3 gap-4 my-4">
           {boxes.map((box, index) => (
             <D2CBox
               key={index}

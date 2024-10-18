@@ -10,7 +10,7 @@ const Quote = ({
   quote?: string;
 }) => {
   return (
-    <div className="my-10 border border-white/10 rounded-xl bg-white dark:bg-black shadow">
+    <div className="my-10 border border-gray-300 dark:border-zinc-800 rounded-xl bg-white dark:bg-black shadow mx-2 lg:mx-0">
       <Seperator
         text="🔄 💡💫 ➡️ 🚀🌱"
         className="text-stone-400 border-stone-600/80 font-bold"

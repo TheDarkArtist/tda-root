@@ -20,7 +20,7 @@ const Seperator: FC<SeperatorProps> = ({
   return (
     <div
       className={cn(
-        "group/seperator hover:backdrop-blur transition-all duration-300",
+        "group/seperator hover:backdrop-blur transition-all duration-300 delay-100",
         classWrapper
       )}
     >
@@ -41,7 +41,7 @@ const Seperator: FC<SeperatorProps> = ({
         />
         <p
           className={cn(
-            "hidden text-sm group-hover/seperator:inline transition-all duration-300 text-nowrap",
+            "hidden text-sm group-hover/seperator:inline transition-all duration-300 delay-200 text-nowrap",
             className
           )}
         >
@@ -49,13 +49,13 @@ const Seperator: FC<SeperatorProps> = ({
         </p>
         <div
           className={cn(
-            "border-b w-full group-hover/seperator:w-4 transition-all duration-300",
+            "border-b w-full group-hover/seperator:w-4 transition-all duration-300 delay-300",
             className
           )}
         />
         <div
           className={cn(
-            "group-hover/seperator:block text-2xl -rotate-90 hidden text-center border-double",
+            "group-hover/seperator:block delay-200 text-2xl -rotate-90 hidden text-center border-double",
             className
           )}
         >

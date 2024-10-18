@@ -23,14 +23,15 @@ const D2CBox: React.FC<D2CBoxProps> = ({
   return (
     <Card
       className={cn(
-        "border-none rounded-sm w-full shadow-none bg-zinc-50",
-        "rounded-lg",
+        "border rounded-sm w-full shadow-none bg-zinc-50",
+        "transition-all duration-300 cursor-pointer",
+        "rounded-lg p-0 h-16 overflow-hidden hover:h-full",
         className
       )}
     >
       <CardHeader
         className={cn(
-          "text-xl sm:text-4xl py-2 my-2 text-center font-bold",
+          "text-xl sm:text-4xl py-2 mb-2 text-center font-bold",
           os.className,
           headerClassName
         )}

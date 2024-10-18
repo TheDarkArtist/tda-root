@@ -32,7 +32,7 @@ const TechCard = ({
       <HoverCard>
         <HoverCardTrigger className="px-6 py-4 gap-4 flex justify-evenly items-center">
           <Image src={src} alt="technology logo" height={64} width={64} />
-          <p className="font-black text-4xl">{name}</p>
+          <p className="font-black text-2xl md:text-4xl">{name}</p>
         </HoverCardTrigger>
         <HoverCardContent className="w-full max-w-sm rounded-xl shadow z-10">
           <div className="flex gap-2 items-center mb-2">

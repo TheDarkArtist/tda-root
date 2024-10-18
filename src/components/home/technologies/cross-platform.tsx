@@ -4,6 +4,44 @@ import { cn } from "@/lib/utils";
 import React from "react";
 
 const CrossPlatform = () => {
+  const crossPlatformData = [
+    {
+      name: "Flutter",
+      src: "/logo/flutter.png",
+      children: (
+        <p>
+          Flutter is my go-to for building cross-platform mobile apps with a
+          single codebase. It&apos;s fast and has great community support. But
+          sometimes, its performance on native-level tasks can be a bit
+          limiting.
+        </p>
+      ),
+    },
+    {
+      name: "Tauri",
+      src: "/logo/tauri.svg",
+      children: (
+        <p>
+          Tauri is amazing for building lightweight desktop apps with a minimal
+          footprint. It uses Rust under the hood, which ensures top-notch
+          performance. However, it&apos;s still evolving, and certain features
+          can be challenging to implement.
+        </p>
+      ),
+    },
+    {
+      name: "Qt",
+      src: "/logo/qt.png",
+      children: (
+        <p>
+          Qt is fantastic for building powerful desktop applications, especially
+          with its extensive tools for UI. However, it can feel heavy at times,
+          and setting up cross-platform builds can get tricky.
+        </p>
+      ),
+    },
+  ];
+
   return (
     <Seperator
       text="For better or worse..."
@@ -16,10 +54,10 @@ const CrossPlatform = () => {
     >
       <div className="flex flex-col sm:flex-row-reverse justify-evenly items-center gap-4 mb-10">
         <section className="space-y-2 max-w-lg">
-          <h1 className="font-black text-4xl text-center my-4 text-cyan-600">
-            What Else Do You Need
+          <h1 className="font-black text-2xl sm:text-4xl text-center my-4 text-cyan-600">
+            What Else, You Need
           </h1>
-          <p>
+          <p className="text-center md:text-left text-sm md:text-base">
             vital tools for versatile application development. Flutter allows
             for the creation of beautiful, natively compiled apps across mobile,
             web, and desktop from a single codebase. Tauri enables lightweight
@@ -31,9 +69,11 @@ const CrossPlatform = () => {
           </p>
         </section>
         <div className="w-full flex flex-wrap justify-evenly items-center gap-4 mt-6">
-          <TechCard name="Flutter" src="/logo/flutter.png"></TechCard>
-          <TechCard name="Tauri" src="/logo/tauri.svg"></TechCard>
-          <TechCard name="Qt" src="/logo/qt.png"></TechCard>
+          {crossPlatformData.map((data, index) => (
+            <TechCard key={index} name={data.name} src={data.src}>
+              {data.children}
+            </TechCard>
+          ))}
         </div>
       </div>
     </Seperator>

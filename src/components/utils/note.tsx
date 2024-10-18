@@ -15,7 +15,7 @@ const Note = ({
       className={cn(
         "border-2 border-l-[10px] shadow my-4 rounded-r-md text-sm",
         "text-gray-700 dark:text-gray-400",
-        "bg-white border-zinc-200",
+        "bg-white border-zinc-200 mx-2 lg:mx-0",
         "dark:bg-zinc-950 dark:border-zinc-800",
         className
       )}

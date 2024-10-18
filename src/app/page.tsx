@@ -1,4 +1,3 @@
-import D2CBoxexWrapper from "@/components/home/d2c-boxex-wrapper";
 import Quote from "@/components/home/quote";
 import HomeCarousel from "@/components/home/home-carousel";
 import Hero from "@/components/home/hero";
@@ -14,7 +13,6 @@ export default function Home() {
         <HomeCarousel />
         <Info />
         <Hero />
-        <D2CBoxexWrapper />
         <Quote />
         <TdaTechs />
         <TdaSkills />
