@@ -8,7 +8,7 @@ const Tags = ({ tags, limit = 6 }: { tags: string[]; limit?: number }) => {
   }
 
   return (
-    <CardFooter className="flex flex-wrap p-1.5 pt-4 pb-2 gap-2">
+    <CardFooter className="flex flex-wrap p-0 gap-2">
       {tags.slice(0, limit).map((tag) => (
         <span
           className={cn(

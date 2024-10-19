@@ -4,12 +4,12 @@ import { Card } from "@/components/ui/card";
 import MetaBar from "./meta-bar";
 import Link from "next/link";
 import CardImage from "./card-image";
-import Body from "./body";
-import Tags from "./tags";
 import { useSession } from "next-auth/react";
 import { incrementView } from "@/lib/actions/projects/increment-view";
 import { ProjectWithUserViews } from "@/lib/types";
 import { useEffect, useState } from "react";
+import Heading from "./heading";
+import Description from "./description";
 
 const ProjectCard = ({ project }: { project: ProjectWithUserViews }) => {
   const session = useSession();
@@ -43,16 +43,21 @@ const ProjectCard = ({ project }: { project: ProjectWithUserViews }) => {
   return (
     <Card
       className={[
-        "relative group",
-        "transition-shadow rounded-md",
+        "relative group rounded-md",
+        "dark:border-zinc-800",
+        "transition-all duration-300 dark:active:border-green-600",
         "hover:shadow-lg dark:hover:shadow-emerald-950",
       ].join(" ")}
     >
       <MetaBar project={project} />
-      <Link onClick={handleClick} href={`/projects/${project.slug}`}>
-        <CardImage project={project} />
-        <Body project={project} />
-        <Tags tags={project.tags} />
+      <Link
+        className="relative flex justify-center items-center"
+        onClick={handleClick}
+        href={`/projects/${project.slug}`}
+      >
+        <CardImage src={project.image} />
+        <Heading title={project.title} />
+        <Description project={project} />
       </Link>
     </Card>
   );
