@@ -28,6 +28,7 @@ model User {
   emailVerified         DateTime?              @map("email_verified")
   image                 String?
   password              String?
+  salt                  String?
   access                UserAccess             @default(USER)
   accounts              Account[]
   isTwoFactorEnabled    Boolean                @default(false)

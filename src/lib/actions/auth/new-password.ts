@@ -4,8 +4,8 @@ import { NewPasswordSchema } from "@/lib/zod";
 import * as z from "zod";
 import { getPasswordResetTokenByToken } from "./password-reset-token";
 import { getUserByEmail } from "../utils/user";
-import bcryptjs from "bcryptjs";
 import { db } from "@/lib/db";
+import { hashPassword } from "@/lib/hashing";
 
 export const newPassword = async (
   values: z.infer<typeof NewPasswordSchema>,
@@ -31,14 +31,15 @@ export const newPassword = async (
 
   if (!existingUser) return { error: "Email does not exist!" };
 
-  const hashedPassword = await bcryptjs.hash(password, 10);
+  const { salt, hash } = hashPassword(password);
 
   await db.user.update({
     where: {
       id: existingUser.id,
     },
     data: {
-      password: hashedPassword,
+      password: hash,
+      salt: salt,
     },
   });
 

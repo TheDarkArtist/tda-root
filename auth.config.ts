@@ -2,10 +2,10 @@ import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-import bcryptjs from "bcryptjs";
 
 import { LoginSchema } from "@/lib/zod";
 import { getUserByEmail, getUserByUsername } from "@/lib/actions/utils/user";
+import { verifyPassword } from "@/lib/hashing";
 
 export default {
   providers: [
@@ -48,7 +48,11 @@ export default {
 
           if (!user || !user.password) return null;
 
-          const passwordMatch = await bcryptjs.compare(password, user.password);
+          const passwordMatch = verifyPassword(
+            user.password,
+            user.salt as string,
+            password,
+          );
 
           if (passwordMatch) return user;
         }

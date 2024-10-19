@@ -1,13 +1,12 @@
 "use server";
 
 import * as z from "zod";
-import bcryptjs from "bcryptjs";
-
 import { RegisterSchema } from "@/lib/zod";
 import { db } from "@/lib/db";
 import { getUserByEmail, getUserByUsername } from "../utils/user";
 import { generateVerificationToken } from "./generate-token";
 import { sendVerificationEmail } from "./mail";
+import { hashPassword } from "@/lib/hashing";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const validatedFields = RegisterSchema.safeParse(values);
@@ -36,14 +35,15 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     };
   }
 
-  const hashedPassword = await bcryptjs.hash(password, 10);
+  const { hash, salt } = hashPassword(password);
 
   await db.user.create({
     data: {
       name,
       username,
       email,
-      password: hashedPassword,
+      password: hash,
+      salt: salt,
     },
   });
 

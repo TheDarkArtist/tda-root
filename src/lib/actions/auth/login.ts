@@ -14,7 +14,7 @@ import { getTwoFactorTokenByEmail } from "./two-factor-token";
 import { db } from "@/lib/db";
 import { getTwoFactorConfirmationByUserId } from "./two-factor-confirmation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/lib/routes";
-import bcryptjs from "bcryptjs";
+import { verifyPassword } from "@/lib/hashing";
 
 export const login = async (
   values: z.infer<typeof LoginSchema>,
@@ -45,7 +45,11 @@ export const login = async (
     return { error: "Invalid credentials!" };
   }
 
-  const passwordMatch = await bcryptjs.compare(password, existingUser.password);
+  const passwordMatch = verifyPassword(
+    existingUser.password,
+    existingUser.salt as string,
+    password,
+  );
 
   if (!passwordMatch) {
     return { error: "Invalid password!" };
