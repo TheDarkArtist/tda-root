@@ -92,6 +92,7 @@ const config = {
     },
   },
   plugins: [
+    require("tailwindcss-textshadow"),
     require("tailwindcss-animate"),
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
