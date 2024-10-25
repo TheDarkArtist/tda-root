@@ -2,18 +2,15 @@ import React from "react";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { getProjectBySlug } from "@/lib/actions/projects/get-project";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { UserAccess } from "@prisma/client";
+import { notFound } from "next/navigation";
+import { LuChevronRight } from "react-icons/lu";
 
 const Header = async ({ projectId }: { projectId: string }) => {
   const project = await getProjectBySlug(projectId);
+
+  if (!project) return notFound();
+
   const session = await auth();
 
   return (
@@ -27,17 +24,13 @@ const Header = async ({ projectId }: { projectId: string }) => {
         "border-b dark:border-zinc-800",
       ].join(" ")}
     >
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/projects">All projects</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{project?.slug}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <div className="flex items-center text-sm">
+        <Link className="opacity-80 hover:opacity-100" href="/projects">
+          All projects
+        </Link>
+        <LuChevronRight className="h-5 w-5 text-zinc-600" />
+        <div>{project?.slug}</div>
+      </div>
 
       {session &&
         (session.user.access === UserAccess.ROOT ||
