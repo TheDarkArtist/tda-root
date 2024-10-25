@@ -5,7 +5,7 @@ const CardImage = ({ src }: { src: string }) => {
   return (
     <div className="relative h-48 w-full overflow-hidden rounded-t-sm">
       <Image
-        className="rounded-sm"
+        className="rounded-sm brightness-200 darkbrightness-100"
         src={src || "/img/tda.png"}
         alt="card image"
         fill
