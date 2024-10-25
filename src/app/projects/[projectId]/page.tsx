@@ -19,7 +19,6 @@ const ProjectPage: React.FC<PostPageParams> = ({ params }) => {
   return (
     <main className="relative overflow-hidden h-full">
       <div className="sm:grid grid-cols-12 max-w-screen-2xl mx-auto w-full">
-
         <div className="h-screen pb-40 hidden sm:block col-span-4 sm:col-span-3">
           <div className="border-r sm:flex justify-end w-full dark:border-zinc-900 col-span-3 hidden sticky top-14 h-[80%]">
             <LeftSidebar id={params.projectId} />
