@@ -5,5 +5,5 @@ export type PostWithUserViews = Prisma.PostGetPayload<{
 }>;
 
 export type ProjectWithUserViews = Prisma.ProjectGetPayload<{
-  include: { comments: true; views: true };
+  include: { comments: true; views: { select: { id: true } } };
 }>;

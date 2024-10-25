@@ -1,12 +1,12 @@
+import { ProjectWithUserViews } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Project } from "@prisma/client";
 import { ExternalLinkIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 import React, { Suspense } from "react";
 import { LuEye } from "react-icons/lu";
 
-const MetaBar = ({ project }: { project: Project }) => {
+const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
   return (
     <section
       className={cn(
