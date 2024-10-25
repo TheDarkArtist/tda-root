@@ -10,7 +10,7 @@ const Body = ({ post }: { post: Post }) => {
           {post.title?.substring(0, 62)}
           {post.title?.substring(60) && <span>...</span>}
         </span>
-        <span className="sm:hidden break-all">
+        <span className="sm:hidden text-base break-all">
           {post.description?.substring(0, 80)}
           {post.description?.substring(80) && <span>...</span>}
         </span>
@@ -20,7 +20,7 @@ const Body = ({ post }: { post: Post }) => {
           {post.description?.substring(0, 300)}
           {post.description?.substring(300) && <span>...</span>}
         </span>
-        <span className="sm:hidden break-all">
+        <span className="sm:hidden text-xs break-all">
           {post.description?.substring(0, 150)}
           {post.description?.substring(150) && <span>...</span>}
         </span>

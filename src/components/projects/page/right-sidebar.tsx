@@ -13,7 +13,7 @@ const RightSidebar = async ({ id }: { id: string }) => {
   const comments = await getComments(id);
   const views = await getViews(content?.id as string);
   return (
-    <div className="sticky top-12 space-y-4">
+    <div className="sticky top-12 space-y-4 w-72">
       <div className="overflow-y-auto">
         <section className="border dark:border-zinc-800 border-zinc-200 dark:bg-black bg-white rounded-sm p-2 m-2 text-xs">
           <h2>Avg. Reading Time</h2>
@@ -83,7 +83,7 @@ const RightSidebar = async ({ id }: { id: string }) => {
         </div>
 
         <section className="border dark:border-zinc-800 border-zinc-200 dark:bg-black bg-white rounded-sm p-2 m-2 text-sm">
-          <h3 className="ndent-2 font-bold">
+          <h3 className="flex items-center mb-4 font-bold">
             <span className="flex items-center gap-1">
               <FaTags />
               <span>Tags</span>

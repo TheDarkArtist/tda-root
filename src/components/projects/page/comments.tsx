@@ -32,7 +32,7 @@ const Comments = async ({ projectId }: { projectId: string }) => {
 
 const Comment = ({ data }: { data: CommentWithUser }) => {
   return (
-    <div className="flex flex-col rounded-md ">
+    <div id="comments-section" className="flex flex-col rounded-md ">
       <div className="flex items-center">
         <div className="flex gap-2 items-center">
           <Image

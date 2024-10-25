@@ -12,6 +12,7 @@ import {
 import { UserAccess } from "@prisma/client";
 import { getPostBySlug } from "@/lib/actions/posts/get-post";
 import { FaEdit } from "react-icons/fa";
+import { LuChevronRight } from "react-icons/lu";
 
 const Header = async ({ postId }: { postId: string }) => {
   const post = await getPostBySlug(postId);
@@ -28,17 +29,13 @@ const Header = async ({ postId }: { postId: string }) => {
         "border-b dark:border-zinc-800",
       ].join(" ")}
     >
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/posts">All posts</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{post?.slug}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <div className="flex items-center text-sm">
+        <Link className="opacity-80 hover:opacity-100" href="/posts">
+          All posts
+        </Link>
+        <LuChevronRight className="h-5 w-5 text-zinc-600" />
+        <div>{post?.slug}</div>
+      </div>
 
       {session &&
         (session.user.access === UserAccess.ROOT ||

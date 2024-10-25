@@ -13,7 +13,7 @@ import { Button } from "../ui/button";
 import { useEditorDataContext } from "@/providers/editor-data-provider";
 import DeleteButton from "../utils/buttons/delete-button";
 
-const DeleteSection = () => {
+const DeleteSection = ({ type }: { type: "project" | "post" }) => {
   const { data } = useEditorDataContext();
 
   return (
@@ -43,9 +43,9 @@ const DeleteSection = () => {
             <div className="w-full">
               <DeleteButton
                 className="w-full"
-                route="/projects"
+                route={type === "project" ? "/projects" : "/posts"}
                 id={data?.id as string}
-                type="project"
+                type={type}
               />
             </div>
           </div>

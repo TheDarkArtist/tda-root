@@ -1,6 +1,7 @@
 import Footer from "@/components/footer/footer";
 import PostList from "@/components/posts/post-list";
 import CreateButton from "@/components/utils/buttons/create-button";
+import Loader from "@/components/utils/loader";
 import Search from "@/components/utils/search";
 import React, { Suspense } from "react";
 
@@ -46,7 +47,13 @@ const PostPage = ({
               <CreateButton type="post" />
             </Suspense>
           </section>
-          <Suspense fallback={<div>Searching....</div>}>
+          <Suspense
+            fallback={
+              <div className="flex w-full justify-center">
+                <Loader width="28" color="green" strokeWidth="5" />
+              </div>
+            }
+          >
             <PostList query={query} currentPage={currentPage} />
           </Suspense>
         </div>
