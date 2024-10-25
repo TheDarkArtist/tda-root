@@ -29,6 +29,10 @@ const SaveButton = ({
       return;
     }
 
+    // FIX: Not a big issue just need to fix the types here
+    // @ts-ignore
+    const { views, comments, ...rest } = data;
+
     const heading = extractFirstHeading(data.body as string)?.text as string;
     const description = extractFirstParagraph(data.body as string);
 
@@ -52,10 +56,11 @@ const SaveButton = ({
 
         if (type === "project") {
           updatedData = {
-            ...data,
+            ...rest,
             title: heading,
             description,
-            slug: slug,
+            body: data.body,
+            slug: data.slug,
             updatedAt: new Date(),
           };
 
@@ -65,12 +70,13 @@ const SaveButton = ({
           }
         } else if (type === "post") {
           updatedData = {
-            ...data,
             title: heading,
             description: description,
-            slug: slug,
+            body: data.body,
+            tags: data.tags,
+            image: data.image,
+            slug: data.slug,
             updatedAt: new Date(),
-            userId: session.data?.user.id,
           };
 
           const response = await upsertPost(slug, updatedData);
