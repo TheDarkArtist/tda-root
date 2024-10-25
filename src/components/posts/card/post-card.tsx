@@ -47,7 +47,7 @@ const PostCard = ({ post }: { post: PostWithUserViews }) => {
         "group rounded-sm p-0",
         "transition-shadow shadow hover:shadow-lg",
         "dark:hover:shadow-emerald-950",
-        "border border-gray-300 dark:border-zinc-900",
+        "border border-gray-300 dark:border-zinc-800",
       ].join(" ")}
     >
       <Link
@@ -64,7 +64,7 @@ const PostCard = ({ post }: { post: PostWithUserViews }) => {
           />
           <span className="absolute h-48 w-full top-0 left-0" />
         </div>
-        <div className="p-2 px-4 space-y-1">
+        <div className="p-2 w-full px-4 space-y-1 h-40">
           <MetaBar post={post} />
           <Body post={post} />
           <Tags tags={post.tags} />
