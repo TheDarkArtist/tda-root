@@ -37,3 +37,26 @@ export const getProjectBySlug = async (projectSlug: string) => {
     return null;
   }
 };
+
+export const getMinProjectBySlug = async (projectSlug: string) => {
+  try {
+    const response = db.project.findUnique({
+      where: {
+        slug: projectSlug,
+      },
+      select: {
+        slug: true,
+        body: true,
+        updatedAt: true,
+        createdAt: true,
+        views: { select: { id: true } },
+        comments: true,
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.log("Error fetching project by slug, ", error);
+    return null;
+  }
+};
