@@ -22,7 +22,10 @@ const SlugSection = () => {
       <div className="flex justify-between">
         <h2 className="text-2xl mb-6 font-bold">🧭 Change Post Slug</h2>
       </div>
-      <p>Post slug: {data?.slug.trim().toLowerCase().replace(/\s+/g, "-")}</p>
+      <p>
+        Post slug:
+        {data?.slug && data?.slug.trim().toLowerCase().replace(/\s+/g, "-")}
+      </p>
       <Input
         className="bg-white dark:bg-black mt-6"
         value={(data as Project)?.slug || ""}
