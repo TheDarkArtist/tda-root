@@ -11,16 +11,22 @@ const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
     <section
       className={cn(
         "absolute flex items-center justify-between dark:group-hover:text-white",
-        "dark:bg-black bg-white dark:text-white text-white group-hover:text-black",
-        "dark:backdrop-blur-sm backdrop-blur-sm transition-all",
-        "w-full py-1 px-2 top-[10rem] right-0 z-10 rounded-b-md",
-        "dark:backdrop-filter backdrop-filter dark:bg-opacity-50 bg-opacity-20",
-        "group-hover:bg-opacity-100 dark:group-hover:bg-opacity-100"
+        "dark:bg-black bg-black dark:text-white text-white group-hover:text-black",
+        "dark:backdrop-blur-sm backdrop-blur-none transition-all",
+        "w-full py-1 px-2 top-[10rem] right-0 z-10 rounded-b-sm",
+        "dark:backdrop-filter backdrop-filter dark:bg-opacity-50 bg-opacity-30",
+        "group-hover:bg-white dark:group-hover:bg-black ",
+        "group-hover:bg-opacity-100 dark:group-hover:bg-opacity-100",
       )}
     >
-      <div className="flex items-center gap-2 text-xs">
-        <Suspense fallback={<LuEye />}></Suspense>
-        <span>
+      <div className="flex justify-between w-full items-center gap-2 text-sm font-semibold dark:text-zinc-400">
+        <div className="flex items-center gap-0.5">
+          <Suspense fallback={<LuEye />}>
+            <LuEye className="h-4 w-4 mt-0.5" />
+            <span>{project.views.length}</span>
+          </Suspense>
+        </div>
+        <span className="text-xs mr-2">
           {formatDistanceToNow(project.createdAt, { addSuffix: true })}
         </span>
       </div>
@@ -29,7 +35,7 @@ const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
           className="transition-all duration-200 hover:scale-110"
           href={project.repo || ""}
         >
-          <GitHubLogoIcon className="h-6 w-6 dark:text-white text-white group-hover:text-black dark:group-hover:text-white" />
+          <GitHubLogoIcon className="h-5 w-5 mt-0.5 dark:text-white text-white group-hover:text-black dark:group-hover:text-white" />
         </Link>
         <Link
           className="transition-all duration-200 hover:scale-110"
