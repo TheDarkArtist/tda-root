@@ -29,7 +29,7 @@ const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
           className="transition-all duration-200 hover:scale-110"
           href={project.repo || ""}
         >
-          <GitHubLogoIcon className="h-6 w-6 dark:text-white text-white group-hover:text-black dark:group-hvoer:text-white" />
+          <GitHubLogoIcon className="h-6 w-6 dark:text-white text-white group-hover:text-black dark:group-hover:text-white" />
         </Link>
         <Link
           className="transition-all duration-200 hover:scale-110"
