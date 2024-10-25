@@ -77,6 +77,8 @@ const SaveButton = ({
             image: data.image,
             slug: data.slug,
             updatedAt: new Date(),
+            userId: session.data?.user.id,
+            published: data.published,
           };
 
           const response = await upsertPost(slug, updatedData);

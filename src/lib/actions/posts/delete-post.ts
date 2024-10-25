@@ -10,6 +10,8 @@ export const deletePost = async (postId: string) => {
     return { error: "Not authenticated" };
   }
 
+  console.log(postId)
+
   try {
     const response = await db.post.delete({
       where: {

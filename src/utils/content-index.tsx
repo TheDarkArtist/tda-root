@@ -45,7 +45,7 @@ const ContentIndex: React.FC<ContentIndexProps> = ({ content }) => {
   return (
     <nav className="rounded-sm">
       <h1 className="border-b border-gray-200 dark:border-cyan-950 pb-2 text-center text-xl font-bold dark:text-sky-600 text-blue-600">
-        Page Index
+        On this page
       </h1>
       <ul className="overflow-y-auto max-h-screen space-y-1 pt-4 pb-40">
         {headings.map((heading, index) => (
