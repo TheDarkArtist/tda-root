@@ -10,7 +10,7 @@ const CardImage = ({ src }: { src: string }) => {
         alt="card image"
         fill
       />
-      <span className="absolute h-48 w-full top-0 left-0" />
+      <span className="absolute bg-black/50 h-48 w-full top-0 left-0" />
     </div>
   );
 };

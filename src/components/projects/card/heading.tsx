@@ -5,7 +5,7 @@ const Heading = ({ title }: { title: string }) => {
   return (
     <CardHeader
       className={[
-        "absolute top-10 backdrop-filter backdrop-blur-sm",
+        "absolute top-14",
         "group-hover:hidden rounded-t-sm",
         "text-green-600 text-3xl font-black text-center",
         "py-0 px-2",
