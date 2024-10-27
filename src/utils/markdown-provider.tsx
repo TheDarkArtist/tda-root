@@ -79,14 +79,14 @@ const MarkdownRenderer = ({ content }: { content: string }) => {
           <code>
             <pre
               {...props}
-              className="dark:bg-zinc-900 bg-gray-100 text-xs md:text-sm p-4 my-4 rounded overflow-x-auto"
+              className="border-[8px] dark:border-cyan-950/40 dark:bg-zinc-900 bg-white text-xs md:text-sm p-4 my-4 rounded overflow-x-auto dark:bg-dot-cyan-950 bg-dot-gray-400"
             />
           </code>
         ),
         code: ({ node, ...props }) => (
           <code
             {...props}
-            className="dark:bg-zinc-900 bg-gray-100 text-xs md:text-sm rounded px-2"
+            className="dark:bg-zinc-900 bg-white text-xs md:text-sm rounded px-2"
           />
         ),
         table: ({ node, ...props }) => (
