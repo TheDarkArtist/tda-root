@@ -83,21 +83,22 @@ const NavWheel: React.FC = async () => {
   ];
 
   return (
-    <div className="group overflow-hidden">
+    <div
+      className={[
+        "group overflow-hidden",
+        "dark:text-red-400 text-sky-800",
+      ].join(" ")}
+    >
       <div
         className={[
           "fixed -bottom-20 -right-20",
           "dark:bg-red-950 bg-sky-600 h-32 w-32",
           "rounded-full z-40 cursor-pointer",
           "transition-all duration-600 ease-in-out",
-          "dark:bg-grid-sm-red-300 bg-grid-sm-sky-100",
+          "dark:bg-grid-sm-red-600 bg-grid-sm-sky-100",
           "animate-slow-spin group-hover:animate-none",
         ].join(" ")}
-      >
-        <h2 className="ml-4 mt-6 text-white dark:text-red-300">
-          tda
-        </h2>
-      </div>
+      />
       <div
         className={[
           "fixed -bottom-60 -right-60",
@@ -105,6 +106,8 @@ const NavWheel: React.FC = async () => {
           "dark:bg-red-900/20 bg-sky-600/20",
           "group-hover:h-96 group-hover:w-96",
           "rounded-full z-30",
+          "dark:backdrop-filter dark:backdrop-blur-sm",
+          "backdrop-filter backdrop-blur-sm",
           "transition-all duration- ease-in-out",
         ].join(" ")}
       >
@@ -140,6 +143,8 @@ const NavWheel: React.FC = async () => {
           "dark:bg-red-800/20 bg-sky-600/20",
           "group-hover:h-96 group-hover:w-96",
           "rounded-full z-20",
+          "dark:backdrop-filter dark:backdrop-blur-sm",
+          "backdrop-filter backdrop-blur-sm",
           "transition-all duration-700 ease-in-out",
         ].join(" ")}
       >
