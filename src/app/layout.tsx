@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { os } from "@/utils/fonts";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import NavWheel from "@/components/navbar/nav-wheel";
 
 export const metadata: Metadata = {
   title: "Kushagra Sharma",
@@ -32,6 +33,7 @@ export default function RootLayout({
         >
           <Providers>
             <Navbar />
+            <NavWheel />
             {children}
             <Toaster />
           </Providers>
