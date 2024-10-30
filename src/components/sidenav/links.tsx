@@ -28,7 +28,7 @@ const Links = () => {
     {
       name: "Blogs",
       href: "/blogs",
-      isActive: pathname.includes("/blogs") ? true : false,
+      isActive: pathname.includes("/posts") ? true : false,
     },
     {
       name: "Info",
