@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { currentUser } from "@/lib/actions/utils/auth";
 import TooltipLink from "@/components/utils/tooltip-link";
+import { FcMindMap } from "react-icons/fc";
 
 interface Link {
   href: string;
@@ -91,14 +92,15 @@ const NavWheel: React.FC = async () => {
     >
       <div
         className={[
-          "fixed -bottom-20 -right-20",
-          "dark:bg-red-950 bg-sky-600 h-32 w-32",
+          "fixed -bottom-10 -right-10",
+          "flex justify-center items-center h-32 w-32",
           "rounded-full z-40 cursor-pointer",
           "transition-all duration-600 ease-in-out",
-          "dark:bg-grid-sm-red-600 bg-grid-sm-sky-100",
-          "animate-slow-spin group-hover:animate-none",
+          "hover:animate-spin hover:repeat-1"
         ].join(" ")}
-      />
+      >
+        <FcMindMap className="size-10" />
+      </div>
       <div
         className={[
           "fixed -bottom-60 -right-60",
