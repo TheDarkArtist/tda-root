@@ -16,7 +16,7 @@ const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
         "w-full py-1 px-2 top-[10rem] right-0 z-10 rounded-b-sm",
         "dark:backdrop-filter backdrop-filter dark:bg-opacity-50 bg-opacity-30",
         "group-hover:bg-white dark:group-hover:bg-black ",
-        "group-hover:bg-opacity-100 dark:group-hover:bg-opacity-100",
+        "group-hover:bg-opacity-100 dark:group-hover:bg-opacity-100"
       )}
     >
       <div className="flex justify-between w-full items-center gap-2 text-sm font-semibold dark:text-zinc-400">
@@ -31,18 +31,22 @@ const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
         </span>
       </div>
       <span className="flex gap-2">
-        <Link
-          className="transition-all duration-200 hover:scale-110"
-          href={project.repo || ""}
-        >
-          <GitHubLogoIcon className="h-5 w-5 mt-0.5 dark:text-white text-white group-hover:text-black dark:group-hover:text-white" />
-        </Link>
-        <Link
-          className="transition-all duration-200 hover:scale-110"
-          href={project.link || ""}
-        >
-          <ExternalLinkIcon className="h-6 w-6 dark:text-white text-white group-hover:text-black dark:group-hover:text-white" />
-        </Link>
+        {project.repo && (
+          <Link
+            className="transition-all duration-200 hover:scale-110"
+            href={project.repo || ""}
+          >
+            <GitHubLogoIcon className="h-5 w-5 mt-0.5 dark:text-white text-white group-hover:text-black dark:group-hover:text-white" />
+          </Link>
+        )}
+        {project.link && (
+          <Link
+            className="transition-all duration-200 hover:scale-110"
+            href={project.link || ""}
+          >
+            <ExternalLinkIcon className="h-6 w-6 dark:text-white text-white group-hover:text-black dark:group-hover:text-white" />
+          </Link>
+        )}
       </span>
     </section>
   );
