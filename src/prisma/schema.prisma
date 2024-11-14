@@ -24,6 +24,7 @@ model User {
   id                    String                 @id @default(cuid())
   name                  String?
   username              String                 @unique
+  bio                   String?
   email                 String?                @unique
   emailVerified         DateTime?              @map("email_verified")
   image                 String?
@@ -38,6 +39,7 @@ model User {
   projects Project[]
   comments Comment[]
 
+  @@index([id, username, email])
   @@map("users")
 }
 
@@ -114,7 +116,7 @@ model Post {
   commnets    Comment[]
 
   @@unique([slug])
-  @@index([userId])
+  @@index([userId, slug, id])
 }
 
 model Project {
@@ -137,7 +139,7 @@ model Project {
   comments    Comment[]
 
   @@unique([slug])
-  @@index([userId])
+  @@index([userId, id, slug])
 }
 
 model Comment {
