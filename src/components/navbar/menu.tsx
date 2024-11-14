@@ -56,13 +56,13 @@ const Menu = async () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mt-2 w-40" align="end">
         <DropdownMenuItem className="cursor-pointer" asChild>
-          <Link href={`/u/${session.user.username}`}>
+          <Link href={`/${session.user.username}`}>
             <LuSettings className="mr-2" />
             Profile
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer" asChild>
-          <Link href={`/u/${session.user.username}/settings`}>
+          <Link href={`/settings`}>
             <LuSettings className="mr-2" />
             Settings
           </Link>
