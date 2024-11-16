@@ -3,9 +3,9 @@
 import { NewPasswordSchema } from "@/lib/zod";
 import * as z from "zod";
 import { getPasswordResetTokenByToken } from "./password-reset-token";
-import { getUserByEmail } from "../utils/user";
 import { db } from "@/lib/db";
 import { hashPassword } from "@/lib/hashing";
+import { getUserByEmail } from "../users/get-user";
 
 export const newPassword = async (
   values: z.infer<typeof NewPasswordSchema>,

@@ -4,8 +4,11 @@ import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 
 import { LoginSchema } from "@/lib/zod";
-import { getUserByEmail, getUserByUsername } from "@/lib/actions/utils/user";
 import { verifyPassword } from "@/lib/hashing";
+import {
+  getUserByEmail,
+  getUserByUsername,
+} from "@/lib/actions/users/get-user";
 
 export default {
   providers: [

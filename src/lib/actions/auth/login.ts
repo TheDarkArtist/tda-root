@@ -4,7 +4,6 @@ import { signIn } from "@/lib/auth";
 import { LoginSchema } from "@/lib/zod";
 import { AuthError } from "next-auth";
 import * as z from "zod";
-import { getUserByEmail, getUserByUsername } from "../utils/user";
 import {
   generateTwoFactorToken,
   generateVerificationToken,
@@ -15,6 +14,7 @@ import { db } from "@/lib/db";
 import { getTwoFactorConfirmationByUserId } from "./two-factor-confirmation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/lib/routes";
 import { verifyPassword } from "@/lib/hashing";
+import { getUserByEmail, getUserByUsername } from "../users/get-user";
 
 export const login = async (
   values: z.infer<typeof LoginSchema>,
