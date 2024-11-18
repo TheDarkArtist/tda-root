@@ -5,12 +5,12 @@ const CardImage = ({ src }: { src: string }) => {
   return (
     <div className="relative h-48 w-full overflow-hidden rounded-t-sm">
       <Image
-        className="rounded-sm brightness-200 darkbrightness-100"
+        className="rounded-sm"
         src={src || "/img/tda.png"}
         alt="card image"
         fill
       />
-      <span className="absolute bg-black/50 h-48 w-full top-0 left-0" />
+      <span className="absolute h-48 w-full top-0 left-0" />
     </div>
   );
 };

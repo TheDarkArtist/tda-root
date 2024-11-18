@@ -5,13 +5,13 @@ const Heading = ({ title }: { title: string }) => {
   return (
     <CardHeader
       className={[
-        "absolute top-14",
-        "group-hover:hidden rounded-t-sm",
-        "text-green-600 text-3xl font-black text-center",
+        "absolute top-0 left-0",
+        "bg-black rounded-br-md",
+        "text-green-600 font-black",
         "py-0 px-2",
       ].join(" ")}
     >
-      <h2 style={{ textShadow: "darkred 3px 2px 1px" }}>{title}</h2>
+      <h2 style={{ textShadow: "darkred 2px 1px 1px" }}>{title}</h2>
     </CardHeader>
   );
 };
