@@ -30,7 +30,7 @@ const PostCard = ({ post }: { post: PostWithUserViews }) => {
 
   useEffect(() => {
     fetchIP();
-  }, [ip]);
+  }, []);
 
   const handleClick = async () => {
     await incrementView(
@@ -48,7 +48,7 @@ const PostCard = ({ post }: { post: PostWithUserViews }) => {
         "transition-shadow shadow hover:shadow-lg",
         "dark:hover:shadow-emerald-950",
         "border border-gray-300 dark:border-zinc-800",
-        "dark:active:border-sky-600"
+        "dark:active:border-sky-600",
       ].join(" ")}
     >
       <Link

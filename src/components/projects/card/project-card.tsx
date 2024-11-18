@@ -29,7 +29,7 @@ const ProjectCard = ({ project }: { project: ProjectWithUserViews }) => {
 
   useEffect(() => {
     fetchIP();
-  }, [ip]);
+  }, []);
 
   const handleClick = async () => {
     await incrementView(
