@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,29 +13,11 @@ import { PostWithUserViews } from "@/lib/types";
 const PostCard = ({ post }: { post: PostWithUserViews }) => {
   const session = useSession();
 
-  const [ip, setIp] = useState<string | null>();
-
-  const fetchIP = async () => {
-    try {
-      const res = await fetch("/api/tda/publicip");
-      const data = await res.json();
-
-      setIp(data.ip);
-    } catch (error) {
-      console.error("Error fetching IP:", error);
-      setIp("unknown");
-    }
-  };
-
-  useEffect(() => {
-    fetchIP();
-  }, [ip]);
-
   const handleClick = async () => {
     await incrementView(
       post.id,
       session.data?.user.username as string,
-      ip as string,
+      "unknown",
       session.data?.user.id
     );
   };
@@ -48,7 +29,7 @@ const PostCard = ({ post }: { post: PostWithUserViews }) => {
         "transition-shadow shadow hover:shadow-lg",
         "dark:hover:shadow-emerald-950",
         "border border-gray-300 dark:border-zinc-800",
-        "dark:active:border-sky-600"
+        "dark:active:border-sky-600",
       ].join(" ")}
     >
       <Link

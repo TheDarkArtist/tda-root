@@ -7,35 +7,17 @@ import CardImage from "./card-image";
 import { useSession } from "next-auth/react";
 import { incrementView } from "@/lib/actions/projects/increment-view";
 import { ProjectWithUserViews } from "@/lib/types";
-import { useEffect, useState } from "react";
 import Heading from "./heading";
 import Description from "./description";
 
 const ProjectCard = ({ project }: { project: ProjectWithUserViews }) => {
   const session = useSession();
-  const [ip, setIp] = useState<string | null>();
-
-  const fetchIP = async () => {
-    try {
-      const res = await fetch("/api/tda/publicip");
-      const data = await res.json();
-
-      setIp(data.ip);
-    } catch (error) {
-      console.error("Error fetching IP:", error);
-      setIp("unknown");
-    }
-  };
-
-  useEffect(() => {
-    fetchIP();
-  }, [ip]);
 
   const handleClick = async () => {
     await incrementView(
       project.id,
       session.data?.user.username as string,
-      ip as string,
+      "unknown",
       session.data?.user.id
     );
   };
