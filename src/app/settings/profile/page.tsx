@@ -1,7 +1,12 @@
 import Bio from "@/components/settings/profile/bio";
 import Name from "@/components/settings/profile/name";
 import Picture from "@/components/settings/profile/picture";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Profile",
+};
 
 const ProfilePage = () => {
   return (

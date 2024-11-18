@@ -10,16 +10,48 @@ import {
   HeaderSkeleton,
   RightSidebarSkeleton,
 } from "@/components/skeletons/project";
+import { Metadata } from "next";
+import { getPostBySlug } from "@/lib/actions/posts/get-post";
 
 interface PostPageParams {
   params: Params;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const post = await getPostBySlug(params.postId);
+
+  return {
+    title: post?.title,
+    description: post?.description,
+    keywords: post?.tags,
+    authors: [{ name: "Kushagra Sharma", url: "https://www.thedarkartist.in" }],
+    robots: "index, follow",
+    publisher: "Kushagra Sharma",
+    twitter: {
+      card: "summary_large_image",
+      title: post?.title,
+      description: post?.description as string,
+      site: "@TheDarkArtist",
+      creator: "@TheDarkArtist",
+    },
+    openGraph: {
+      title: post?.title,
+      type: "website",
+      url: `https://thedarkartist.in/posts/${post?.slug}`,
+      description: post?.description as string,
+      images: post?.image as string,
+    },
+  };
 }
 
 const ProjectPage: React.FC<PostPageParams> = ({ params }) => {
   return (
     <main className="relative overflow-hidden h-full w-full">
       <div className="sm:grid grid-cols-12 max-w-screen-2xl mx-auto w-full">
-
         <div className="h-screen pb-40 hidden lg:block col-span-3">
           <div className="border-r w-full dark:border-zinc-900 col-span-3 hidden lg:block sticky top-14 h-[80%]">
             <LeftSidebar id={params.postId} />
@@ -43,7 +75,6 @@ const ProjectPage: React.FC<PostPageParams> = ({ params }) => {
             <RightSidebar id={params.postId} />
           </Suspense>
         </aside>
-
       </div>
       <div className="fixed right-4 bottom-4"></div>
     </main>

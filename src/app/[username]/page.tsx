@@ -4,6 +4,12 @@ import Note from "@/components/utils/note";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import React from "react";
 
+export async function generateMetadata({ params }: { params: Params }) {
+  return {
+    title: params.username,
+  };
+}
+
 const ProfilePage = ({ params }: { params: Params }) => {
   return (
     <main className="pt-12 h-full flex flex-col justify-between">

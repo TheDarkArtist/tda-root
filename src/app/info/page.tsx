@@ -18,6 +18,43 @@ import Testimonials from "@/components/info/testimonial";
 import SocialLinks from "@/components/info/links";
 import Note from "@/components/utils/note";
 import Footer from "@/components/footer/footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Kushagra Sharma",
+  description:
+    "Comprehensive information about Kushagra Sharma, including professional background, skills, interests, and personal insights.",
+  keywords: [
+    "Kushagra Sharma info",
+    "About Kushagra Sharma",
+    "Portfolio info",
+    "Full Stack Developer",
+    "Software engineering",
+    "Developer background",
+    "Tech enthusiast",
+    "Personal insights",
+    "Professional profile",
+  ],
+  authors: [{ name: "Kushagra Sharma", url: "https://www.thedarkartist.in" }],
+  robots: "index, follow",
+  publisher: "Kushagra Sharma",
+  twitter: {
+    card: "summary_large_image",
+    title: "About Kushagra Sharma",
+    description:
+      "Discover detailed information about Kushagra Sharma's professional background, expertise, and journey in technology.",
+    site: "@TheDarkArtist",
+    creator: "@TheDarkArtist",
+  },
+  openGraph: {
+    title: "About Kushagra Sharma",
+    type: "website",
+    url: "https://thedarkartist.in/info",
+    description:
+      "Detailed insights into the professional and personal journey of Kushagra Sharma, a passionate full stack developer and technology enthusiast.",
+    images: "https://thedarkartist.in/assets/info-preview.png",
+  },
+};
 
 const InfoPage = () => {
   return (

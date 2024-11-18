@@ -6,7 +6,7 @@ import GithubRepoSection from "../github-repo-section";
 import LivePreviewSection from "../live-preview-section";
 import Note from "@/components/utils/note";
 
-const MetaPage = () => {
+const MetaPage = ({ type }: { type: "project" | "post" }) => {
   return (
     <div className="h-full space-y-4 p-4 overflow-y-scroll">
       <Note
@@ -14,8 +14,12 @@ const MetaPage = () => {
         description="Your post will only get saved when you press the save button, don't forget to save it"
       />
       <TagsSection />
-      <GithubRepoSection />
-      <LivePreviewSection />
+      {type === "project" && (
+        <>
+          <GithubRepoSection />
+          <LivePreviewSection />
+        </>
+      )}
     </div>
   );
 };

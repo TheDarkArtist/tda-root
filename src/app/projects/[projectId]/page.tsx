@@ -10,9 +10,42 @@ import {
   HeaderSkeleton,
   RightSidebarSkeleton,
 } from "@/components/skeletons/project";
+import { Metadata } from "next";
+import { getProjectBySlug } from "@/lib/actions/projects/get-project";
 
 interface PostPageParams {
   params: Params;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const project = await getProjectBySlug(params.projectId);
+
+  return {
+    title: project?.title,
+    description: project?.description,
+    keywords: project?.tags,
+    authors: [{ name: "Kushagra Sharma", url: "https://www.thedarkartist.in" }],
+    robots: "index, follow",
+    publisher: "Kushagra Sharma",
+    twitter: {
+      card: "summary_large_image",
+      title: project?.title,
+      description: project?.description as string,
+      site: "@TheDarkArtist",
+      creator: "@TheDarkArtist",
+    },
+    openGraph: {
+      title: project?.title,
+      type: "website",
+      url: `https://thedarkartist.in/projects/${project?.slug}`,
+      description: project?.description as string,
+      images: project?.image as string,
+    },
+  };
 }
 
 const ProjectPage: React.FC<PostPageParams> = ({ params }) => {

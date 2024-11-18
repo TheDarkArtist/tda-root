@@ -1,6 +1,11 @@
 import Password from "@/components/settings/security/password";
 import TwoFA from "@/components/settings/security/two-fa";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Security",
+};
 
 const SecurityPage = () => {
   return (

@@ -1,7 +1,15 @@
 import GoToPublicProfile from "@/components/settings/go-to-public-profile";
 import LayoutCard from "@/components/settings/layout-card";
 import Sidebar from "@/components/settings/sidebar";
+import { Metadata } from "next";
 import React, { ReactNode } from "react";
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s Settings",
+    default: "Settings",
+  },
+};
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
