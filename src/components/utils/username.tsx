@@ -1,4 +1,4 @@
-import { getUserById } from "@/lib/actions/utils/user";
+import { getUserById } from "@/lib/actions/users/get-user";
 import Link from "next/link";
 import React from "react";
 

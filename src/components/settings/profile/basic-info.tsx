@@ -1,4 +1,4 @@
-import { getUserByUsername } from "@/lib/actions/utils/user";
+import { getUserByUsername } from "@/lib/actions/users/get-user";
 import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import React from "react";
