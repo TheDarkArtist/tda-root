@@ -33,7 +33,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Kushgra Sharma", url: "https://www.thedarkartist.in" }],
   robots: "index, follow",
   referrer: "origin-when-cross-origin",
-  viewport: "width=device-width, initial-scale=1.0",
   creator: "Kushagra Sharma | TheDarkArtist",
   publisher: "Kushagra Sharma | TheDarkArtist",
   twitter: {

@@ -37,8 +37,7 @@ export const metadata: Metadata = {
     url: "https://thedarkartist.in/posts",
     description:
       "Quality articles on technology, programming, and life insights.",
-    images: "https://thedarkartist.in/assets/blog-preview.png",
-    //TODO: Add this image to assets in fucture when have enough blogs to show
+    images: "https://thedarkartist.in/assets/posts-preview.png",
   },
 };
 
