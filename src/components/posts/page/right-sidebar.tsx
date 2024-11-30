@@ -6,6 +6,7 @@ import { BiSolidUpvote } from "react-icons/bi";
 import { FaComments, FaTags } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import Image from "next/image";
+import Link from "next/link";
 
 const RightSidebar = async ({ id }: { id: string }) => {
   const post = await getPostBySlug(id);
@@ -19,13 +20,15 @@ const RightSidebar = async ({ id }: { id: string }) => {
               Author
             </p>
           </div>
-          <Image
-            className="border border-gray-800 mx-auto rounded-full"
-            src={post?.user?.image || ""}
-            alt={post?.user?.username as string}
-            height={64}
-            width={64}
-          />
+          <Link href={`/${post?.user?.username}`}>
+            <Image
+              className="border border-gray-800 hover:border-red-600 mx-auto h-24 w-24 rounded-full"
+              src={post?.user?.image || ""}
+              alt={post?.user?.username as string}
+              height={128}
+              width={128}
+            />
+          </Link>
           <div className="pb-4">
             <p className="text-lg font-semibold dark:text-gray-400">
               {post?.user?.name}
