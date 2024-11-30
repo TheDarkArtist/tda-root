@@ -6,7 +6,9 @@ import { FC, useTransition } from "react";
 import { toast } from "sonner";
 
 interface PasswordFormProps {
-  handlePasswordChange: (formData: FormData) => Promise<{ error?: string }>;
+  handlePasswordChange: (data: {
+    password: string;
+  }) => Promise<{ error: string | null }>;
 }
 
 const PasswordForm: FC<PasswordFormProps> = ({ handlePasswordChange }) => {
@@ -16,11 +18,12 @@ const PasswordForm: FC<PasswordFormProps> = ({ handlePasswordChange }) => {
     e.preventDefault();
 
     const formData = new FormData(e.target as HTMLFormElement);
+    const password = formData.get("password")?.toString().trim() || "";
 
     startTransition(async () => {
-      const response = await handlePasswordChange(formData);
+      const response = await handlePasswordChange({ password });
 
-      if (response && response.error) {
+      if (response.error) {
         toast.error(response.error);
       } else {
         toast.success("Password updated successfully!");

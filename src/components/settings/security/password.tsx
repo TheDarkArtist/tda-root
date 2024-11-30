@@ -19,36 +19,40 @@ const Password = async () => {
     return notFound();
   }
 
-  const handlePasswordChange = async (formData: FormData) => {
+  const handlePasswordChange = async ({
+    password,
+  }: {
+    password: string;
+  }): Promise<{ error: string | null }> => {
     "use server";
 
-    const newPassword = formData.get("password")?.toString().trim();
-
-    if (!newPassword) {
+    if (!password) {
       return { error: "Password cannot be empty" };
     }
 
-    if (newPassword.length < 6) {
+    if (password.length < 6) {
       return { error: "Password must be at least 6 characters long" };
     }
 
     const passwordMatch = verifyPassword(
       user.password as string,
       user.salt as string,
-      newPassword
+      password
     );
 
     if (passwordMatch) {
       return { error: "New password cannot be the same as the current one." };
     }
 
-    const { hash, salt } = hashPassword(newPassword);
+    const { hash, salt } = hashPassword(password);
 
     await updateUserByUsername(user?.username as string, {
       ...user,
       password: hash,
       salt,
     });
+
+    return { error: null };
   };
 
   return <PasswordForm handlePasswordChange={handlePasswordChange} />;
