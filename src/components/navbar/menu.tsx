@@ -43,6 +43,7 @@ const Menu = async () => {
           {session.user.image ? (
             <Image
               src={session.user.image || "/img/me.jpg"}
+              className="rounded-full"
               alt="user image"
               height={28}
               width={28}

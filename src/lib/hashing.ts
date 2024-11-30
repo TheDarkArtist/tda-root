@@ -18,3 +18,7 @@ export function verifyPassword(
     .digest("hex");
   return hash === storedHash;
 }
+
+export function passwordStars(password: string) {
+  return "*".repeat(password.length);
+}

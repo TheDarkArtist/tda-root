@@ -1,27 +1,62 @@
-import { getUserById } from "@/lib/actions/users/get-user";
+import { getUserByUsername } from "@/lib/actions/users/get-user";
+import { updateUserByUsername } from "@/lib/actions/users/update-user";
 import { auth } from "@/lib/auth";
-import React from "react";
+import { User } from "@prisma/client";
+import { notFound, redirect } from "next/navigation";
+import ChangeUsernameForm from "./change-username-form";
 
 const Username = async () => {
   const session = await auth();
-  const user = await getUserById(session?.user.id as string);
+
+  if (!session) {
+    return notFound();
+  }
+
+  const user = await getUserByUsername(session?.user.username as string);
+
+  if (!user) {
+    return notFound();
+  }
+
+  const handleUsernameChange = async (formData: FormData) => {
+    "use server";
+
+    const newUsername = formData.get("username")?.toString().trim();
+
+    if (!newUsername) {
+      return { error: "Username cannot be empty" };
+    }
+
+    if (newUsername.length < 3) {
+      return { error: "Username must be at least 3 characters long" };
+    }
+
+    if (user?.username === newUsername) {
+      return { error: "New username cannot be the same as the current one." };
+    }
+
+    const existingUser = await getUserByUsername(newUsername);
+
+    if (existingUser?.id !== user?.id && existingUser) {
+      return { error: "Username already exists" };
+    }
+
+    await updateUserByUsername(
+      user?.username as string,
+      {
+        ...user,
+        username: newUsername,
+      } as User
+    );
+
+    redirect("/settings/account");
+  };
+
   return (
-    <div className="w-full border border-zinc-600 rounded-sm p-4 bg-zinc-950">
-      <h2 className="text-sm sm:text-2xl font-semibold">
-        Change your username
-      </h2>
-      <div className="flex sm:flex-row flex-col gap-4 my-4">
-        <input
-          className="px-2 py-0.5 text-sm bg-zinc-900 border border-zinc-800 rounded-sm w-full max-w-80"
-          type="text"
-          placeholder="Your username"
-          value={user?.username}
-        />
-        <button className="bg-green-700 px-4 py-0.5 rounded-sm text-white text-sm">
-          Save
-        </button>
-      </div>
-    </div>
+    <ChangeUsernameForm
+      user={user}
+      handleUsernameChange={handleUsernameChange}
+    />
   );
 };
 

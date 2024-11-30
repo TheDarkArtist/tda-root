@@ -1,6 +1,6 @@
 import Username from "@/components/settings/account/username";
 import { Metadata } from "next";
-import React from "react";
+import React, { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -8,8 +8,11 @@ export const metadata: Metadata = {
 
 const AccountPage = () => {
   return (
-    <div className="p-4 w-full">
-      <Username />
+    <div className="w-full p-4 space-y-8">
+      <h1 className="text-2xl">Account settings</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Username />
+      </Suspense>
     </div>
   );
 };

@@ -2,9 +2,14 @@ import { auth } from "@/lib/auth";
 import Image from "next/image";
 import React from "react";
 import ProfileAvatar from "../utils/profile-avatar";
+import { notFound } from "next/navigation";
 
 const LayoutCard = async () => {
   const session = await auth();
+
+  if (!session) {
+    return notFound();
+  }
 
   return (
     <div className="flex gap-2 items-center w-full p-4">
@@ -12,8 +17,10 @@ const LayoutCard = async () => {
         {session?.user.image ? (
           <Image
             src={session?.user.image as string | ""}
-            className=""
+            className="rounded-full bg-top size-14"
             alt={`${session?.user.username}'s profile picture`}
+            width={200}
+            height={200}
           />
         ) : (
           <ProfileAvatar />

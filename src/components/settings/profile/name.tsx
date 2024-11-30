@@ -1,19 +1,52 @@
-import React from "react";
+import { getUserByUsername } from "@/lib/actions/users/get-user";
+import { updateUserByUsername } from "@/lib/actions/users/update-user";
+import { auth } from "@/lib/auth";
+import { User } from "@prisma/client";
+import { notFound, redirect } from "next/navigation";
+import ChangeNameForm from "./name-change-form";
 
-const Name = () => {
-  return (
-    <div className="border rounded-sm bg-zinc-950 border-zinc-600 p-4">
-      <h2 className="font-bold">Name</h2>
-      <input
-        className="my-2 px-2 py-0.5 text-sm bg-zinc-900 border border-zinc-800 rounded-sm w-full max-w-80"
-        type="text"
-      />
-      <p className="text-xs text-zinc-400">
-        Your name may appear around the site, in comments, or posts as author in
-        posts you write.
-      </p>
-    </div>
-  );
+const Name = async () => {
+  const session = await auth();
+
+  if (!session) {
+    return notFound();
+  }
+
+  const user = await getUserByUsername(session?.user.username as string);
+
+  if (!user) {
+    return notFound();
+  }
+
+  const handleNameChange = async (formData: FormData) => {
+    "use server";
+
+    const newName = formData.get("name")?.toString().trim();
+
+    if (!newName) {
+      return { error: "Name cannot be empty" };
+    }
+
+    if (newName.length < 3) {
+      return { error: "Name must be at least 3 characters long" };
+    }
+
+    if (user?.name === newName) {
+      return { error: "New name cannot be the same as the current one." };
+    }
+
+    await updateUserByUsername(
+      user?.name as string,
+      {
+        ...user,
+        name: newName,
+      } as User
+    );
+
+    redirect("/settings/profile");
+  };
+
+  return <ChangeNameForm user={user} handleNameChange={handleNameChange} />;
 };
 
 export default Name;

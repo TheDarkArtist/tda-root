@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex pt-14 max-w-screen-xl h-full w-full mx-auto">
+    <div className="flex pt-14 max-w-screen-xl w-full mx-auto">
       <div className="w-full">
         <div className="flex justify-between items-center px-4">
           <LayoutCard />

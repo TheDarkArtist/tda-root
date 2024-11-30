@@ -11,11 +11,11 @@ const TDAContact = () => {
       <div>
         <div className="flex items-center">
           <Image
-            src="https://via.placeholder.com/150"
+            src="/img/me.jpg"
             alt="Profile"
             height={64}
             width={64}
-            className="rounded-full border-2 border-blue-500"
+            className="rounded-full border-2 dark:border-blue-800 border-blue-600"
           />
           <div className="ml-4">
             <h2 className="text-xl font-bold text-gray-800 dark:text-white">
