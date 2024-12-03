@@ -37,7 +37,7 @@ const PostCard = ({ post }: { post: PostWithUserViews }) => {
         href={`/posts/${post.slug}`}
         onClick={handleClick}
       >
-        <div className="relative h-0 md:h-40 min-w-64 overflow-hidden rounded-l-sm">
+        <div className="relative h-0 sm:h-40 min-w-64 overflow-hidden rounded-l-sm">
           <Image
             className="rounded-l-sm"
             src={post.image || "/img/yellow-headphones.png"}

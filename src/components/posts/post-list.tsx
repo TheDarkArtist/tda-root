@@ -7,6 +7,7 @@ interface PostListProps {
   currentPage?: number;
   published?: boolean;
   limit?: number;
+  userId?: string;
 }
 
 const PostList: React.FC<PostListProps> = async ({
@@ -14,8 +15,9 @@ const PostList: React.FC<PostListProps> = async ({
   published,
   currentPage,
   limit,
+  userId = undefined,
 }) => {
-  const posts = await getPosts(published, query, limit);
+  const posts = await getPosts(published, query, limit, userId);
 
   return (
     <section className="grid grid-cols-1 gap-4">

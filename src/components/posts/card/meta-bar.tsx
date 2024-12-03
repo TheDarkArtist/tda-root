@@ -15,7 +15,7 @@ const MetaBar = ({ post }: { post: PostWithUserViews }) => {
           {formatDistanceToNow(post.createdAt, { addSuffix: true })}
         </span>
       </div>
-      <div className="text-xs sm:text-sm">by {post.user?.username}</div>
+      <div className="text-xs md:text-sm">by {post.user?.username}</div>
     </div>
   );
 };
