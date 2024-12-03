@@ -17,13 +17,17 @@ const Body = ({ post }: { post: Post }) => {
         </span>
       </CardHeader>
       <CardDescription>
-        <span className="hidden sm:text-xs sm:block break-all">
-          {Md2Text(post.description?.substring(0, 115) as string)}
-          {post.description?.substring(300) && <span>...</span>}
-        </span>
         <span className="sm:hidden text-xs break-all">
           {post.description?.substring(0, 150)}
           {post.description?.substring(150) && <span>...</span>}
+        </span>
+        <span className="hidden sm:text-xs lg:hidden sm:block break-all">
+          {Md2Text(post.description?.substring(0, 115) as string)}
+          {post.description?.substring(300) && <span>...</span>}
+        </span>
+        <span className="hidden text-xs lg:block break-all">
+          {Md2Text(post.description?.substring(0, 480) as string)}
+          {post.description?.substring(480) && <span>...</span>}
         </span>
       </CardDescription>
     </>
