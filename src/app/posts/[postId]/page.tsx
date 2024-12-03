@@ -12,6 +12,7 @@ import {
 } from "@/components/skeletons/project";
 import { Metadata } from "next";
 import { getPostBySlug } from "@/lib/actions/posts/get-post";
+import Loader from "@/components/utils/loader";
 
 interface PostPageParams {
   params: Params;
@@ -50,34 +51,35 @@ export async function generateMetadata({
 
 const ProjectPage: React.FC<PostPageParams> = ({ params }) => {
   return (
-    <main className="relative overflow-hidden h-full w-full">
-      <div className="sm:grid grid-cols-12 max-w-screen-2xl mx-auto w-full">
-        <div className="h-screen pb-40 hidden lg:block col-span-3">
-          <div className="border-r w-full dark:border-zinc-900 col-span-3 hidden lg:block sticky top-14 h-[80%]">
+    <div className="grid grid-cols-1 md:grid-cols-12 h-full">
+      <div className="hidden md:flex justify-center overflow-y-auto col-span-3">
+        <div className="max-w-sm w-full">
+          <Suspense fallback={<RightSidebarSkeleton />}>
             <LeftSidebar id={params.postId} />
-          </div>
-        </div>
-
-        <article className="scroll-smooth col-span-8 lg:col-span-6 dark:bg-grid-sm-zinc-600 bg-grid-sm-gray-200 overflow-y-auto max-h-screen pb-20">
-          <Suspense fallback={<HeaderSkeleton />}>
-            <Header postId={params.postId} />
           </Suspense>
-          <div className="p-4 mt-10 bg-white dark:bg-zinc-950">
-            <Suspense fallback={<BodySkeleton />}>
-              <Body postId={params.postId} />
-            </Suspense>
-          </div>
-          <Footer postId={params.postId} />
-        </article>
-
-        <aside className="border-l p-2 dark:border-zinc-900 col-span-4 lg:col-span-3 hidden sm:block sticky top-0 h-screen">
+        </div>
+      </div>
+      <div className="bg-white dark:bg-zinc-950 overflow-y-auto scroll-smooth col-span-6 md:col-span-9 lg:col-span-6">
+        <Suspense fallback={<HeaderSkeleton />}>
+          <Header postId={params.postId} />
+        </Suspense>
+        <div className="max-w-screen-md mx-auto mt-12 p-4">
+          <Suspense fallback={<BodySkeleton />}>
+            <Body postId={params.postId} />
+          </Suspense>
+          <Suspense fallback={<Loader />}>
+            <Footer postId={params.postId} />
+          </Suspense>
+        </div>
+      </div>
+      <div className="hidden lg:flex justify-center overflow-y-auto col-span-3">
+        <div className="max-w-sm w-full">
           <Suspense fallback={<RightSidebarSkeleton />}>
             <RightSidebar id={params.postId} />
           </Suspense>
-        </aside>
+        </div>
       </div>
-      <div className="fixed right-4 bottom-4"></div>
-    </main>
+    </div>
   );
 };
 

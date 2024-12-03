@@ -5,7 +5,13 @@ import React from "react";
 const LeftSidebar = async ({ id }: { id: string }) => {
   const content = await getPostBySlug(id);
   return (
-    <div className="sticky top-14 bg-white dark:bg-black m-4 p-2 text-sm rounded-sm">
+    <div className="bg-white dark:bg-transparent pt-14">
+      <div className="sticky top-12 px-2 backdrop-filter backdrop-blur-lg">
+        <h2 className="text-xl font-semibold px-2 text-cyan-600">
+          ON THIS PAGE
+        </h2>
+        <hr className="border-cyan-600/50" />
+      </div>
       <ContentIndex content={content?.body as string} />
     </div>
   );

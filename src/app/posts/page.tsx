@@ -76,13 +76,19 @@ const PostPage = ({
             </p>
           </section>
 
-          <section className="bg-white dark:bg-zinc-950 h-min z-20 my-10 p-4 flex gap-4 items-center rounded-md">
+          <section
+            className={[
+              "flex gap-4 items-center rounded-md",
+              "h-min z-20 my-10 p-4",
+            ].join(" ")}
+          >
             <Search placeholder="Search posts..." />
 
             <Suspense fallback={<div></div>}>
               <CreateButton type="post" />
             </Suspense>
           </section>
+
           <Suspense
             fallback={
               <div className="flex w-full justify-center">
@@ -90,7 +96,7 @@ const PostPage = ({
               </div>
             }
           >
-            <PostList query={query} currentPage={currentPage} />
+            <PostList published query={query} currentPage={currentPage} />
           </Suspense>
         </div>
       </div>

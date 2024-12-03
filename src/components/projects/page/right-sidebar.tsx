@@ -13,7 +13,7 @@ const RightSidebar = async ({ id }: { id: string }) => {
   const comments = await getComments(id);
   const views = await getViews(content?.id as string);
   return (
-    <div className="sticky top-12 space-y-4 w-72">
+    <div className="sticky top-12 space-y-4 w-64">
       <div className="overflow-y-auto">
         <section className="border dark:border-zinc-800 border-zinc-200 dark:bg-black bg-white rounded-sm p-2 m-2 text-xs">
           <h2>Avg. Reading Time</h2>

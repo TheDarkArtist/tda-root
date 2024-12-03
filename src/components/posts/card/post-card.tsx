@@ -28,7 +28,7 @@ const PostCard = ({ post }: { post: PostWithUserViews }) => {
         "group rounded-sm p-0",
         "transition-shadow shadow hover:shadow-lg",
         "dark:hover:shadow-emerald-950",
-        "border border-gray-300 dark:border-zinc-800",
+        "border border-gray-300 dark:border-zinc-700",
         "dark:active:border-sky-600",
       ].join(" ")}
     >

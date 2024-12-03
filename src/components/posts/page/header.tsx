@@ -1,14 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { UserAccess } from "@prisma/client";
 import { getPostBySlug } from "@/lib/actions/posts/get-post";
 import { FaEdit } from "react-icons/fa";

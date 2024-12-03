@@ -12,7 +12,7 @@ const RightSidebar = async ({ id }: { id: string }) => {
   const post = await getPostBySlug(id);
 
   return (
-    <div className="sticky top-12 space-y-6">
+    <div className="sticky top-14 space-y-6">
       <div className="overflow-y-auto">
         <section className="flex flex-col gap-2 justify-center items-center border dark:border-zinc-800 border-zinc-200 dark:bg-black bg-white rounded-sm m-2 text-xs">
           <div className="py-2 border-b border-gray-200 dark:border-gray-800 w-full">
