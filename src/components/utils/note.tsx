@@ -20,8 +20,10 @@ const Note = ({
         className
       )}
     >
-      <h1 className="text-xs m-1 text-red-400">{title}</h1>
-      <p className="my-1 mx-1 p-1.5">{description}</p>
+      <h1 className="text-xs mx-1.5 my-1 font-semibold text-red-400">
+        {title}
+      </h1>
+      <p className="mb-2 mx-1 px-1.5">{description}</p>
     </section>
   );
 };

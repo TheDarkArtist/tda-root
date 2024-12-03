@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { toast } from "sonner";
 import { RotatingLines } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const DeleteButton = ({
   id,
@@ -22,6 +23,15 @@ const DeleteButton = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { status } = useSession();
+
+  if (status !== "authenticated") {
+    return null;
+  }
+
+  if (!id) {
+    return null;
+  }
 
   const handleDelete = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -62,10 +72,14 @@ const DeleteButton = ({
         variant="destructive"
         type="submit"
         size="sm"
-        className={cn("bg-red-500 text-white dark:bg-red-800", className)}
+        className={cn(
+          "flex gap-2 bg-red-500 text-white dark:bg-red-800",
+          className
+        )}
         disabled={loading}
       >
-        {loading ? <RotatingLines width="12" strokeColor="white" /> : "Delete"}
+        <span>Delete</span>
+        {loading && <RotatingLines width="12" strokeColor="white" />}
       </Button>
     </form>
   );

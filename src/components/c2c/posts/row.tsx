@@ -1,8 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { PostWithUserViews } from "@/lib/types";
+import { PostWithCommentsUserViewsId } from "@/lib/types";
 import React from "react";
 
-const Row = ({ post, index }: { post: PostWithUserViews; index: number }) => {
+const Row = ({
+  post,
+  index,
+}: {
+  post: PostWithCommentsUserViewsId;
+  index: number;
+}) => {
   return (
     <tr className="border-2 text-sm border-zinc-800">
       <td className="border-2 border-zinc-800 align-top text-center px-2 py-1">

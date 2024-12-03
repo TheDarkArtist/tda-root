@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import Link from "next/link";
 import { RotatingLines } from "react-loader-spinner";
+import { useSession } from "next-auth/react";
 
 const UpdateButton = ({
   slug,
@@ -15,7 +16,12 @@ const UpdateButton = ({
   type: "project" | "post";
   className?: string;
 }) => {
+  const { status } = useSession();
   const [loading, setLoading] = useState(false);
+
+  if (status !== "authenticated") {
+    return null;
+  }
 
   const handleClick = () => {
     setLoading(true);
@@ -23,8 +29,14 @@ const UpdateButton = ({
 
   return (
     <Link href={`/${type}s/${slug}/edit?tab=Edit`} onClick={handleClick}>
-      <Button variant="outline" size="sm" disabled={loading}>
-        {loading ? <RotatingLines width="12" strokeColor="white" /> : "Edit"}
+      <Button
+        className={cn(className, "flex gap-2")}
+        variant="outline"
+        size="sm"
+        disabled={loading}
+      >
+        <span>Edit</span>
+        {loading && <RotatingLines width="12" strokeColor="white" />}
       </Button>
     </Link>
   );

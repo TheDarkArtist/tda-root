@@ -25,6 +25,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const post = await getPostBySlug(params.postId);
 
+  if (!post) {
+    return {
+      title: "Post not found",
+    };
+  }
+
   return {
     title: post?.title,
     description: post?.description,

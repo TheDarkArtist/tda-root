@@ -1,14 +1,14 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { Post } from "@prisma/client";
+import { Project } from "@prisma/client";
 import { revalidateTag } from "next/cache";
 
-export const updatePost = async (id: string, data: Partial<Post>) => {
+export const updateProject = async (id: string, data: Partial<Project>) => {
   try {
-    const response = await db.post.update({
+    const response = await db.project.update({
       where: {
-        id: data.id,
+        id: id,
       },
       data: { ...data },
     });
@@ -17,7 +17,7 @@ export const updatePost = async (id: string, data: Partial<Post>) => {
 
     return response;
   } catch (error) {
-    console.log("Error updating post, ", error);
+    console.log("Error updating project, ", error);
     return null;
   }
 };

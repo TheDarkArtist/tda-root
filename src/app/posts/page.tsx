@@ -1,7 +1,8 @@
 import Footer from "@/components/footer/footer";
 import PostList from "@/components/posts/post-list";
-import CreateButton from "@/components/utils/buttons/create-button";
 import Loader from "@/components/utils/loader";
+import CreateButton from "@/components/utils/buttons/create-button";
+import DraftsButton from "@/components/utils/buttons/drafts-button";
 import Search from "@/components/utils/search";
 import { Metadata } from "next";
 import React, { Suspense } from "react";
@@ -84,9 +85,14 @@ const PostPage = ({
           >
             <Search placeholder="Search posts..." />
 
-            <Suspense fallback={<div></div>}>
-              <CreateButton type="post" />
-            </Suspense>
+            <div className="flex items-center gap-2">
+              <Suspense fallback={<div></div>}>
+                <DraftsButton type="post" />
+              </Suspense>
+              <Suspense fallback={<div></div>}>
+                <CreateButton type="post" />
+              </Suspense>
+            </div>
           </section>
 
           <Suspense

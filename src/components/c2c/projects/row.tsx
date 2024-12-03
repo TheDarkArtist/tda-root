@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ProjectWithUserViews } from "@/lib/types";
+import { ProjectWithCommentsUserViewsId } from "@/lib/types";
 import React from "react";
 
 const Row = ({
   project,
   index,
 }: {
-  project: ProjectWithUserViews;
+  project: ProjectWithCommentsUserViewsId;
   index: number;
 }) => {
   return (
