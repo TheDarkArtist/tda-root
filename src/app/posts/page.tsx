@@ -79,8 +79,8 @@ const PostPage = ({
 
           <section
             className={[
-              "flex gap-4 items-center rounded-md",
-              "h-min z-20 my-10 p-4",
+              "flex flex-col-reverse sm:flex-row gap-4 items-end sm:items-center rounded-md",
+              "h-min z-20 my-10",
             ].join(" ")}
           >
             <Search placeholder="Search posts..." />

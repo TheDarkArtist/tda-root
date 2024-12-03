@@ -8,7 +8,7 @@ import Footer from "@/components/footer/footer";
 
 export default function Home() {
   return (
-    <>
+    <div className="h-full">
       <main className="max-w-screen-lg mx-auto mt-12">
         <HomeCarousel />
         <Info />
@@ -18,6 +18,6 @@ export default function Home() {
         <TdaSkills />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -58,7 +58,7 @@ export const metadata: Metadata = {
 
 const InfoPage = () => {
   return (
-    <main className="pt-20">
+    <main className="pt-20 h-full">
       <div className="max-w-screen-lg mx-4 md:mx-auto">
         <Header />
         <Note description="This page is not ready" />
