@@ -43,7 +43,7 @@ const ContentIndex: React.FC<ContentIndexProps> = ({ content }) => {
   if (!headings.length) return null;
 
   return (
-    <ul className="overflow-y-auto space-y-1 text-sm p-4">
+    <ul className="overflow-y-auto space-y-1 text-sm py-2">
       {headings.map((heading, index) => (
         <li key={index} style={{ marginLeft: `${(heading.level - 1) * 16}px` }}>
           <p
