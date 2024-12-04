@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Explore - Kushagra Sharma",
+  title: "Explore",
   description:
     "Dive into a curated collection of news, posts, projects, quotes, and random favorites. Discover content that inspires, informs, and entertains.",
   keywords: [

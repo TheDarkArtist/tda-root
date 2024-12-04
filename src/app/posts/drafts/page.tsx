@@ -3,8 +3,31 @@ import { Button } from "@/components/ui/button";
 import CreateButton from "@/components/utils/buttons/create-button";
 import Note from "@/components/utils/note";
 import Search from "@/components/utils/search";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Draft Blogs",
+  robots: "index, follow",
+  publisher: "TheDarkArtist",
+  twitter: {
+    card: "summary_large_image",
+    title: "Blogs, Articles, Insights and Much More",
+    description:
+      "Explore insightful articles and blogs on technology and beyond.",
+    site: "@TheDarkArtist",
+    creator: "@TheDarkArtist",
+  },
+  openGraph: {
+    title: "All your unpublished posts",
+    type: "website",
+    url: "https://thedarkartist.in/posts/drafts",
+    description:
+      "Quality articles on technology, programming, and life insights.",
+    images: "https://thedarkartist.in/assets/posts-drafts-page.png",
+  },
+};
 
 const DraftsPage = ({ searchParams }: { searchParams: { query: string } }) => {
   const { query } = searchParams;

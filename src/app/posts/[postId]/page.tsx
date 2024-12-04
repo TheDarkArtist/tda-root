@@ -47,10 +47,14 @@ export async function generateMetadata({
     },
     openGraph: {
       title: post?.title,
-      type: "website",
-      url: `https://thedarkartist.in/posts/${post?.slug}`,
       description: post?.description as string,
       images: post?.image as string,
+      siteName: "Kushagra Sharma - Full Stack Developer",
+      url: `https://thedarkartist.in/posts/${post?.slug}`,
+      type: "article",
+      publishedTime: post?.createdAt.toISOString(),
+      modifiedTime: post?.updatedAt.toISOString(),
+      authors: [post.user?.username as string],
     },
   };
 }

@@ -9,32 +9,42 @@ import { os } from "@/utils/fonts";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import NavWheel from "@/components/navbar/nav-wheel";
+import siteMetadata from "@/utils/siteMetadata";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteMetadata.siteUrl),
   title: {
-    template: "%s | Kushagra Sharma - Full Stack Developer",
-    default: "Kushagra Sharma - Full Stack Developer",
+    template: `%s | ${siteMetadata.title}`,
+    default: siteMetadata.title,
   },
-  description:
-    "Welcome to the personal portfolio of Kushagra Sharma, showcasing projects, articles, and insights on software development and technology.",
-  keywords: [
-    "Kushagra Sharma",
-    "Full Stack Developer",
-    "TheDarkArtist",
-    "tda",
-    "Portfolio",
-    "Projects",
-    "Articles",
-    "Technology",
-    "Programming",
-    "Web Development",
-    "Software Engineering",
-  ],
+  description: siteMetadata.description,
+  keywords: siteMetadata.keywords,
   authors: [{ name: "Kushgra Sharma", url: "https://www.thedarkartist.in" }],
-  robots: "index, follow",
   referrer: "origin-when-cross-origin",
   creator: "Kushagra Sharma | TheDarkArtist",
   publisher: "Kushagra Sharma | TheDarkArtist",
+  category: "technology",
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: siteMetadata.siteUrl,
+    siteName: siteMetadata.title,
+    images: [siteMetadata.socialBanner],
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   twitter: {
     card: "summary_large_image",
     title: "Kushagra Sharma - Full Stack Developer",
@@ -42,14 +52,6 @@ export const metadata: Metadata = {
       "Explore my portfolio, projects, and blog on software development and technology.",
     site: "@TheDarkArtist",
     creator: "@TheDarkArtist",
-  },
-  openGraph: {
-    title: "Kushagra Sharma - Full Stack Developer",
-    type: "website",
-    url: "https://thedarkartist.in",
-    description:
-      "Portfolio showcasing the projects, skills, and writings of Kushagra Sharma, a full stack developer.",
-    images: "https://thedarkartist.in/assets/portfolio-preview.png",
   },
 };
 
