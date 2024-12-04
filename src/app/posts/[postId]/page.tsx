@@ -61,19 +61,20 @@ export async function generateMetadata({
 
 const ProjectPage: React.FC<PostPageParams> = ({ params }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 h-full">
-      <div className="hidden md:flex justify-center overflow-y-auto col-span-3">
-        <div className="max-w-sm w-full">
+    <div className="relative flex flex-col overflow-y-auto scroll-smooth md:grid grid-cols-1 md:grid-cols-12 h-full">
+      <div className="md:flex justify-center md:overflow-y-auto col-span-3">
+        <div className="md:max-w-sm">
           <Suspense fallback={<RightSidebarSkeleton />}>
             <LeftSidebar id={params.postId} />
           </Suspense>
         </div>
       </div>
-      <div className="bg-white dark:bg-zinc-950 overflow-y-auto scroll-smooth col-span-6 md:col-span-9 lg:col-span-6">
+
+      <div className="bg-white dark:bg-zinc-950 md:overflow-y-auto scroll-smooth col-span-6 md:col-span-9 lg:col-span-6">
         <Suspense fallback={<HeaderSkeleton />}>
           <Header postId={params.postId} />
         </Suspense>
-        <div className="max-w-screen-md mx-auto mt-12 p-4">
+        <div className="max-w-screen-md mx-auto md:mt-12 p-4">
           <Suspense fallback={<BodySkeleton />}>
             <Body postId={params.postId} />
           </Suspense>
@@ -82,6 +83,7 @@ const ProjectPage: React.FC<PostPageParams> = ({ params }) => {
           </Suspense>
         </div>
       </div>
+
       <div className="hidden lg:flex justify-center overflow-y-auto col-span-3">
         <div className="max-w-sm w-full">
           <Suspense fallback={<RightSidebarSkeleton />}>
