@@ -9,6 +9,7 @@ import { incrementView } from "@/lib/actions/projects/increment-view";
 import { ProjectWithUserViews } from "@/lib/types";
 import Heading from "./heading";
 import Description from "./description";
+import Tags from "./tags";
 
 const ProjectCard = ({ project }: { project: ProjectWithUserViews }) => {
   const session = useSession();
@@ -25,20 +26,19 @@ const ProjectCard = ({ project }: { project: ProjectWithUserViews }) => {
   return (
     <Card
       className={[
-        "relative group rounded-md",
-        "dark:border-zinc-800",
-        "transition-all duration-300 dark:active:border-green-600",
-        "hover:shadow-lg dark:hover:shadow-emerald-950",
+        "p-2",
+        "dark:active:border-green-600 active:border-green-600",
+        "sm:hover:shaodw-xl hover:shadow-emerald-600 sm:hover:scale-105",
+        "transform transition-all duration-200 ease-in-out",
+        "border dark:border-zinc-700 ",
+        "bg-gray-200/50 dark:bg-zinc-950",
       ].join(" ")}
     >
       <MetaBar project={project} />
-      <Link
-        className="relative flex justify-center items-center"
-        onClick={handleClick}
-        href={`/projects/${project.slug}`}
-      >
-        <CardImage src={project.image as string} />
+      <Link onClick={handleClick} href={`/projects/${project.slug}`}>
         <Heading title={project.title} />
+        <Tags tags={project.tags} />
+        <CardImage src={project.image as string} />
         <Description project={project} />
       </Link>
     </Card>

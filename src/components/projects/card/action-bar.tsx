@@ -8,7 +8,14 @@ import { LuEye } from "react-icons/lu";
 
 const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
   return (
-    <section className={cn("flex items-center justify-between ", " px-2 pt-1")}>
+    <section
+      className={cn(
+        "flex items-center justify-between ",
+        "dark:from-cyan-950 dark:via-zinc-900 dark:to-green-950",
+        "from-cyan-200 via-gray-300 to-green-300",
+        " px-2 py-1 rounded-full bg-gradient-to-r"
+      )}
+    >
       <div className="flex justify-between w-full items-center gap-2 text-sm font-semibold dark:text-zinc-400">
         <div className="flex items-center gap-0.5">
           <Suspense fallback={<LuEye />}>
@@ -18,7 +25,6 @@ const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
         </div>
         <span className="text-xs mr-2">
           {formatDistanceToNow(project.createdAt, { addSuffix: true })}
-          {}
         </span>
       </div>
       <span className="flex gap-2">

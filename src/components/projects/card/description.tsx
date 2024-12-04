@@ -1,18 +1,15 @@
-import { CardContent } from "@/components/ui/card";
 import React from "react";
-import Tags from "./tags";
+import { CardContent } from "@/components/ui/card";
 import { ProjectWithUserViews } from "@/lib/types";
 
 const Description = ({ project }: { project: ProjectWithUserViews }) => {
   return (
     <CardContent
       className={[
-        "hidden absolute group-hover:block rounded-sm bg-black/50",
-        "px-4 py-2 overflow-hidden h-full w-full text-sm",
-        "backdrop-filter backdrop-blur-2xl text-zinc-500",
+        "px-4 py-2 overflow-hidden w-full text-sm",
+        "backdrop-filter backdrop-blur-2xl dark:text-zinc-400 text-zinc-600",
       ].join(" ")}
     >
-      <h2 className="text-green-600 font-semibold">{project.title}</h2>
       <p>
         {
           project.description
@@ -20,9 +17,6 @@ const Description = ({ project }: { project: ProjectWithUserViews }) => {
             .concat(project.description?.substring(200) && "...") as string
         }
       </p>
-      <div className="mt-2">
-        <Tags tags={project.tags} />
-      </div>
     </CardContent>
   );
 };
