@@ -1,6 +1,7 @@
 import React from "react";
 import { CardContent } from "@/components/ui/card";
 import { ProjectWithUserViews } from "@/lib/types";
+import { Md2Text } from "@/lib/utils";
 
 const Description = ({ project }: { project: ProjectWithUserViews }) => {
   return (
@@ -11,11 +12,11 @@ const Description = ({ project }: { project: ProjectWithUserViews }) => {
       ].join(" ")}
     >
       <p>
-        {
+        {Md2Text(
           project.description
             ?.substring(0, 200)
             .concat(project.description?.substring(200) && "...") as string
-        }
+        )}
       </p>
     </CardContent>
   );
