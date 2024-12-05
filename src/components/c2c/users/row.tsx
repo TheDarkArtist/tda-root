@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import ViewButton from "@/components/utils/buttons/view-button";
 import { User } from "@prisma/client";
 import React from "react";
 
@@ -27,9 +28,7 @@ const Row = ({ user, index }: { user: User; index: number }) => {
         {user.isTwoFactorEnabled ? "true" : "false"}
       </td>
       <td className="min-w-48 space-x-1 px-2">
-        <Button variant="outline" size="sm">
-          View
-        </Button>
+        <ViewButton slug={user.username} type="user" />
         <Button variant="outline" size="sm">
           Edit
         </Button>

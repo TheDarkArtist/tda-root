@@ -66,7 +66,7 @@ export default function RootLayout({
         <body
           className={cn(
             "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]",
-            "dark:from-black dark:to-zinc-950 from-white to-gray-100",
+            "dark:from-black dark:to-zinc-950 from-gray-50 to-white",
             "dark:text-gray-100 text-gray-800",
             os.className
           )}

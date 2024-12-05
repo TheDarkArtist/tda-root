@@ -9,13 +9,7 @@ import Image from "next/image";
 import { FaCaretDown } from "react-icons/fa";
 import Link from "next/link";
 import { auth, signOut } from "@/lib/auth";
-import {
-  LuSettings,
-  LuLogIn,
-  LuLogOut,
-  LuUser,
-  LuCommand,
-} from "react-icons/lu";
+import { LuSettings, LuLogIn, LuLogOut, LuCommand } from "react-icons/lu";
 import { GiWolfHead } from "react-icons/gi";
 import { Button } from "../ui/button";
 
@@ -38,12 +32,12 @@ const Menu = async () => {
       <DropdownMenuTrigger className="hidden sm:flex" asChild>
         <Button
           variant="ghost"
-          className="flex px-2 dark:hover:bg-stone-900 items-center rounded-sm gap-2"
+          className="flex px-2 dark:hover:bg-stone-900 items-center rounded-sm gap-1.5"
         >
           {session.user.image ? (
             <Image
               src={session.user.image || "/img/me.jpg"}
-              className="rounded-full"
+              className="border dark:border-zinc-900 border-gray-200 rounded-full size-7"
               alt="user image"
               height={28}
               width={28}

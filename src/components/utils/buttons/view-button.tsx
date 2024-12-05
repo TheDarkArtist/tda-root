@@ -1,18 +1,20 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import Link from "next/link";
 import { RotatingLines } from "react-loader-spinner";
+import { cn } from "@/lib/utils";
 
 const ViewButton = ({
+  text,
   slug,
   type,
   className,
 }: {
+  text?: string;
   slug: string;
-  type: "project" | "post";
+  type: "project" | "post" | "user";
   className?: string;
 }) => {
   const [loading, setLoading] = useState(false);
@@ -22,17 +24,25 @@ const ViewButton = ({
   };
 
   return (
-    <Link href={`/${type}s/${slug}`} onClick={handleClick}>
-      <Button
-        variant="outline"
-        size="sm"
-        disabled={loading}
+    <Button
+      className={cn(className, "w-min")}
+      variant="outline"
+      size="sm"
+      disabled={loading}
+      asChild
+    >
+      <Link
+        href={`/${type === "user" ? `${slug}` : `${type}s/${slug}`}`}
+        onClick={handleClick}
       >
-        {loading ? <RotatingLines width="12" strokeColor="white" /> : "View"}
-      </Button>
-    </Link>
+        {loading ? (
+          <RotatingLines width="12" strokeColor="white" />
+        ) : (
+          <span>{text ? text : "View"}</span>
+        )}
+      </Link>
+    </Button>
   );
 };
 
 export default ViewButton;
-
