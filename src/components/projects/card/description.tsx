@@ -14,7 +14,7 @@ const Description = ({ project }: { project: ProjectWithUserViews }) => {
       <p>
         {Md2Text(
           project.description
-            ?.substring(0, 200)
+            ?.substring(0, 184)
             .concat(project.description?.substring(200) && "...") as string
         )}
       </p>

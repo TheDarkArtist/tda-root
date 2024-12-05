@@ -22,7 +22,7 @@ const MetaBar = ({ project }: { project: ProjectWithUserViews }) => {
         </span>
       </div>
       <span className="flex gap-2">
-        {!project.repo && (
+        {project.repo && (
           <Link
             className="transition-all duration-200 hover:scale-110"
             href={project.repo || ""}

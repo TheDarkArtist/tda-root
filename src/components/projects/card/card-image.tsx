@@ -3,7 +3,7 @@ import React from "react";
 
 const CardImage = ({ src }: { src: string }) => {
   return (
-    <div className="relative border border-zinc-700 m-2 overflow-hidden rounded-md">
+    <div className="relative border max-h-[10.8rem] border-zinc-700 m-2 overflow-hidden rounded-md">
       <Image
         className="rounded-md"
         src={src || "/img/tda.png"}

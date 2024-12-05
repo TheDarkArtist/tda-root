@@ -23,50 +23,50 @@ const MarkdownRenderer = ({ content }: { content: string }) => {
       remarkPlugins={[remarkGfm, remarkMath]}
       components={{
         h1: ({ node, ...props }) => (
-          <h1 {...props} className="text-3xl pt-4 pb-2 font-extrabold">
+          <h1 {...props} className="text-3xl mt-4 mb-2 font-extrabold">
             {props.children}
           </h1>
         ),
         h2: ({ node, ...props }) => (
-          <h2 {...props} className="text-2xl pt-4 pb-2 font-semibold">
+          <h2 {...props} className="text-2xl mt-4 mb-2 font-semibold">
             {props.children}
           </h2>
         ),
         h3: ({ node, ...props }) => (
-          <h3 {...props} className="text-xl pt-4 pb-2 font-semibold">
+          <h3 {...props} className="text-xl mt-4 mb-2 font-semibold">
             {props.children}
           </h3>
         ),
         h4: ({ node, ...props }) => (
-          <h4 {...props} className="text-lg pt-4 pb-2 font-semibold">
+          <h4 {...props} className="text-lg mt-4 mb-2 font-semibold">
             {props.children}
           </h4>
         ),
         h5: ({ node, ...props }) => (
-          <h5 {...props} className="text-md pt-4 pb-2 font-semibold">
+          <h5 {...props} className="text-md mt-4 mb-2 font-semibold">
             {props.children}
           </h5>
         ),
         h6: ({ node, ...props }) => (
-          <h6 {...props} className="text-sm pt-4 pb-2 font-semibold">
+          <h6 {...props} className="text-sm mt-4 mb-2 font-semibold">
             {props.children}
           </h6>
         ),
         p: ({ node, ...props }) => (
-          <p {...props} className="text-sm mb-1 md:text-base leading-relaxed">
+          <p {...props} className="text-sm my-2 md:text-base leading-relaxed">
             {props.children}
           </p>
         ),
         ol: ({ node, ...props }) => (
           <ol
             {...props}
-            className="list-decimal text-sm md:text-base ml-4 space-y-1"
+            className="list-decimal text-sm md:text-base ml-4 space-y-1 my-2"
           />
         ),
         ul: ({ node, ...props }) => (
           <ul
             {...props}
-            className="list-disc text-sm md:text-base ml-4 space-y-1"
+            className="list-disc text-sm md:text-base ml-4 my-2 space-y-1"
           />
         ),
         a: ({ node, ...props }) => (
@@ -132,7 +132,7 @@ const MarkdownRenderer = ({ content }: { content: string }) => {
         blockquote: ({ node, ...props }) => (
           <blockquote
             {...props}
-            className="dark:bg-cyan-950/50 bg-cyan-100 rounded-r-sm pt-2 pb-1 px-4 border-l-[10px] dark:border-cyan-950 my-2 dark:text-sky-200"
+            className="dark:bg-cyan-950/50 bg-cyan-100 rounded-r-sm mt-4 mb-2 px-4 border-l-[10px] dark:border-cyan-950 py-1.5 dark:text-sky-200"
           />
         ),
       }}
