@@ -26,7 +26,7 @@ const EditorPage = () => {
           }));
         }}
       />
-      <div className="md:p-6 w-full h-full hidden xl:block bg-transparent overflow-y-auto">
+      <div className="md:p-6 w-full h-full hidden xl:block bg-transparent overflow-y-auto mx-auto max-w-screen-md">
         {data?.body?.length === 0 || !data?.body ? (
           <div className="h-full w-full flex justify-center items-center opacity-20">
             <AnimatedEmoji

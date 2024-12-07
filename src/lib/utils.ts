@@ -86,6 +86,11 @@ export function slugify(text: string): string {
  * console.log(plainText); // Outputs: "Hello world! This is a link."
  */
 export function Md2Text(markdown: string): string {
+  // If the markdown is empty, return an empty string
+  if (!markdown) {
+    return markdown;
+  }
+
   // Remove markdown headers (e.g., #, ##, ###)
   let text = markdown.replace(/(#{1,6})\s*/g, "");
 

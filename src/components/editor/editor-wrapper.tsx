@@ -19,10 +19,8 @@ const EditorWrapper: FC<EditorWrapperProps> = async ({
 }) => {
   const session = await auth();
 
-  // if no session show a 404
   if (!session) return notFound();
 
-  // get the id conditionly for projet or post
   let id;
   let response;
 

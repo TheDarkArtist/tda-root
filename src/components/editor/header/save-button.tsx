@@ -9,6 +9,7 @@ import { extractFirstParagraph } from "@/utils/get-paragraph";
 import React, { useTransition } from "react";
 import { toast } from "sonner";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const SaveButton = ({
   type,
@@ -20,6 +21,7 @@ const SaveButton = ({
   const { data } = useEditorDataContext();
   const [isPending, startTransition] = useTransition();
   const session = useSession();
+  const router = useRouter();
 
   const handleSave = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -66,6 +68,7 @@ const SaveButton = ({
 
           const response = await upsertProject(slug, updatedData);
           if (response) {
+            router.replace(`/${type}s/${response.slug}/edit/preview`);
             toast.success("Project Saved!");
           }
         } else if (type === "post") {
@@ -82,7 +85,9 @@ const SaveButton = ({
           };
 
           const response = await upsertPost(slug, updatedData);
+
           if (response) {
+            router.replace(`/${type}s/${response.slug}/edit/preview`);
             toast.success("Post Saved!");
           }
         }

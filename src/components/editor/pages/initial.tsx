@@ -19,8 +19,10 @@ const Initial = async () => {
   }
 
   return (
-    <div className="grid grid-cols-1 p-2 md:p-6 w-full h-full bg-transparent overflow-y-auto">
-      <MarkdownRenderer content={markdownContent} />
+    <div className="mr-auto max-w-screen-lg overflow-y-auto h-full">
+      <div className="grid grid-cols-1 p-2 md:p-6 w-full mx-auto max-w-screen-md">
+        <MarkdownRenderer content={markdownContent} />
+      </div>
     </div>
   );
 };

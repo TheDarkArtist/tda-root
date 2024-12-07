@@ -5,6 +5,7 @@ import { useEditorDataContext } from "@/providers/editor-data-provider";
 import { Project } from "@prisma/client";
 import Image from "next/image";
 import React from "react";
+import Note from "../utils/note";
 
 const CoverSection = () => {
   const { data, setData } = useEditorDataContext();
@@ -33,9 +34,15 @@ const CoverSection = () => {
         />
       </div>
       <Input
-        className="bg-white dark:bg-black mt-6"
+        className="bg-white dark:bg-black mt-10"
+        placeholder="Enter cover image link (e.g., https://example.com/cover.jpg)"
         value={(data as Project)?.image || ""}
         onChange={handleLinkChange}
+      />
+      <div className="ml-2 text-sm text-yellow-600">Tip: Save the project first to use the cover functionality</div>
+      <Note
+        title="NOTE"
+        description="For now only image links are supported, I'll add support for uploading images later"
       />
     </div>
   );
