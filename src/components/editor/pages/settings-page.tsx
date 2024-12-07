@@ -8,7 +8,7 @@ const SettingsPage = ({ type }: { type: "project" | "post" }) => {
     <div className="grid grid-cols-1 gap-4 p-6 h-full w-full overflow-y-auto">
       <div className="space-y-4">
         <CoverSection />
-        <SlugSection />
+        <SlugSection type={type} />
         <DeleteSection type={type} />
       </div>
     </div>
