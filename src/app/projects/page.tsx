@@ -81,7 +81,7 @@ const ProjectsPage = ({
               </div>
             }
           >
-            <ProjectsList query={query} currentPage={currentPage} />
+            <ProjectsList published query={query} currentPage={currentPage} />
           </Suspense>
         </div>
       </div>
