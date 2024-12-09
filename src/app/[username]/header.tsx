@@ -55,7 +55,7 @@ const Header = async ({ username }: { username: string }) => {
           <span className="text-zinc-300">{user?.bio}</span>
         ) : (
           <>
-            {user?.id !== session?.user?.id && (
+            {user?.id === session?.user?.id && (
               <Link
                 className="text-cyan-600 mt-2 hover:underline"
                 href={`/settings`}
