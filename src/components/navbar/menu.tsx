@@ -79,14 +79,16 @@ const Menu = async () => {
         ) : (
           <DropdownMenuItem>
             <form
-              className="flex items-center"
+              className="w-full"
               action={async () => {
                 "use server";
                 await signOut();
               }}
             >
-              <LuLogOut className="mr-2" />
-              <button type="submit">Log Out</button>
+              <button className="flex items-center w-full" type="submit">
+                <LuLogOut className="mr-2" />
+                Log Out
+              </button>
             </form>
           </DropdownMenuItem>
         )}
