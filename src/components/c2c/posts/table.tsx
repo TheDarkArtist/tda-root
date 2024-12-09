@@ -7,10 +7,13 @@ const Table = async () => {
 
   const headings = [
     "Index",
+    "Created At",
+    "Updated At",
     "Username",
-    "Ttitle",
+    "Title",
     "Description",
     "Views",
+    "Up Votes",
     "Actions",
   ];
   return (
