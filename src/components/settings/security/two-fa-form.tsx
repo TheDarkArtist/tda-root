@@ -29,7 +29,7 @@ const TwoFAForm: FC<TwoFAFormProps> = ({ user, handleTwoFAChange }) => {
   };
 
   return (
-    <div className="w-full border border-zinc-700 rounded-sm p-4 bg-zinc-950">
+    <div className="w-full border border-gray-300 dark:border-zinc-700 rounded-sm p-4 dark:bg-zinc-950 shadow">
       <h2 className="text-sm sm:text-2xl font-semibold">
         Two Factor Authentication
       </h2>
@@ -37,7 +37,7 @@ const TwoFAForm: FC<TwoFAFormProps> = ({ user, handleTwoFAChange }) => {
         <select
           name="isTwoFactorEnabled"
           defaultValue={user?.isTwoFactorEnabled ? "On" : "Off"}
-          className="px-2 py-0.5 text-sm bg-zinc-900 border border-zinc-800 rounded-sm w-80"
+          className="px-2 py-0.5 text-sm dark:bg-zinc-900 border border-gray-300 dark:border-zinc-800 rounded-sm w-80"
         >
           <option value="On">On</option>
           <option value="Off">Off</option>
@@ -45,7 +45,7 @@ const TwoFAForm: FC<TwoFAFormProps> = ({ user, handleTwoFAChange }) => {
         <button
           type="submit"
           disabled={isPending}
-          className={`flex justify-between gap-2 bg-green-700 pl-4 py-0.5 rounded-sm text-white text-sm ${
+          className={`flex justify-between gap-2 bg-green-600 dark:bg-green-700 pl-4 py-0.5 rounded-sm text-white text-sm ${
             isPending ? "pr-2 opacity-50 cursor-not-allowed" : "pr-4"
           }`}
         >
@@ -53,7 +53,7 @@ const TwoFAForm: FC<TwoFAFormProps> = ({ user, handleTwoFAChange }) => {
           {isPending && <Loader color="white" width="16" />}
         </button>
       </form>
-      <p className="text-xs text-zinc-400">
+      <p className="text-xs text-zinc-600 dark:text-zinc-400">
         Two-factor authentication adds an extra layer of security to your
         account by requiring you to log in with a combination of a password and
         a security code. This is especially useful for those who use two-factor

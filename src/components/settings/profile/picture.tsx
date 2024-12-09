@@ -66,12 +66,12 @@ export default function AvatarUploadPage() {
   };
 
   return (
-    <div>
-      <div className="flex items-center gap-6 border bg-zinc-950 border-zinc-700 p-4 rounded-t-sm">
+    <div className="shadow">
+      <div className="flex items-center gap-6 border dark:bg-zinc-950 border-gray-300 dark:border-zinc-700 p-4 rounded-t-sm">
         <Image
           src={previewUrl ? previewUrl : ""}
           alt="Preview"
-          className="h-40 w-40 rounded-full border-4 border-red-800 object-cover"
+          className="h-40 w-40 rounded-full border-4 border-sky-400 dark:border-red-800 object-cover"
           height={400}
           width={400}
         />
@@ -81,9 +81,9 @@ export default function AvatarUploadPage() {
           </h1>
           <label
             className={[
-              "cursor-pointer rounded-sm px-4 py-1 shadow-md",
-              "border border-zinc-600 text-zinc-400 text-sm",
-              "bg-zinc-900 hover:bg-zinc-800",
+              "cursor-pointer rounded-sm px-4 py-1 shadow",
+              "border border-gray-300 dark:border-zinc-600 dark:text-zinc-400 text-sm",
+              "dark:bg-zinc-900 bg-gray-100 hover:bg-gray-200 dark:hover:bg-zinc-800",
             ].join(" ")}
           >
             <input
@@ -110,8 +110,11 @@ export default function AvatarUploadPage() {
           )}
         </div>
       </div>
-      <div className="h-min border-x border-b text-sm bg-zinc-950 border-zinc-700 p-2 rounded-b-sm">
-        <div className="font-semibold ">Profile Picture Public URL</div>
+      <div className="h-min border-x border-b text-sm dark:bg-zinc-950 border-gray-300 dark:border-zinc-700 p-2 rounded-b-sm">
+        <div className="font-semibold">
+          Your profile picture public URL{" "}
+          <span className="font-light">(It&apos;s not your profile URL)</span>
+        </div>
         {previewUrl && (
           <Link
             className="hover:text-blue-400 text-blue-500"

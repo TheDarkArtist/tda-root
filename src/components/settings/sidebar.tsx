@@ -38,7 +38,7 @@ const Sidebar = () => {
               className={cn(
                 "flex gap-2 justify-center sm:justify-start items-center",
                 "border-l-4 border-transparent w-full rounded-r-sm px-4 py-1",
-                isActive && "border-l-4 border-sky-600 bg-zinc-900 "
+                isActive && "border-l-4 border-sky-600 bg-gray-200 dark:bg-zinc-900 "
               )}
             >
               <span>{icon}</span>
