@@ -23,3 +23,11 @@ export type ProjectWithUser = Prisma.ProjectGetPayload<{
 export type PostWithUser = Prisma.PostGetPayload<{
   include: { user: true };
 }>;
+
+export type UserWithData = Prisma.UserGetPayload<{
+  include: {
+    Post: { select: { id: true } };
+    projects: { select: { id: true } };
+    comments: { select: { id: true } };
+  };
+}>;
