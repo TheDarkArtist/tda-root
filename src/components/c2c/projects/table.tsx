@@ -5,7 +5,19 @@ import { getProjects } from "@/lib/actions/projects/get-projects";
 const Table = async () => {
   const projects = await getProjects();
 
-  const headings = ["Index", "Ttitle", "Description", "Views", "Actions"];
+  const headings = [
+    "Index",
+    "Created At",
+    "Updated At",
+    "Ttitle",
+    "Description",
+    "Views",
+    "Comments",
+    "Up Votes",
+    "External Link",
+    "Repository Link",
+    "Actions",
+  ];
   return (
     <div className="max-w-full w-full mx-auto overflow-x-auto">
       <table className="border-collapse mx-auto">
