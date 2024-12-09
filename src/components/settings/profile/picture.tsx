@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FaUpload } from "react-icons/fa";
 
 export default function AvatarUploadPage() {
   const [previewUrl, setPreviewUrl] = useState<string | null>();
@@ -68,14 +69,20 @@ export default function AvatarUploadPage() {
   return (
     <div className="shadow">
       <div className="flex items-center gap-6 border dark:bg-zinc-950 border-gray-300 dark:border-zinc-700 p-4 rounded-t-sm">
-        <Image
-          src={previewUrl ? previewUrl : ""}
-          alt="Preview"
-          className="h-40 w-40 rounded-full border-4 border-sky-400 dark:border-red-800 object-cover"
-          height={400}
-          width={400}
-        />
-        <div className="flex flex-col items-start space-y-4 h-40 w-full">
+        {previewUrl ? (
+          <Image
+            src={previewUrl ? previewUrl : ""}
+            alt="Preview"
+            className="h-40 w-40 rounded-full border-4 border-sky-400 dark:border-red-800 object-cover"
+            height={400}
+            width={400}
+          />
+        ) : (
+          <div className="flex justify-center items-center size-40 rounded-full border-4 border-dashed border-sky-400 dark:border-red-800 object-cover">
+            <FaUpload className="text-sky-400 dark:text-red-800 size-10" />
+          </div>
+        )}
+        <div className="flex flex-col items-start space-y-4 h-40">
           <h1 className="text-2xl font-semibold text-gray-400">
             Upload Your Avatar
           </h1>
