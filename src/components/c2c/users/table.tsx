@@ -1,9 +1,9 @@
 import React from "react";
 import Row from "./row";
-import { getUsers } from "@/lib/actions/users/get-users";
+import { getUsersWithData } from "@/lib/actions/users/get-users";
 
 const Table = async () => {
-  const users = await getUsers();
+  const users = await getUsersWithData();
 
   const headings = [
     "Index",
@@ -13,6 +13,9 @@ const Table = async () => {
     "Email",
     "Verified",
     "TwoFactor",
+    "Projects",
+    "Posts",
+    "Comments",
     "Actions",
   ];
   return (

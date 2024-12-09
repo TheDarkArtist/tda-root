@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import ViewButton from "@/components/utils/buttons/view-button";
-import { User } from "@prisma/client";
+import { UserWithData } from "@/lib/types";
 import React from "react";
 
-const Row = ({ user, index }: { user: User; index: number }) => {
+const Row = ({ user, index }: { user: UserWithData; index: number }) => {
   return (
     <tr className="border-2 text-sm border-zinc-800">
       <td className="border-2 border-zinc-800 align-top text-center px-2 py-1">
@@ -26,6 +26,15 @@ const Row = ({ user, index }: { user: User; index: number }) => {
       </td>
       <td className="border-2 border-zinc-800 align-top px-2 py-1">
         {user.isTwoFactorEnabled ? "true" : "false"}
+      </td>
+      <td className="border-2 border-zinc-800 align-top px-2 py-1">
+        {user.projects.length}
+      </td>
+      <td className="border-2 border-zinc-800 align-top px-2 py-1">
+        {user.Post.length}
+      </td>
+      <td className="border-2 border-zinc-800 align-top px-2 py-1">
+        {user.comments.length}
       </td>
       <td className="min-w-48 space-x-1 px-2">
         <ViewButton slug={user.username} type="user" />
