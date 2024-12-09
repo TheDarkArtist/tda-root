@@ -38,8 +38,8 @@ const Header = async ({ username }: { username: string }) => {
             height={92}
           />
         ) : (
-          <div className="sm:absolute size-24 sm:size-32 sm:-bottom-12 sm:left-3 flex justify-center items-center border-4 border-red-900 dark:bg-red-800">
-            <span className="text-6xl font-black text-red-400">
+          <div className="sm:absolute size-24 sm:size-32 sm:-bottom-12 sm:left-3 flex justify-center items-center border-4 border-sky-400 dark:border-red-900 bg-sky-500 dark:bg-red-800">
+            <span className="text-6xl font-black dark:text-red-400">
               {user.username?.charAt(0).toUpperCase()}
             </span>
           </div>
