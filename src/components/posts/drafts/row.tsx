@@ -22,7 +22,7 @@ const Row = ({ post, index }: { post: PostWithUserViews; index: number }) => {
         {post.description?.substring(0, 200)}
       </td>
       <td className="flex gap-2 p-2 align-top">
-        <PublishButton type="post" post={post} />
+        <PublishButton type="post" id={post.id} published={post.published} />
         <UpdateButton slug={post.slug} type="post" />
         <DeleteButton type="post" id={post.id} />
       </td>
