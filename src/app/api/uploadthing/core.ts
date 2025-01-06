@@ -1,4 +1,5 @@
 import { currentUser } from "@/lib/actions/utils/auth";
+import { updateResumeUrl } from "@/lib/actions/utils/utils";
 import { db } from "@/lib/db";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 
@@ -23,15 +24,10 @@ export const ourFileRouter = {
     .onUploadComplete(async ({ metadata, file }) => {
       try {
         console.log("Upload complete. Metadata:", metadata);
-        await db.user.update({
-          where: {
-            id: metadata.user?.id,
-          },
-          data: {
-            resumeUrl: file.url,
-          },
-        });
+
+        await updateResumeUrl(metadata.user.id as string, file.url);
         console.log("Database updated with file URL:", file.url);
+
         return { fileUrl: file.url };
       } catch (error) {
         console.error("Error in onUploadComplete:", error);
