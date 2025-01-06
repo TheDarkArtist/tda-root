@@ -8,6 +8,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/resume",
+        destination: "/api/resume",
+      },
+    ];
+  },
   async headers() {
     return [
       {
@@ -29,7 +37,6 @@ const nextConfig = {
       };
     }
 
-    // Ignore loader for 'argon2.cjs' to avoid 'node:crypto' issues in client-side builds
     config.module.rules.push({
       test: /argon2\.cjs$/,
       loader: "ignore-loader",
