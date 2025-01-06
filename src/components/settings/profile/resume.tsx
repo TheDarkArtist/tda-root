@@ -15,33 +15,25 @@ import { useRouter } from "next/navigation";
 import { Trash } from "lucide-react";
 import { toast } from "sonner";
 import { Label } from "@/components/ui/label";
-import { useCurrentUser } from "@/hooks/use-current-user";
 import { BsFilePdf } from "react-icons/bs";
-import { updateUserById } from "@/lib/actions/users/update-user";
-import { User } from "@prisma/client";
+import { updateResumeUrl } from "@/lib/actions/utils/utils";
+import { currentUser } from "@/lib/actions/utils/auth";
 
 interface ResumeModalProps {
   initialResumeUrl: string;
 }
 
 const ResumeModal = ({ initialResumeUrl }: ResumeModalProps) => {
-  const user = useCurrentUser();
-
   const [resumeUrl, setResumeUrl] = useState(initialResumeUrl);
   const [isPending, startTransition] = useTransition();
   const closeRef = useRef<ComponentRef<typeof DialogClose>>(null);
-
   const router = useRouter();
 
   const onRemove = () => {
     startTransition(async () => {
-      await updateUserById(
-        user?.id as string,
-        {
-          ...user,
-          resumeUrl: "",
-        } as User,
-      )
+      const user = await currentUser();
+
+      await updateResumeUrl(user?.id as string, null)
         .then(() => {
           toast("Removed: Your resume has been removed");
           setResumeUrl("");

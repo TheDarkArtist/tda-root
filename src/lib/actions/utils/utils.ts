@@ -3,6 +3,7 @@
 import { slugify } from "@/lib/utils";
 import { getPostBySlug } from "../posts/get-post";
 import { getProjectBySlug } from "../projects/get-project";
+import { db } from "@/lib/db";
 
 export const isSlugUnique = async (
   id: string,
@@ -47,4 +48,12 @@ export const isSlugUnique = async (
   }
 
   return { success: true, message: "Slug is available." };
+};
+
+export const updateResumeUrl = async (id: string, resumeUrl: string | null) => {
+  try {
+    return db.user.update({ where: { id }, data: { resumeUrl } });
+  } catch {
+    throw new Error("Something went wrong");
+  }
 };
