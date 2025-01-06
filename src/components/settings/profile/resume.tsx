@@ -99,6 +99,25 @@ const ResumeModal = ({ initialResumeUrl }: ResumeModalProps) => {
               />
             </div>
           )}
+          <div className="flex justify-between">
+            <DialogClose
+              ref={closeRef}
+              asChild
+            >
+              <Button
+                type="button"
+                variant="ghost"
+              >
+                Cancel
+              </Button>
+            </DialogClose>
+            <Button
+              type="submit"
+              disabled={isPending}
+            >
+              Save
+            </Button>
+          </div>
         </form>
       </DialogContent>
     </Dialog>
