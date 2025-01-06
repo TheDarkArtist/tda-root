@@ -14,7 +14,6 @@ import { UploadDropzone } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import { Trash } from "lucide-react";
 import { toast } from "sonner";
-import { Label } from "@/components/ui/label";
 import { BsFilePdf } from "react-icons/bs";
 import { updateResumeUrl } from "@/lib/actions/utils/utils";
 import { currentUser } from "@/lib/actions/utils/auth";
@@ -38,6 +37,7 @@ const ResumeModal = ({ initialResumeUrl }: ResumeModalProps) => {
           toast("Removed: Your resume has been removed");
           setResumeUrl("");
           closeRef?.current?.click();
+          router.refresh();
         })
         .catch(() => {
           toast("Something went wrong");
@@ -58,7 +58,9 @@ const ResumeModal = ({ initialResumeUrl }: ResumeModalProps) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Upload resume</DialogTitle>
+          <DialogTitle>
+            <h2 className="text-xl font-semibold">Upload resume</h2>
+          </DialogTitle>
         </DialogHeader>
         <form className="space-y-14">
           {resumeUrl ? (
@@ -76,48 +78,27 @@ const ResumeModal = ({ initialResumeUrl }: ResumeModalProps) => {
               </div>
             </div>
           ) : (
-            <div className="space-y-2">
-              <Label>Resume</Label>
-              <div className="rounded-xl border-black outline-dashed outline-gray-700">
-                <UploadDropzone
-                  endpoint="resumeUploader"
-                  appearance={{
-                    label: {
-                      color: "white",
-                    },
-                    allowedContent: {
-                      color: "white",
-                    },
-                  }}
-                  onClientUploadComplete={(res) => {
-                    setResumeUrl(res?.[0]?.url);
-                    router.refresh();
-                    closeRef?.current?.click();
-                  }}
-                />
-              </div>
+            <div className="rounded-xl border-black outline-dashed outline-sky-600">
+              <UploadDropzone
+                endpoint="resumeUploader"
+                appearance={{
+                  button:
+                    "ut-ready:bg-sky-600 ut-uploading:cursor-not-allowed bg-red-500 bg-none after:bg-orange-400",
+                  label: {
+                    color: "gray",
+                  },
+                  allowedContent: {
+                    color: "gray",
+                  },
+                }}
+                onClientUploadComplete={(res) => {
+                  setResumeUrl(res?.[0]?.url);
+                  router.refresh();
+                  closeRef?.current?.click();
+                }}
+              />
             </div>
           )}
-
-          <div className="flex justify-between">
-            <DialogClose
-              ref={closeRef}
-              asChild
-            >
-              <Button
-                type="button"
-                variant="ghost"
-              >
-                Cancel
-              </Button>
-            </DialogClose>
-            <Button
-              type="submit"
-              disabled={isPending}
-            >
-              Save
-            </Button>
-          </div>
         </form>
       </DialogContent>
     </Dialog>
