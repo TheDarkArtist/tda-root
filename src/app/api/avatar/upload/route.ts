@@ -6,8 +6,6 @@ export async function POST(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url);
   const filename = searchParams.get("filename");
 
-  console.log(filename);
-
   if (!filename) {
     return NextResponse.json(
       { error: "Filename is required." },
