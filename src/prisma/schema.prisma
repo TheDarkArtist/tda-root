@@ -1,43 +1,31 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL")
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
   directUrl = env("POSTGRES_URL_NON_POOLING")
-}
-
-enum UserAccess {
-  ROOT
-  ADMIN
-  USER
 }
 
 model User {
   id                    String                 @id @default(cuid())
   name                  String?
   username              String                 @unique
-  bio                   String?
   email                 String?                @unique
   emailVerified         DateTime?              @map("email_verified")
   image                 String?
   password              String?
-  salt                  String?
   access                UserAccess             @default(USER)
-  accounts              Account[]
   isTwoFactorEnabled    Boolean                @default(false)
+  salt                  String?
+  bio                   String?
+  resumeUrl             String?                @map("resume_url")
+  comments              Comment[]
+  Post                  Post[]
+  projects              Project[]
   twoFactorConfirmation TwoFactorConfirmation?
-
-  Post     Post[]
-  projects Project[]
-  comments Comment[]
+  accounts              Account[]
 
   @@index([id, username, email])
   @@map("users")
@@ -49,15 +37,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String  @map("provider_account_id")
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
@@ -92,70 +79,65 @@ model TwoFactorToken {
 
 model TwoFactorConfirmation {
   id     String @id @default(cuid())
-  userId String
+  userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId])
 }
 
 model Post {
   id          String    @id @default(cuid())
-  title       String    @db.Text
-  description String?   @db.Text
-  body        String    @db.Text
+  title       String
+  description String?
+  body        String
   image       String?   @default("https://images.unsplash.com/photo-1533780898421-b118c81ac26b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-  slug        String    @default(cuid())
+  slug        String    @unique @default(cuid())
   tags        String[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  views       View[]
   upVotes     String[]  @default([])
   published   Boolean   @default(false)
-  user        User?     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId      String?
   commnets    Comment[]
+  user        User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  views       View[]
 
-  @@unique([slug])
   @@index([userId, slug, id])
 }
 
 model Project {
   id          String    @id @default(cuid())
-  title       String    @db.Text
-  description String?   @db.Text
-  body        String    @db.Text
+  title       String
+  description String?
+  body        String
   image       String?   @default("https://images.unsplash.com/photo-1533780898421-b118c81ac26b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-  slug        String    @default(cuid())
+  slug        String    @unique @default(cuid())
   upVotes     String[]  @default([])
-  views       View[]
   tags        String[]
   link        String?
   repo        String?
   published   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  user        User?     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId      String?
   comments    Comment[]
+  user        User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  views       View[]
 
-  @@unique([slug])
   @@index([userId, id, slug])
 }
 
 model Comment {
   id         String   @id @default(cuid())
-  text       String   @db.Text
+  text       String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-  user       User?    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId     String
   parentId   String
   parentType String
-  Post       Post?    @relation(fields: [postId], references: [id])
   postId     String?
-
-  Project   Project? @relation(fields: [projectId], references: [id])
-  projectId String?
+  projectId  String?
+  Post       Post?    @relation(fields: [postId], references: [id])
+  Project    Project? @relation(fields: [projectId], references: [id])
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([parentId, parentType])
 }
@@ -166,10 +148,14 @@ model View {
   username   String?
   ip         String?
   timestamp  DateTime @default(now())
+  projectId  String?
+  postId     String?
+  post       Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  project    Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
 
-  project   Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  projectId String?
-
-  post   Post?   @relation(fields: [postId], references: [id], onDelete: Cascade)
-  postId String?
+enum UserAccess {
+  ROOT
+  ADMIN
+  USER
 }

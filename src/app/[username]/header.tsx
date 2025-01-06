@@ -11,20 +11,32 @@ const Header = async ({ username }: { username: string }) => {
 
   const user = await getUserByUsername(username);
   if (!user) {
-    return notFound();
+    notFound();
   }
 
   return (
     <div className="relative bg-sky-600 dark:bg-red-950 text-white bg-grid-md-sky-500/30 dark:bg-grid-md-red-900/30">
-      <div className="flex justify-between items-center py-2 px-4">
+      <div className="flex justify-between gap-2 items-center py-2 px-4">
         <div className="text-xs">
           <div>User ID: {user.id}</div>
           <div>Access Level: {user.access}</div>
         </div>
         {session && user.id === session?.user?.id && (
-          <Button size="sm" asChild>
-            <Link href={`/settings`}>Edit</Link>
-          </Button>
+          <div className="flex gap-x-4">
+            <Button
+            variant="secondary"
+              size="sm"
+              asChild
+            >
+              <Link href={user.resumeUrl as string}>Resume</Link>
+            </Button>
+            <Button
+              size="sm"
+              asChild
+            >
+              <Link href={`/settings`}>Edit</Link>
+            </Button>
+          </div>
         )}
       </div>
 

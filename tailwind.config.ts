@@ -1,23 +1,21 @@
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
-
-const svgToDataUri = require("mini-svg-data-uri");
-
+import svgToDataUri from "mini-svg-data-uri";
+import plugin from "tailwindcss/plugin";
 import type { Config } from "tailwindcss";
+import { withUt } from "uploadthing/tw";
 
-function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  );
+// Utility function to generate SVG background
+const generateSvgBackground = (
+  width: number,
+  height: number,
+  path: string,
+  value: string,
+) => {
+  return `url("${svgToDataUri(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="${width}" height="${height}" fill="none" stroke="${value}">${path}</svg>`,
+  )}")`;
+};
 
-  addBase({
-    ":root": newVars,
-  });
-}
-
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -95,37 +93,52 @@ const config = {
   plugins: [
     require("tailwindcss-textshadow"),
     require("tailwindcss-animate"),
-    function ({ matchUtilities, theme }: any) {
+    plugin(function ({ matchUtilities, theme }) {
+      const colors = theme("colors");
       matchUtilities(
         {
-          "bg-grid-lg": (value: any) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
-            )}")`,
+          "bg-grid-lg": (value: string) => ({
+            backgroundImage: generateSvgBackground(
+              64,
+              64,
+              '<path d="M0 .5H31.5V32"/>',
+              value,
+            ),
           }),
-          "bg-grid-md": (value: any) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
-            )}")`,
+          "bg-grid-md": (value: string) => ({
+            backgroundImage: generateSvgBackground(
+              32,
+              32,
+              '<path d="M0 .5H31.5V32"/>',
+              value,
+            ),
           }),
-          "bg-grid-sm": (value: any) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="8" height="8" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
-            )}")`,
+          "bg-grid-sm": (value: string) => ({
+            backgroundImage: generateSvgBackground(
+              8,
+              8,
+              '<path d="M0 .5H31.5V32"/>',
+              value,
+            ),
           }),
-          "bg-dot": (value: any) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`
-            )}")`,
+          "bg-dot": (value: string) => ({
+            backgroundImage: generateSvgBackground(
+              16,
+              16,
+              '<circle fill="' +
+                value +
+                '" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle>',
+              value,
+            ),
           }),
         },
         {
-          values: flattenColorPalette(theme("backgroundColor")),
+          values: colors,
           type: "color",
-        }
+        },
       );
-    },
+    }),
   ],
-} satisfies Config;
+};
 
-export default config;
+export default withUt(config);

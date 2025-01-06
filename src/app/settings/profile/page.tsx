@@ -1,4 +1,5 @@
 import Bio from "@/components/settings/profile/bio";
+import ChangeResume from "@/components/settings/profile/change-resume";
 import Name from "@/components/settings/profile/name";
 import Picture from "@/components/settings/profile/picture";
 import { Metadata } from "next";
@@ -21,6 +22,9 @@ const ProfilePage = () => {
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
         <Bio />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ChangeResume />
       </Suspense>
     </div>
   );
