@@ -1,6 +1,5 @@
 import { currentUser } from "@/lib/actions/utils/auth";
 import { updateResumeUrl } from "@/lib/actions/utils/utils";
-import { db } from "@/lib/db";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 
 const f = createUploadthing();
