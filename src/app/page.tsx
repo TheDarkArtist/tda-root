@@ -4,6 +4,13 @@ import Info from "@/components/home/info";
 import TdaTechs from "@/components/home/technologies/tda-techs";
 import TdaSkills from "@/components/home/skills/tda-skills";
 import Footer from "@/components/footer/footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  openGraph: {
+    images: "https://i.imgur.com/pMWcbsU.png",
+  },
+};
 
 export default function Home() {
   return (

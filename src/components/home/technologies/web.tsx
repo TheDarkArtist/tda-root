@@ -19,7 +19,7 @@ const Web = () => {
     },
     {
       name: "Django",
-      src: "/logo/django.png",
+      src: "https://i.imgur.com/G2pIhqH.png",
       children: (
         <p>
           Django is a solid choice for building complex web applications

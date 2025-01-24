@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: "https://thedarkartist.in/posts/drafts",
     description:
       "Quality articles on technology, programming, and life insights.",
-    images: "https://thedarkartist.in/assets/posts-drafts-page.png",
+    images: "https://i.imgur.com/siQi89S.png",
   },
 };
 

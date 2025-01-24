@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: "https://thedarkartist.in/projects",
     description:
       "A showcase of projects developed by Kushagra Sharma, featuring detailed explanations, insights, and coding practices.",
-    images: "https://thedarkartist.in/assets/projects-preview.png",
+    images: "https://i.imgur.com/pMWcbsU.png",
   },
 };
 

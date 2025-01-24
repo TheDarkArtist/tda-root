@@ -7,7 +7,7 @@ const Languages = () => {
   const languageData = [
     {
       name: "Python",
-      src: "/logo/python.png",
+      src: "https://i.imgur.com/tTjaaRq.png",
       children: (
         <p>
           Python is great for quick scripting and handling complex logic without
@@ -19,7 +19,7 @@ const Languages = () => {
     },
     {
       name: "TypeScript",
-      src: "/logo/typescript.png",
+      src: "https://i.imgur.com/IdA1La4.png",
       children: (
         <p>
           TypeScript adds structure and confidence to JavaScript projects by
@@ -31,7 +31,7 @@ const Languages = () => {
     },
     {
       name: "Rust",
-      src: "/logo/rust.png",
+      src: "https://i.imgur.com/nZH5Iow.png",
       children: (
         <p>
           Rust offers full control over performance and memory, making it ideal
@@ -50,7 +50,7 @@ const Languages = () => {
       classWrapper={cn(
         "hover:bg-green-600/10 py-4 px-2 rounded-xl",
         "border border-transparent hover:border-green-600/20",
-        "hover:dark:bg-grid-lg-green-600/5"
+        "hover:dark:bg-grid-lg-green-600/5",
       )}
     >
       <div className="flex flex-col sm:flex-row-reverse justify-evenly items-center gap-4 mb-10">
@@ -72,7 +72,11 @@ const Languages = () => {
         </section>
         <div className="w-full flex flex-col flex-shrink flex-grow flex-wrap sm:flex-row justify-evenly items-center gap-4 mt-6">
           {languageData.map((data, index) => (
-            <TechCard key={index} name={data.name} src={data.src}>
+            <TechCard
+              key={index}
+              name={data.name}
+              src={data.src}
+            >
               {data.children}
             </TechCard>
           ))}

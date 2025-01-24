@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     url: "https://thedarkartist.in/info",
     description:
       "Detailed insights into the professional and personal journey of Kushagra Sharma, a passionate full stack developer and technology enthusiast.",
-    images: "https://thedarkartist.in/assets/info-preview.png",
+    images: "https://i.imgur.com/FcglX2i.png",
   },
 };
 

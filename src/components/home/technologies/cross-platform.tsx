@@ -7,7 +7,7 @@ const CrossPlatform = () => {
   const crossPlatformData = [
     {
       name: "Flutter",
-      src: "/logo/flutter.png",
+      src: "https://i.imgur.com/mIoPzU1.png",
       children: (
         <p>
           Flutter is my go-to for building cross-platform mobile apps with a
@@ -31,7 +31,7 @@ const CrossPlatform = () => {
     },
     {
       name: "Qt",
-      src: "/logo/qt.png",
+      src: "https://i.imgur.com/rN8MnCL.png",
       children: (
         <p>
           Qt is fantastic for building powerful desktop applications, especially
