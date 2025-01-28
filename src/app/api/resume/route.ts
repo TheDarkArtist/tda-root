@@ -22,6 +22,9 @@ export const GET = async (req: NextRequest) => {
       "Content-Type":
         response.headers.get("Content-Type") || "application/octet-stream",
       "Content-Disposition": `attachment; filename="tda-resume.pdf"`,
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
     });
 
     return new NextResponse(fileContent, {
